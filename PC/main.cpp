@@ -5,7 +5,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+
 
     /* Apertura de la DB. Si algo falla, no inicializar la pantalla ppal */
 
@@ -19,9 +19,7 @@ int main(int argc, char *argv[])
         qDebug() << "Conexión ok.";
     }
 
-
-
-
+    MainWindow w;
     w.show();
     return a.exec();
 

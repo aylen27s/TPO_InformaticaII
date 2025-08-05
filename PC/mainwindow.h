@@ -23,7 +23,8 @@ public:
     ~MainWindow();
     void setCalendar(bool active);
     void plotData(QString _xName, QString _yName);
-
+    void setPeriod(QDate date);
+    void GetData();
 
 private slots:
     void on_radioButton_periodo_clicked();

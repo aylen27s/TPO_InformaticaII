@@ -2,6 +2,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+// #include <QSqlRecord>
 
 
 //Declaro global para que se pueda utilizar en los componentes de la UI
