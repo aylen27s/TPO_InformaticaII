@@ -22,9 +22,9 @@ MainWindow::~MainWindow()
     qDebug()<< "Cierre de conexion DB.";
 
     /* Libera memoria */
-
-    delete myChart;
-    delete myData;
+    //Liberar myChart y myData muestra que la app crashea ¿?
+    // delete myChart;
+    // delete myData;
     delete ui;
 }
 
@@ -96,8 +96,9 @@ void MainWindow::initWidgets(){
 
 
     // prueba de la grafica
-    plotData("Hora","Presion");
+
     GetData();
+    plotData("Hora","Presion");
 
 }
 
@@ -111,23 +112,36 @@ void MainWindow::setPeriod(QDate date){
 
 void MainWindow::plotData(QString _xName, QString _yName){
 
-    myData = new QLineSeries(); // instancia arreglo de puntos
+    // myData = new QLineSeries(); // instancia arreglo de puntos
 
-    //Añadi
-    myData->append(0, 6);
-    myData->append(2, 4);
-    myData->append(3, 8);
-    myData->append(7, 4);
-    myData->append(10, 5);
+    // /**/
+    // myData->append(0, 6);
+    // myData->append(2, 4);
+    // myData->append(3, 8);
+    // myData->append(7, 4);
+    // myData->append(10, 5);
 
 
     //Dispone el arreglo en un chart o tablero
-    myChart = new QChart();
+    myChart = new QChart();    
+
     myChart->legend()->hide(); //Muestra etiquetas de la grafica
     myChart->addSeries(myData);
-    myChart->createDefaultAxes();
-    myChart->axisX()->setTitleText(_xName);
-    myChart->axisY()->setTitleText(_yName);
+    myChart->setTitle("Persion - Hora");
+    // myChart->createDefaultAxes();
+    // myChart->axisX()->setTitleText(_xName);
+    // myChart->axisY()->setTitleText(_yName);
+    // Eje X - Fechas
+    auto axisX = new QDateTimeAxis();
+    axisX->setTickCount(10);
+    axisX->setFormat("dd-MM HH:mm");  // o "dd-MM HH:mm" si hay varias fechas
+    myChart->addAxis(axisX, Qt::AlignBottom);
+    myData->attachAxis(axisX);
+
+    auto axisY = new QValueAxis;
+    axisY->setLabelFormat("%i");
+    myChart->addAxis(axisY, Qt::AlignLeft);
+    myData->attachAxis(axisY);
 
     QChartView *chartView = new QChartView(myChart);
     chartView->setRenderHint(QPainter::Antialiasing);
@@ -146,8 +160,18 @@ void MainWindow::GetData(){
     if (!getQuery.exec()) {
         qDebug() << "Error al buscar los datos:" << getQuery.lastError().text();
     }else{
-        while (getQuery.next())
-            qDebug() << getQuery.value("fecha").toString() << getQuery.value("ps").toString(); // output all names
+        myData = new QLineSeries(); // instancia de arreglo de puntos
+        while (getQuery.next()){
+            auto d = getQuery.value("fecha").toString();
+            auto d_to_int = QDateTime::fromString(d, "dd.MM.yyyy HH:mm:ss.z").toMSecsSinceEpoch();
+            myData->append(d_to_int, getQuery.value("ps").toDouble());
+            // qDebug() << d_to_int << getQuery.value("ps").toDouble();
+
+            // qDebug()<< myData;
+        }
+        // auto d = QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss.z");
+        // auto d_to_int = QDateTime::fromString(d, "dd.MM.yyyy HH:mm:ss.z").toMSecsSinceEpoch();
+        //     qDebug()<< d << d_to_int;
     }
 
 }
