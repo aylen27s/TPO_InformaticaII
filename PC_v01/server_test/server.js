@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 // Configuración
 const app = express();
 const PORT = 3000;
-const DB_PATH = "/home/guido/Documentos/TPO_InformaticaII/file_past.db";
+const DB_PATH = "/home/aylen/Escritorio/Info2/TPO_InformaticaII/file_past.db";
 const TABLE = "data";
 
 // Middleware para interpretar JSON

@@ -9,5 +9,6 @@ idf_component_register(
         esp_netif
         esp_event
         driver
-        esp_timer        
+        esp_timer
+        lwip
 )

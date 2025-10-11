@@ -1,22 +1,31 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'qcustomplot.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.4.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.5.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../qcustomplot.h"
 #include <QtGui/qtextcursor.h>
-#include <QScreen>
+#include <QtGui/qscreen.h>
 #include <QtCore/qmetatype.h>
 #include <QtCore/QSharedPointer>
 #include <QtCore/QList>
+
+#if __has_include(<QtCore/qtmochelpers.h>)
+#include <QtCore/qtmochelpers.h>
+#else
+QT_BEGIN_MOC_NAMESPACE
+#endif
+
+
+#include <memory>
+
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'qcustomplot.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.4.2. It"
+#error "This file was generated using the moc from 6.5.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -25,11 +34,24 @@
 #define Q_CONSTINIT
 #endif
 
-QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_stringdata_QCPPainter_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPainterENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPainterENDCLASS = QtMocHelpers::stringData(
+    "QCPPainter",
+    "PainterMode",
+    "pmDefault",
+    "pmVectorized",
+    "pmNoCaching",
+    "pmNonCosmetic",
+    "PainterModes"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPainterENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[11];
     char stringdata1[12];
@@ -40,8 +62,8 @@ struct qt_meta_stringdata_QCPPainter_t {
     char stringdata6[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPainter_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPainter_t qt_meta_stringdata_QCPPainter = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPainterENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPainterENDCLASS_t qt_meta_stringdata_CLASSQCPPainterENDCLASS = {
     {
         QT_MOC_LITERAL(0, 10),  // "QCPPainter"
         QT_MOC_LITERAL(11, 11),  // "PainterMode"
@@ -60,12 +82,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPPainter_t qt_meta_stringdata_QCPP
     "PainterModes"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPainter[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPainterENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -94,11 +117,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPainter[] = {
 
 Q_CONSTINIT const QMetaObject QCPPainter::staticMetaObject = { {
     QtPrivate::MetaObjectForType<QPainter>::value,
-    qt_meta_stringdata_QCPPainter.offsetsAndSizes,
-    qt_meta_data_QCPPainter,
+    qt_meta_stringdata_CLASSQCPPainterENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPainterENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPainter_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPainterENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPainter, std::true_type>
     >,
@@ -106,7 +129,25 @@ Q_CONSTINIT const QMetaObject QCPPainter::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPLayer_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLayerENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLayerENDCLASS = QtMocHelpers::stringData(
+    "QCPLayer",
+    "parentPlot",
+    "QCustomPlot*",
+    "name",
+    "index",
+    "children",
+    "QList<QCPLayerable*>",
+    "visible",
+    "mode",
+    "LayerMode",
+    "lmLogical",
+    "lmBuffered"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLayerENDCLASS_t {
     uint offsetsAndSizes[24];
     char stringdata0[9];
     char stringdata1[11];
@@ -122,8 +163,8 @@ struct qt_meta_stringdata_QCPLayer_t {
     char stringdata11[11];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLayer_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLayer_t qt_meta_stringdata_QCPLayer = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLayerENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLayerENDCLASS_t qt_meta_stringdata_CLASSQCPLayerENDCLASS = {
     {
         QT_MOC_LITERAL(0, 8),  // "QCPLayer"
         QT_MOC_LITERAL(9, 10),  // "parentPlot"
@@ -152,12 +193,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLayer_t qt_meta_stringdata_QCPLay
     "lmBuffered"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLayer[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLayerENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -187,11 +229,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLayer[] = {
 
 Q_CONSTINIT const QMetaObject QCPLayer::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_QCPLayer.offsetsAndSizes,
-    qt_meta_data_QCPLayer,
+    qt_meta_stringdata_CLASSQCPLayerENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLayerENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLayer_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLayerENDCLASS_t,
         // property 'parentPlot'
         QtPrivate::TypeAndForceComplete<QCustomPlot*, std::true_type>,
         // property 'name'
@@ -220,8 +262,7 @@ void QCPLayer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 3:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<QCPLayerable*> >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPLayer *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -257,7 +298,7 @@ const QMetaObject *QCPLayer::metaObject() const
 void *QCPLayer::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLayer.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLayerENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
@@ -276,7 +317,26 @@ int QCPLayer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLayerable_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLayerableENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLayerableENDCLASS = QtMocHelpers::stringData(
+    "QCPLayerable",
+    "layerChanged",
+    "",
+    "QCPLayer*",
+    "newLayer",
+    "setLayer",
+    "layer",
+    "visible",
+    "parentPlot",
+    "QCustomPlot*",
+    "parentLayerable",
+    "QCPLayerable*",
+    "antialiased"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLayerableENDCLASS_t {
     uint offsetsAndSizes[26];
     char stringdata0[13];
     char stringdata1[13];
@@ -293,8 +353,8 @@ struct qt_meta_stringdata_QCPLayerable_t {
     char stringdata12[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLayerable_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLayerable_t qt_meta_stringdata_QCPLayerable = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLayerableENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLayerableENDCLASS_t qt_meta_stringdata_CLASSQCPLayerableENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "QCPLayerable"
         QT_MOC_LITERAL(13, 12),  // "layerChanged"
@@ -325,12 +385,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLayerable_t qt_meta_stringdata_QC
     "antialiased"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLayerable[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLayerableENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
@@ -364,11 +425,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLayerable[] = {
 
 Q_CONSTINIT const QMetaObject QCPLayerable::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_QCPLayerable.offsetsAndSizes,
-    qt_meta_data_QCPLayerable,
+    qt_meta_stringdata_CLASSQCPLayerableENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLayerableENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLayerable_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLayerableENDCLASS_t,
         // property 'visible'
         QtPrivate::TypeAndForceComplete<bool, std::true_type>,
         // property 'parentPlot'
@@ -439,8 +500,7 @@ void QCPLayerable::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCustomPlot* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPLayerable *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -475,7 +535,7 @@ const QMetaObject *QCPLayerable::metaObject() const
 void *QCPLayerable::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLayerable.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLayerableENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
@@ -509,7 +569,24 @@ void QCPLayerable::layerChanged(QCPLayer * _t1)
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPSelectionRect_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS = QtMocHelpers::stringData(
+    "QCPSelectionRect",
+    "started",
+    "",
+    "QMouseEvent*",
+    "event",
+    "changed",
+    "rect",
+    "canceled",
+    "QInputEvent*",
+    "accepted",
+    "cancel"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS_t {
     uint offsetsAndSizes[22];
     char stringdata0[17];
     char stringdata1[8];
@@ -524,8 +601,8 @@ struct qt_meta_stringdata_QCPSelectionRect_t {
     char stringdata10[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPSelectionRect_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPSelectionRect_t qt_meta_stringdata_QCPSelectionRect = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS_t qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS = {
     {
         QT_MOC_LITERAL(0, 16),  // "QCPSelectionRect"
         QT_MOC_LITERAL(17, 7),  // "started"
@@ -552,12 +629,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPSelectionRect_t qt_meta_stringdat
     "cancel"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPSelectionRect[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPSelectionRectENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        5,   14, // methods
@@ -590,11 +668,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPSelectionRect[] = {
 
 Q_CONSTINIT const QMetaObject QCPSelectionRect::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPSelectionRect.offsetsAndSizes,
-    qt_meta_data_QCPSelectionRect,
+    qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPSelectionRectENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPSelectionRect_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPSelectionRect, std::true_type>,
         // method 'started'
@@ -672,7 +750,7 @@ const QMetaObject *QCPSelectionRect::metaObject() const
 void *QCPSelectionRect::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPSelectionRect.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPSelectionRectENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -722,25 +800,33 @@ void QCPSelectionRect::accepted(const QRect & _t1, QMouseEvent * _t2)
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPMarginGroup_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS = QtMocHelpers::stringData(
+    "QCPMarginGroup"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPMarginGroup_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPMarginGroup_t qt_meta_stringdata_QCPMarginGroup = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS_t qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS = {
     {
         QT_MOC_LITERAL(0, 14)   // "QCPMarginGroup"
     },
     "QCPMarginGroup"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPMarginGroup[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPMarginGroupENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -755,11 +841,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPMarginGroup[] = {
 
 Q_CONSTINIT const QMetaObject QCPMarginGroup::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_QCPMarginGroup.offsetsAndSizes,
-    qt_meta_data_QCPMarginGroup,
+    qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPMarginGroupENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPMarginGroup_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPMarginGroup, std::true_type>
     >,
@@ -782,7 +868,7 @@ const QMetaObject *QCPMarginGroup::metaObject() const
 void *QCPMarginGroup::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPMarginGroup.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPMarginGroupENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
@@ -793,7 +879,31 @@ int QCPMarginGroup::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLayoutElement_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS = QtMocHelpers::stringData(
+    "QCPLayoutElement",
+    "layout",
+    "QCPLayout*",
+    "rect",
+    "outerRect",
+    "margins",
+    "QMargins",
+    "minimumMargins",
+    "minimumSize",
+    "maximumSize",
+    "sizeConstraintRect",
+    "SizeConstraintRect",
+    "UpdatePhase",
+    "upPreparation",
+    "upMargins",
+    "upLayout",
+    "scrInnerRect",
+    "scrOuterRect"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS_t {
     uint offsetsAndSizes[36];
     char stringdata0[17];
     char stringdata1[7];
@@ -815,8 +925,8 @@ struct qt_meta_stringdata_QCPLayoutElement_t {
     char stringdata17[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLayoutElement_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLayoutElement_t qt_meta_stringdata_QCPLayoutElement = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS_t qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS = {
     {
         QT_MOC_LITERAL(0, 16),  // "QCPLayoutElement"
         QT_MOC_LITERAL(17, 6),  // "layout"
@@ -857,12 +967,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLayoutElement_t qt_meta_stringdat
     "scrOuterRect"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLayoutElement[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLayoutElementENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -898,11 +1009,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLayoutElement[] = {
 
 Q_CONSTINIT const QMetaObject QCPLayoutElement::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPLayoutElement.offsetsAndSizes,
-    qt_meta_data_QCPLayoutElement,
+    qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLayoutElementENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLayoutElement_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS_t,
         // property 'layout'
         QtPrivate::TypeAndForceComplete<QCPLayout*, std::true_type>,
         // property 'rect'
@@ -933,8 +1044,7 @@ void QCPLayoutElement::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPLayout* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPLayoutElement *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -976,7 +1086,7 @@ const QMetaObject *QCPLayoutElement::metaObject() const
 void *QCPLayoutElement::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLayoutElement.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLayoutElementENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -995,25 +1105,33 @@ int QCPLayoutElement::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLayout_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLayoutENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLayoutENDCLASS = QtMocHelpers::stringData(
+    "QCPLayout"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLayoutENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLayout_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLayout_t qt_meta_stringdata_QCPLayout = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLayoutENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLayoutENDCLASS_t qt_meta_stringdata_CLASSQCPLayoutENDCLASS = {
     {
         QT_MOC_LITERAL(0, 9)   // "QCPLayout"
     },
     "QCPLayout"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLayout[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLayoutENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1028,11 +1146,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLayout[] = {
 
 Q_CONSTINIT const QMetaObject QCPLayout::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutElement::staticMetaObject>(),
-    qt_meta_stringdata_QCPLayout.offsetsAndSizes,
-    qt_meta_data_QCPLayout,
+    qt_meta_stringdata_CLASSQCPLayoutENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLayoutENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLayout_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLayoutENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPLayout, std::true_type>
     >,
@@ -1055,7 +1173,7 @@ const QMetaObject *QCPLayout::metaObject() const
 void *QCPLayout::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLayout.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLayoutENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutElement::qt_metacast(_clname);
 }
@@ -1066,7 +1184,26 @@ int QCPLayout::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLayoutGrid_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS = QtMocHelpers::stringData(
+    "QCPLayoutGrid",
+    "rowCount",
+    "columnCount",
+    "columnStretchFactors",
+    "QList<double>",
+    "rowStretchFactors",
+    "columnSpacing",
+    "rowSpacing",
+    "fillOrder",
+    "FillOrder",
+    "wrap",
+    "foRowsFirst",
+    "foColumnsFirst"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS_t {
     uint offsetsAndSizes[26];
     char stringdata0[14];
     char stringdata1[9];
@@ -1083,8 +1220,8 @@ struct qt_meta_stringdata_QCPLayoutGrid_t {
     char stringdata12[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLayoutGrid_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLayoutGrid_t qt_meta_stringdata_QCPLayoutGrid = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS_t qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPLayoutGrid"
         QT_MOC_LITERAL(14, 8),  // "rowCount"
@@ -1115,12 +1252,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLayoutGrid_t qt_meta_stringdata_Q
     "foColumnsFirst"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLayoutGrid[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLayoutGridENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1152,11 +1290,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLayoutGrid[] = {
 
 Q_CONSTINIT const QMetaObject QCPLayoutGrid::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayout::staticMetaObject>(),
-    qt_meta_stringdata_QCPLayoutGrid.offsetsAndSizes,
-    qt_meta_data_QCPLayoutGrid,
+    qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLayoutGridENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLayoutGrid_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS_t,
         // property 'rowCount'
         QtPrivate::TypeAndForceComplete<int, std::true_type>,
         // property 'columnCount'
@@ -1188,8 +1326,7 @@ void QCPLayoutGrid::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 2:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QList<double> >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPLayoutGrid *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -1231,7 +1368,7 @@ const QMetaObject *QCPLayoutGrid::metaObject() const
 void *QCPLayoutGrid::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLayoutGrid.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLayoutGridENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayout::qt_metacast(_clname);
 }
@@ -1250,7 +1387,17 @@ int QCPLayoutGrid::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLayoutInset_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS = QtMocHelpers::stringData(
+    "QCPLayoutInset",
+    "InsetPlacement",
+    "ipFree",
+    "ipBorderAligned"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS_t {
     uint offsetsAndSizes[8];
     char stringdata0[15];
     char stringdata1[15];
@@ -1258,8 +1405,8 @@ struct qt_meta_stringdata_QCPLayoutInset_t {
     char stringdata3[16];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLayoutInset_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLayoutInset_t qt_meta_stringdata_QCPLayoutInset = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS_t qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS = {
     {
         QT_MOC_LITERAL(0, 14),  // "QCPLayoutInset"
         QT_MOC_LITERAL(15, 14),  // "InsetPlacement"
@@ -1272,12 +1419,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLayoutInset_t qt_meta_stringdata_
     "ipBorderAligned"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLayoutInset[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLayoutInsetENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1299,11 +1447,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLayoutInset[] = {
 
 Q_CONSTINIT const QMetaObject QCPLayoutInset::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayout::staticMetaObject>(),
-    qt_meta_stringdata_QCPLayoutInset.offsetsAndSizes,
-    qt_meta_data_QCPLayoutInset,
+    qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLayoutInsetENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLayoutInset_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPLayoutInset, std::true_type>
     >,
@@ -1326,7 +1474,7 @@ const QMetaObject *QCPLayoutInset::metaObject() const
 void *QCPLayoutInset::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLayoutInset.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLayoutInsetENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayout::qt_metacast(_clname);
 }
@@ -1337,7 +1485,25 @@ int QCPLayoutInset::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLineEnding_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLineEndingENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLineEndingENDCLASS = QtMocHelpers::stringData(
+    "QCPLineEnding",
+    "EndingStyle",
+    "esNone",
+    "esFlatArrow",
+    "esSpikeArrow",
+    "esLineArrow",
+    "esDisc",
+    "esSquare",
+    "esDiamond",
+    "esBar",
+    "esHalfBar",
+    "esSkewedBar"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLineEndingENDCLASS_t {
     uint offsetsAndSizes[24];
     char stringdata0[14];
     char stringdata1[12];
@@ -1353,8 +1519,8 @@ struct qt_meta_stringdata_QCPLineEnding_t {
     char stringdata11[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLineEnding_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLineEnding_t qt_meta_stringdata_QCPLineEnding = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLineEndingENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLineEndingENDCLASS_t qt_meta_stringdata_CLASSQCPLineEndingENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPLineEnding"
         QT_MOC_LITERAL(14, 11),  // "EndingStyle"
@@ -1383,12 +1549,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLineEnding_t qt_meta_stringdata_Q
     "esSkewedBar"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLineEnding[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLineEndingENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1418,11 +1585,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLineEnding[] = {
 
 Q_CONSTINIT const QMetaObject QCPLineEnding::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPLineEnding.offsetsAndSizes,
-    qt_meta_data_QCPLineEnding,
+    qt_meta_stringdata_CLASSQCPLineEndingENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLineEndingENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLineEnding_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLineEndingENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPLineEnding, std::true_type>
     >,
@@ -1430,7 +1597,30 @@ Q_CONSTINIT const QMetaObject QCPLineEnding::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPLabelPainterPrivate_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS = QtMocHelpers::stringData(
+    "QCPLabelPainterPrivate",
+    "AnchorMode",
+    "amRectangular",
+    "amSkewedUpright",
+    "amSkewedRotated",
+    "AnchorReferenceType",
+    "artNormal",
+    "artTangent",
+    "AnchorSide",
+    "asLeft",
+    "asRight",
+    "asTop",
+    "asBottom",
+    "asTopLeft",
+    "asTopRight",
+    "asBottomRight",
+    "asBottomLeft"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS_t {
     uint offsetsAndSizes[34];
     char stringdata0[23];
     char stringdata1[11];
@@ -1451,8 +1641,8 @@ struct qt_meta_stringdata_QCPLabelPainterPrivate_t {
     char stringdata16[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLabelPainterPrivate_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLabelPainterPrivate_t qt_meta_stringdata_QCPLabelPainterPrivate = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS_t qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS = {
     {
         QT_MOC_LITERAL(0, 22),  // "QCPLabelPainterPrivate"
         QT_MOC_LITERAL(23, 10),  // "AnchorMode"
@@ -1491,12 +1681,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLabelPainterPrivate_t qt_meta_str
     "asBottomLeft"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLabelPainterPrivate[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLabelPainterPrivateENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1531,11 +1722,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLabelPainterPrivate[] = {
 
 Q_CONSTINIT const QMetaObject QCPLabelPainterPrivate::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPLabelPainterPrivate.offsetsAndSizes,
-    qt_meta_data_QCPLabelPainterPrivate,
+    qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLabelPainterPrivateENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLabelPainterPrivate_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLabelPainterPrivateENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPLabelPainterPrivate, std::true_type>
     >,
@@ -1543,7 +1734,17 @@ Q_CONSTINIT const QMetaObject QCPLabelPainterPrivate::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAxisTicker_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS = QtMocHelpers::stringData(
+    "QCPAxisTicker",
+    "TickStepStrategy",
+    "tssReadability",
+    "tssMeetTickCount"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS_t {
     uint offsetsAndSizes[8];
     char stringdata0[14];
     char stringdata1[17];
@@ -1551,8 +1752,8 @@ struct qt_meta_stringdata_QCPAxisTicker_t {
     char stringdata3[17];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAxisTicker_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTicker_t qt_meta_stringdata_QCPAxisTicker = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS_t qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPAxisTicker"
         QT_MOC_LITERAL(14, 16),  // "TickStepStrategy"
@@ -1565,12 +1766,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTicker_t qt_meta_stringdata_Q
     "tssMeetTickCount"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAxisTicker[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAxisTickerENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1592,11 +1794,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAxisTicker[] = {
 
 Q_CONSTINIT const QMetaObject QCPAxisTicker::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPAxisTicker.offsetsAndSizes,
-    qt_meta_data_QCPAxisTicker,
+    qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAxisTickerENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAxisTicker_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAxisTickerENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPAxisTicker, std::true_type>
     >,
@@ -1604,7 +1806,20 @@ Q_CONSTINIT const QMetaObject QCPAxisTicker::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAxisTickerTime_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS = QtMocHelpers::stringData(
+    "QCPAxisTickerTime",
+    "TimeUnit",
+    "tuMilliseconds",
+    "tuSeconds",
+    "tuMinutes",
+    "tuHours",
+    "tuDays"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[18];
     char stringdata1[9];
@@ -1615,8 +1830,8 @@ struct qt_meta_stringdata_QCPAxisTickerTime_t {
     char stringdata6[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAxisTickerTime_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTickerTime_t qt_meta_stringdata_QCPAxisTickerTime = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS_t qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS = {
     {
         QT_MOC_LITERAL(0, 17),  // "QCPAxisTickerTime"
         QT_MOC_LITERAL(18, 8),  // "TimeUnit"
@@ -1635,12 +1850,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTickerTime_t qt_meta_stringda
     "tuDays"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAxisTickerTime[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAxisTickerTimeENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1665,11 +1881,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAxisTickerTime[] = {
 
 Q_CONSTINIT const QMetaObject QCPAxisTickerTime::staticMetaObject = { {
     QtPrivate::MetaObjectForType<QCPAxisTicker>::value,
-    qt_meta_stringdata_QCPAxisTickerTime.offsetsAndSizes,
-    qt_meta_data_QCPAxisTickerTime,
+    qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAxisTickerTimeENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAxisTickerTime_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAxisTickerTimeENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPAxisTickerTime, std::true_type>
     >,
@@ -1677,7 +1893,18 @@ Q_CONSTINIT const QMetaObject QCPAxisTickerTime::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAxisTickerFixed_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS = QtMocHelpers::stringData(
+    "QCPAxisTickerFixed",
+    "ScaleStrategy",
+    "ssNone",
+    "ssMultiples",
+    "ssPowers"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS_t {
     uint offsetsAndSizes[10];
     char stringdata0[19];
     char stringdata1[14];
@@ -1686,8 +1913,8 @@ struct qt_meta_stringdata_QCPAxisTickerFixed_t {
     char stringdata4[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAxisTickerFixed_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTickerFixed_t qt_meta_stringdata_QCPAxisTickerFixed = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS_t qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS = {
     {
         QT_MOC_LITERAL(0, 18),  // "QCPAxisTickerFixed"
         QT_MOC_LITERAL(19, 13),  // "ScaleStrategy"
@@ -1702,12 +1929,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTickerFixed_t qt_meta_stringd
     "ssPowers"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAxisTickerFixed[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAxisTickerFixedENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1730,11 +1958,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAxisTickerFixed[] = {
 
 Q_CONSTINIT const QMetaObject QCPAxisTickerFixed::staticMetaObject = { {
     QtPrivate::MetaObjectForType<QCPAxisTicker>::value,
-    qt_meta_stringdata_QCPAxisTickerFixed.offsetsAndSizes,
-    qt_meta_data_QCPAxisTickerFixed,
+    qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAxisTickerFixedENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAxisTickerFixed_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAxisTickerFixedENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPAxisTickerFixed, std::true_type>
     >,
@@ -1742,7 +1970,18 @@ Q_CONSTINIT const QMetaObject QCPAxisTickerFixed::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAxisTickerPi_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS = QtMocHelpers::stringData(
+    "QCPAxisTickerPi",
+    "FractionStyle",
+    "fsFloatingPoint",
+    "fsAsciiFractions",
+    "fsUnicodeFractions"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS_t {
     uint offsetsAndSizes[10];
     char stringdata0[16];
     char stringdata1[14];
@@ -1751,8 +1990,8 @@ struct qt_meta_stringdata_QCPAxisTickerPi_t {
     char stringdata4[19];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAxisTickerPi_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTickerPi_t qt_meta_stringdata_QCPAxisTickerPi = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS_t qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS = {
     {
         QT_MOC_LITERAL(0, 15),  // "QCPAxisTickerPi"
         QT_MOC_LITERAL(16, 13),  // "FractionStyle"
@@ -1767,12 +2006,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAxisTickerPi_t qt_meta_stringdata
     "fsUnicodeFractions"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAxisTickerPi[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAxisTickerPiENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1795,11 +2035,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAxisTickerPi[] = {
 
 Q_CONSTINIT const QMetaObject QCPAxisTickerPi::staticMetaObject = { {
     QtPrivate::MetaObjectForType<QCPAxisTicker>::value,
-    qt_meta_stringdata_QCPAxisTickerPi.offsetsAndSizes,
-    qt_meta_data_QCPAxisTickerPi,
+    qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAxisTickerPiENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAxisTickerPi_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAxisTickerPiENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPAxisTickerPi, std::true_type>
     >,
@@ -1807,7 +2047,20 @@ Q_CONSTINIT const QMetaObject QCPAxisTickerPi::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPGrid_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPGridENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPGridENDCLASS = QtMocHelpers::stringData(
+    "QCPGrid",
+    "subGridVisible",
+    "antialiasedSubGrid",
+    "antialiasedZeroLine",
+    "pen",
+    "subGridPen",
+    "zeroLinePen"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPGridENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[8];
     char stringdata1[15];
@@ -1818,8 +2071,8 @@ struct qt_meta_stringdata_QCPGrid_t {
     char stringdata6[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPGrid_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPGrid_t qt_meta_stringdata_QCPGrid = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPGridENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPGridENDCLASS_t qt_meta_stringdata_CLASSQCPGridENDCLASS = {
     {
         QT_MOC_LITERAL(0, 7),  // "QCPGrid"
         QT_MOC_LITERAL(8, 14),  // "subGridVisible"
@@ -1838,12 +2091,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPGrid_t qt_meta_stringdata_QCPGrid
     "zeroLinePen"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPGrid[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPGridENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -1866,11 +2120,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPGrid[] = {
 
 Q_CONSTINIT const QMetaObject QCPGrid::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPGrid.offsetsAndSizes,
-    qt_meta_data_QCPGrid,
+    qt_meta_stringdata_CLASSQCPGridENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPGridENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPGrid_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPGridENDCLASS_t,
         // property 'subGridVisible'
         QtPrivate::TypeAndForceComplete<bool, std::true_type>,
         // property 'antialiasedSubGrid'
@@ -1934,7 +2188,7 @@ const QMetaObject *QCPGrid::metaObject() const
 void *QCPGrid::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPGrid.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPGridENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -1953,7 +2207,96 @@ int QCPGrid::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPAxis_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAxisENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAxisENDCLASS = QtMocHelpers::stringData(
+    "QCPAxis",
+    "rangeChanged",
+    "",
+    "QCPRange",
+    "newRange",
+    "oldRange",
+    "scaleTypeChanged",
+    "QCPAxis::ScaleType",
+    "scaleType",
+    "selectionChanged",
+    "QCPAxis::SelectableParts",
+    "parts",
+    "selectableChanged",
+    "setScaleType",
+    "type",
+    "setRange",
+    "range",
+    "setSelectableParts",
+    "selectableParts",
+    "setSelectedParts",
+    "selectedParts",
+    "axisType",
+    "AxisType",
+    "axisRect",
+    "QCPAxisRect*",
+    "ScaleType",
+    "rangeReversed",
+    "ticker",
+    "QSharedPointer<QCPAxisTicker>",
+    "ticks",
+    "tickLabels",
+    "tickLabelPadding",
+    "tickLabelFont",
+    "tickLabelColor",
+    "tickLabelRotation",
+    "tickLabelSide",
+    "LabelSide",
+    "numberFormat",
+    "numberPrecision",
+    "tickVector",
+    "QList<double>",
+    "tickVectorLabels",
+    "tickLengthIn",
+    "tickLengthOut",
+    "subTicks",
+    "subTickLengthIn",
+    "subTickLengthOut",
+    "basePen",
+    "tickPen",
+    "subTickPen",
+    "labelFont",
+    "labelColor",
+    "label",
+    "labelPadding",
+    "padding",
+    "offset",
+    "SelectableParts",
+    "selectedTickLabelFont",
+    "selectedLabelFont",
+    "selectedTickLabelColor",
+    "selectedLabelColor",
+    "selectedBasePen",
+    "selectedTickPen",
+    "selectedSubTickPen",
+    "lowerEnding",
+    "QCPLineEnding",
+    "upperEnding",
+    "grid",
+    "QCPGrid*",
+    "atLeft",
+    "atRight",
+    "atTop",
+    "atBottom",
+    "AxisTypes",
+    "lsInside",
+    "lsOutside",
+    "stLinear",
+    "stLogarithmic",
+    "SelectablePart",
+    "spNone",
+    "spAxis",
+    "spTickLabels",
+    "spAxisLabel"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAxisENDCLASS_t {
     uint offsetsAndSizes[166];
     char stringdata0[8];
     char stringdata1[13];
@@ -2040,8 +2383,8 @@ struct qt_meta_stringdata_QCPAxis_t {
     char stringdata82[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAxis_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAxis_t qt_meta_stringdata_QCPAxis = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAxisENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAxisENDCLASS_t qt_meta_stringdata_CLASSQCPAxisENDCLASS = {
     {
         QT_MOC_LITERAL(0, 7),  // "QCPAxis"
         QT_MOC_LITERAL(8, 12),  // "rangeChanged"
@@ -2212,12 +2555,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAxis_t qt_meta_stringdata_QCPAxis
     "spAxisLabel"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAxis[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAxisENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        9,   14, // methods
@@ -2333,11 +2677,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAxis[] = {
 
 Q_CONSTINIT const QMetaObject QCPAxis::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPAxis.offsetsAndSizes,
-    qt_meta_data_QCPAxis,
+    qt_meta_stringdata_CLASSQCPAxisENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAxisENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAxis_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAxisENDCLASS_t,
         // property 'axisType'
         QtPrivate::TypeAndForceComplete<AxisType, std::true_type>,
         // property 'axisRect'
@@ -2542,8 +2886,7 @@ void QCPAxis::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 5:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QSharedPointer<QCPAxisTicker> >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPAxis *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -2651,7 +2994,7 @@ const QMetaObject *QCPAxis::metaObject() const
 void *QCPAxis::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPAxis.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPAxisENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -2713,7 +3056,41 @@ void QCPAxis::selectableChanged(const QCPAxis::SelectableParts & _t1)
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPScatterStyle_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS = QtMocHelpers::stringData(
+    "QCPScatterStyle",
+    "ScatterProperty",
+    "spNone",
+    "spPen",
+    "spBrush",
+    "spSize",
+    "spShape",
+    "spAll",
+    "ScatterProperties",
+    "ScatterShape",
+    "ssNone",
+    "ssDot",
+    "ssCross",
+    "ssPlus",
+    "ssCircle",
+    "ssDisc",
+    "ssSquare",
+    "ssDiamond",
+    "ssStar",
+    "ssTriangle",
+    "ssTriangleInverted",
+    "ssCrossSquare",
+    "ssPlusSquare",
+    "ssCrossCircle",
+    "ssPlusCircle",
+    "ssPeace",
+    "ssPixmap",
+    "ssCustom"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS_t {
     uint offsetsAndSizes[56];
     char stringdata0[16];
     char stringdata1[16];
@@ -2745,8 +3122,8 @@ struct qt_meta_stringdata_QCPScatterStyle_t {
     char stringdata27[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPScatterStyle_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPScatterStyle_t qt_meta_stringdata_QCPScatterStyle = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS_t qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS = {
     {
         QT_MOC_LITERAL(0, 15),  // "QCPScatterStyle"
         QT_MOC_LITERAL(16, 15),  // "ScatterProperty"
@@ -2807,12 +3184,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPScatterStyle_t qt_meta_stringdata
     "ssCustom"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPScatterStyle[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPScatterStyleENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -2864,11 +3242,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPScatterStyle[] = {
 
 Q_CONSTINIT const QMetaObject QCPScatterStyle::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPScatterStyle.offsetsAndSizes,
-    qt_meta_data_QCPScatterStyle,
+    qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPScatterStyleENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPScatterStyle_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPScatterStyleENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPScatterStyle, std::true_type>
     >,
@@ -2876,25 +3254,33 @@ Q_CONSTINIT const QMetaObject QCPScatterStyle::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPSelectionDecorator_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS = QtMocHelpers::stringData(
+    "QCPSelectionDecorator"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPSelectionDecorator_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPSelectionDecorator_t qt_meta_stringdata_QCPSelectionDecorator = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS_t qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS = {
     {
         QT_MOC_LITERAL(0, 21)   // "QCPSelectionDecorator"
     },
     "QCPSelectionDecorator"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPSelectionDecorator[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPSelectionDecoratorENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -2909,11 +3295,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPSelectionDecorator[] = {
 
 Q_CONSTINIT const QMetaObject QCPSelectionDecorator::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPSelectionDecorator.offsetsAndSizes,
-    qt_meta_data_QCPSelectionDecorator,
+    qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPSelectionDecoratorENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPSelectionDecorator_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPSelectionDecoratorENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPSelectionDecorator, std::true_type>
     >,
@@ -2921,7 +3307,34 @@ Q_CONSTINIT const QMetaObject QCPSelectionDecorator::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAbstractPlottable_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS = QtMocHelpers::stringData(
+    "QCPAbstractPlottable",
+    "selectionChanged",
+    "",
+    "selected",
+    "QCPDataSelection",
+    "selection",
+    "selectableChanged",
+    "QCP::SelectionType",
+    "selectable",
+    "setSelectable",
+    "setSelection",
+    "name",
+    "antialiasedFill",
+    "antialiasedScatters",
+    "pen",
+    "brush",
+    "keyAxis",
+    "QCPAxis*",
+    "valueAxis",
+    "selectionDecorator",
+    "QCPSelectionDecorator*"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS_t {
     uint offsetsAndSizes[42];
     char stringdata0[21];
     char stringdata1[17];
@@ -2946,8 +3359,8 @@ struct qt_meta_stringdata_QCPAbstractPlottable_t {
     char stringdata20[23];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAbstractPlottable_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAbstractPlottable_t qt_meta_stringdata_QCPAbstractPlottable = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS_t qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS = {
     {
         QT_MOC_LITERAL(0, 20),  // "QCPAbstractPlottable"
         QT_MOC_LITERAL(21, 16),  // "selectionChanged"
@@ -2994,12 +3407,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAbstractPlottable_t qt_meta_strin
     "QCPSelectionDecorator*"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAbstractPlottable[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAbstractPlottableENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        5,   14, // methods
@@ -3042,18 +3456,18 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAbstractPlottable[] = {
        0        // eod
 };
 
-Q_CONSTINIT static const QMetaObject::SuperData qt_meta_extradata_QCPAbstractPlottable[] = {
+Q_CONSTINIT static const QMetaObject::SuperData qt_meta_extradata_CLASSQCPAbstractPlottableENDCLASS[] = {
     QMetaObject::SuperData::link<QCP::staticMetaObject>(),
     nullptr
 };
 
 Q_CONSTINIT const QMetaObject QCPAbstractPlottable::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPAbstractPlottable.offsetsAndSizes,
-    qt_meta_data_QCPAbstractPlottable,
+    qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAbstractPlottableENDCLASS,
     qt_static_metacall,
-    qt_meta_extradata_QCPAbstractPlottable,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAbstractPlottable_t,
+    qt_meta_extradata_CLASSQCPAbstractPlottableENDCLASS,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS_t,
         // property 'name'
         QtPrivate::TypeAndForceComplete<QString, std::true_type>,
         // property 'antialiasedFill'
@@ -3160,8 +3574,7 @@ void QCPAbstractPlottable::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         case 9:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPSelectionDecorator* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPAbstractPlottable *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -3208,7 +3621,7 @@ const QMetaObject *QCPAbstractPlottable::metaObject() const
 void *QCPAbstractPlottable::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPAbstractPlottable.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPAbstractPlottableENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -3256,25 +3669,33 @@ void QCPAbstractPlottable::selectableChanged(QCP::SelectionType _t1)
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPItemAnchor_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS = QtMocHelpers::stringData(
+    "QCPItemAnchor"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[14];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemAnchor_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemAnchor_t qt_meta_stringdata_QCPItemAnchor = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS_t qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13)   // "QCPItemAnchor"
     },
     "QCPItemAnchor"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemAnchor[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemAnchorENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -3289,11 +3710,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemAnchor[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemAnchor::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPItemAnchor.offsetsAndSizes,
-    qt_meta_data_QCPItemAnchor,
+    qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemAnchorENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemAnchor_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemAnchorENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPItemAnchor, std::true_type>
     >,
@@ -3301,7 +3722,19 @@ Q_CONSTINIT const QMetaObject QCPItemAnchor::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPItemPosition_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemPositionENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemPositionENDCLASS = QtMocHelpers::stringData(
+    "QCPItemPosition",
+    "PositionType",
+    "ptAbsolute",
+    "ptViewportRatio",
+    "ptAxisRectRatio",
+    "ptPlotCoords"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemPositionENDCLASS_t {
     uint offsetsAndSizes[12];
     char stringdata0[16];
     char stringdata1[13];
@@ -3311,8 +3744,8 @@ struct qt_meta_stringdata_QCPItemPosition_t {
     char stringdata5[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemPosition_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemPosition_t qt_meta_stringdata_QCPItemPosition = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemPositionENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemPositionENDCLASS_t qt_meta_stringdata_CLASSQCPItemPositionENDCLASS = {
     {
         QT_MOC_LITERAL(0, 15),  // "QCPItemPosition"
         QT_MOC_LITERAL(16, 12),  // "PositionType"
@@ -3329,12 +3762,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemPosition_t qt_meta_stringdata
     "ptPlotCoords"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemPosition[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemPositionENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -3358,11 +3792,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemPosition[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemPosition::staticMetaObject = { {
     QtPrivate::MetaObjectForType<QCPItemAnchor>::value,
-    qt_meta_stringdata_QCPItemPosition.offsetsAndSizes,
-    qt_meta_data_QCPItemPosition,
+    qt_meta_stringdata_CLASSQCPItemPositionENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemPositionENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemPosition_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemPositionENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPItemPosition, std::true_type>
     >,
@@ -3370,7 +3804,24 @@ Q_CONSTINIT const QMetaObject QCPItemPosition::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAbstractItem_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS = QtMocHelpers::stringData(
+    "QCPAbstractItem",
+    "selectionChanged",
+    "",
+    "selected",
+    "selectableChanged",
+    "selectable",
+    "setSelectable",
+    "setSelected",
+    "clipToAxisRect",
+    "clipAxisRect",
+    "QCPAxisRect*"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS_t {
     uint offsetsAndSizes[22];
     char stringdata0[16];
     char stringdata1[17];
@@ -3385,8 +3836,8 @@ struct qt_meta_stringdata_QCPAbstractItem_t {
     char stringdata10[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAbstractItem_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAbstractItem_t qt_meta_stringdata_QCPAbstractItem = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS_t qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS = {
     {
         QT_MOC_LITERAL(0, 15),  // "QCPAbstractItem"
         QT_MOC_LITERAL(16, 16),  // "selectionChanged"
@@ -3413,12 +3864,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAbstractItem_t qt_meta_stringdata
     "QCPAxisRect*"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAbstractItem[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAbstractItemENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        4,   14, // methods
@@ -3455,11 +3907,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAbstractItem[] = {
 
 Q_CONSTINIT const QMetaObject QCPAbstractItem::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPAbstractItem.offsetsAndSizes,
-    qt_meta_data_QCPAbstractItem,
+    qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAbstractItemENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAbstractItem_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS_t,
         // property 'clipToAxisRect'
         QtPrivate::TypeAndForceComplete<bool, std::true_type>,
         // property 'clipAxisRect'
@@ -3520,8 +3972,7 @@ void QCPAbstractItem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 1:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPAxisRect* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPAbstractItem *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -3556,7 +4007,7 @@ const QMetaObject *QCPAbstractItem::metaObject() const
 void *QCPAbstractItem::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPAbstractItem.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPAbstractItemENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -3597,7 +4048,78 @@ void QCPAbstractItem::selectableChanged(bool _t1)
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCustomPlot_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCustomPlotENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCustomPlotENDCLASS = QtMocHelpers::stringData(
+    "QCustomPlot",
+    "mouseDoubleClick",
+    "",
+    "QMouseEvent*",
+    "event",
+    "mousePress",
+    "mouseMove",
+    "mouseRelease",
+    "mouseWheel",
+    "QWheelEvent*",
+    "plottableClick",
+    "QCPAbstractPlottable*",
+    "plottable",
+    "dataIndex",
+    "plottableDoubleClick",
+    "itemClick",
+    "QCPAbstractItem*",
+    "item",
+    "itemDoubleClick",
+    "axisClick",
+    "QCPAxis*",
+    "axis",
+    "QCPAxis::SelectablePart",
+    "part",
+    "axisDoubleClick",
+    "legendClick",
+    "QCPLegend*",
+    "legend",
+    "QCPAbstractLegendItem*",
+    "legendDoubleClick",
+    "selectionChangedByUser",
+    "beforeReplot",
+    "afterLayout",
+    "afterReplot",
+    "rescaleAxes",
+    "onlyVisiblePlottables",
+    "deselectAll",
+    "replot",
+    "QCustomPlot::RefreshPriority",
+    "refreshPriority",
+    "processRectSelection",
+    "rect",
+    "processRectZoom",
+    "processPointSelection",
+    "viewport",
+    "background",
+    "backgroundScaled",
+    "backgroundScaledMode",
+    "Qt::AspectRatioMode",
+    "plotLayout",
+    "QCPLayoutGrid*",
+    "autoAddPlottableToLegend",
+    "selectionTolerance",
+    "noAntialiasingOnDrag",
+    "multiSelectModifier",
+    "Qt::KeyboardModifier",
+    "openGl",
+    "LayerInsertMode",
+    "limBelow",
+    "limAbove",
+    "RefreshPriority",
+    "rpImmediateRefresh",
+    "rpQueuedRefresh",
+    "rpRefreshHint",
+    "rpQueuedReplot"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCustomPlotENDCLASS_t {
     uint offsetsAndSizes[130];
     char stringdata0[12];
     char stringdata1[17];
@@ -3666,8 +4188,8 @@ struct qt_meta_stringdata_QCustomPlot_t {
     char stringdata64[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCustomPlot_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCustomPlot_t qt_meta_stringdata_QCustomPlot = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCustomPlotENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCustomPlotENDCLASS_t qt_meta_stringdata_CLASSQCustomPlotENDCLASS = {
     {
         QT_MOC_LITERAL(0, 11),  // "QCustomPlot"
         QT_MOC_LITERAL(12, 16),  // "mouseDoubleClick"
@@ -3802,12 +4324,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCustomPlot_t qt_meta_stringdata_QCu
     "rpQueuedReplot"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCustomPlot[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCustomPlotENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
       25,   14, // methods
@@ -3904,11 +4427,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCustomPlot[] = {
 
 Q_CONSTINIT const QMetaObject QCustomPlot::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_QCustomPlot.offsetsAndSizes,
-    qt_meta_data_QCustomPlot,
+    qt_meta_stringdata_CLASSQCustomPlotENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCustomPlotENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCustomPlot_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCustomPlotENDCLASS_t,
         // property 'viewport'
         QtPrivate::TypeAndForceComplete<QRect, std::true_type>,
         // property 'background'
@@ -4254,8 +4777,7 @@ void QCustomPlot::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 4:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPLayoutGrid* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCustomPlot *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -4301,7 +4823,7 @@ const QMetaObject *QCustomPlot::metaObject() const
 void *QCustomPlot::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCustomPlot.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCustomPlotENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
@@ -4443,7 +4965,36 @@ void QCustomPlot::afterReplot()
     QMetaObject::activate(this, &staticMetaObject, 16, nullptr);
 }
 namespace {
-struct qt_meta_stringdata_QCPColorGradient_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPColorGradientENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPColorGradientENDCLASS = QtMocHelpers::stringData(
+    "QCPColorGradient",
+    "ColorInterpolation",
+    "ciRGB",
+    "ciHSV",
+    "NanHandling",
+    "nhNone",
+    "nhLowestColor",
+    "nhHighestColor",
+    "nhTransparent",
+    "nhNanColor",
+    "GradientPreset",
+    "gpGrayscale",
+    "gpHot",
+    "gpCold",
+    "gpNight",
+    "gpCandy",
+    "gpGeography",
+    "gpIon",
+    "gpThermal",
+    "gpPolar",
+    "gpSpectrum",
+    "gpJet",
+    "gpHues"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPColorGradientENDCLASS_t {
     uint offsetsAndSizes[46];
     char stringdata0[17];
     char stringdata1[19];
@@ -4470,8 +5021,8 @@ struct qt_meta_stringdata_QCPColorGradient_t {
     char stringdata22[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPColorGradient_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPColorGradient_t qt_meta_stringdata_QCPColorGradient = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPColorGradientENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPColorGradientENDCLASS_t qt_meta_stringdata_CLASSQCPColorGradientENDCLASS = {
     {
         QT_MOC_LITERAL(0, 16),  // "QCPColorGradient"
         QT_MOC_LITERAL(17, 18),  // "ColorInterpolation"
@@ -4522,12 +5073,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPColorGradient_t qt_meta_stringdat
     "gpHues"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPColorGradient[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPColorGradientENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -4568,11 +5120,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPColorGradient[] = {
 
 Q_CONSTINIT const QMetaObject QCPColorGradient::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCPColorGradient.offsetsAndSizes,
-    qt_meta_data_QCPColorGradient,
+    qt_meta_stringdata_CLASSQCPColorGradientENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPColorGradientENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPColorGradient_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPColorGradientENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPColorGradient, std::true_type>
     >,
@@ -4580,7 +5132,20 @@ Q_CONSTINIT const QMetaObject QCPColorGradient::staticMetaObject = { {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPSelectionDecoratorBracket_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS = QtMocHelpers::stringData(
+    "QCPSelectionDecoratorBracket",
+    "BracketStyle",
+    "bsSquareBracket",
+    "bsHalfEllipse",
+    "bsEllipse",
+    "bsPlus",
+    "bsUserStyle"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[29];
     char stringdata1[13];
@@ -4591,8 +5156,8 @@ struct qt_meta_stringdata_QCPSelectionDecoratorBracket_t {
     char stringdata6[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPSelectionDecoratorBracket_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPSelectionDecoratorBracket_t qt_meta_stringdata_QCPSelectionDecoratorBracket = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS_t qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS = {
     {
         QT_MOC_LITERAL(0, 28),  // "QCPSelectionDecoratorBracket"
         QT_MOC_LITERAL(29, 12),  // "BracketStyle"
@@ -4611,12 +5176,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPSelectionDecoratorBracket_t qt_me
     "bsUserStyle"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPSelectionDecoratorBracket[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPSelectionDecoratorBracketENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -4641,11 +5207,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPSelectionDecoratorBracket[] = {
 
 Q_CONSTINIT const QMetaObject QCPSelectionDecoratorBracket::staticMetaObject = { {
     QtPrivate::MetaObjectForType<QCPSelectionDecorator>::value,
-    qt_meta_stringdata_QCPSelectionDecoratorBracket.offsetsAndSizes,
-    qt_meta_data_QCPSelectionDecoratorBracket,
+    qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPSelectionDecoratorBracketENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPSelectionDecoratorBracket_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPSelectionDecoratorBracketENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPSelectionDecoratorBracket, std::true_type>
     >,
@@ -4653,7 +5219,21 @@ Q_CONSTINIT const QMetaObject QCPSelectionDecoratorBracket::staticMetaObject = {
 } };
 
 namespace {
-struct qt_meta_stringdata_QCPAxisRect_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAxisRectENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAxisRectENDCLASS = QtMocHelpers::stringData(
+    "QCPAxisRect",
+    "background",
+    "backgroundScaled",
+    "backgroundScaledMode",
+    "Qt::AspectRatioMode",
+    "rangeDrag",
+    "Qt::Orientations",
+    "rangeZoom"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAxisRectENDCLASS_t {
     uint offsetsAndSizes[16];
     char stringdata0[12];
     char stringdata1[11];
@@ -4665,8 +5245,8 @@ struct qt_meta_stringdata_QCPAxisRect_t {
     char stringdata7[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAxisRect_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAxisRect_t qt_meta_stringdata_QCPAxisRect = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAxisRectENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAxisRectENDCLASS_t qt_meta_stringdata_CLASSQCPAxisRectENDCLASS = {
     {
         QT_MOC_LITERAL(0, 11),  // "QCPAxisRect"
         QT_MOC_LITERAL(12, 10),  // "background"
@@ -4687,12 +5267,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAxisRect_t qt_meta_stringdata_QCP
     "rangeZoom"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAxisRect[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAxisRectENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -4714,11 +5295,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAxisRect[] = {
 
 Q_CONSTINIT const QMetaObject QCPAxisRect::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutElement::staticMetaObject>(),
-    qt_meta_stringdata_QCPAxisRect.offsetsAndSizes,
-    qt_meta_data_QCPAxisRect,
+    qt_meta_stringdata_CLASSQCPAxisRectENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAxisRectENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAxisRect_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAxisRectENDCLASS_t,
         // property 'background'
         QtPrivate::TypeAndForceComplete<QPixmap, std::true_type>,
         // property 'backgroundScaled'
@@ -4778,7 +5359,7 @@ const QMetaObject *QCPAxisRect::metaObject() const
 void *QCPAxisRect::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPAxisRect.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPAxisRectENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutElement::qt_metacast(_clname);
 }
@@ -4797,7 +5378,27 @@ int QCPAxisRect::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPAbstractLegendItem_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS = QtMocHelpers::stringData(
+    "QCPAbstractLegendItem",
+    "selectionChanged",
+    "",
+    "selected",
+    "selectableChanged",
+    "selectable",
+    "setSelectable",
+    "setSelected",
+    "parentLegend",
+    "QCPLegend*",
+    "font",
+    "textColor",
+    "selectedFont",
+    "selectedTextColor"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS_t {
     uint offsetsAndSizes[28];
     char stringdata0[22];
     char stringdata1[17];
@@ -4815,8 +5416,8 @@ struct qt_meta_stringdata_QCPAbstractLegendItem_t {
     char stringdata13[18];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPAbstractLegendItem_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPAbstractLegendItem_t qt_meta_stringdata_QCPAbstractLegendItem = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS_t qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS = {
     {
         QT_MOC_LITERAL(0, 21),  // "QCPAbstractLegendItem"
         QT_MOC_LITERAL(22, 16),  // "selectionChanged"
@@ -4849,12 +5450,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPAbstractLegendItem_t qt_meta_stri
     "selectedTextColor"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPAbstractLegendItem[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPAbstractLegendItemENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        4,   14, // methods
@@ -4894,11 +5496,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPAbstractLegendItem[] = {
 
 Q_CONSTINIT const QMetaObject QCPAbstractLegendItem::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutElement::staticMetaObject>(),
-    qt_meta_stringdata_QCPAbstractLegendItem.offsetsAndSizes,
-    qt_meta_data_QCPAbstractLegendItem,
+    qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPAbstractLegendItemENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPAbstractLegendItem_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS_t,
         // property 'parentLegend'
         QtPrivate::TypeAndForceComplete<QCPLegend*, std::true_type>,
         // property 'font'
@@ -4965,8 +5567,7 @@ void QCPAbstractLegendItem::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 0:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPLegend* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPAbstractLegendItem *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -5006,7 +5607,7 @@ const QMetaObject *QCPAbstractLegendItem::metaObject() const
 void *QCPAbstractLegendItem::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPAbstractLegendItem.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPAbstractLegendItemENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutElement::qt_metacast(_clname);
 }
@@ -5047,25 +5648,33 @@ void QCPAbstractLegendItem::selectableChanged(bool _t1)
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPPlottableLegendItem_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS = QtMocHelpers::stringData(
+    "QCPPlottableLegendItem"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[23];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPlottableLegendItem_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPlottableLegendItem_t qt_meta_stringdata_QCPPlottableLegendItem = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS_t qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS = {
     {
         QT_MOC_LITERAL(0, 22)   // "QCPPlottableLegendItem"
     },
     "QCPPlottableLegendItem"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPlottableLegendItem[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPlottableLegendItemENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -5080,11 +5689,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPlottableLegendItem[] = {
 
 Q_CONSTINIT const QMetaObject QCPPlottableLegendItem::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractLegendItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPPlottableLegendItem.offsetsAndSizes,
-    qt_meta_data_QCPPlottableLegendItem,
+    qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPlottableLegendItemENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPlottableLegendItem_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPlottableLegendItem, std::true_type>
     >,
@@ -5107,7 +5716,7 @@ const QMetaObject *QCPPlottableLegendItem::metaObject() const
 void *QCPPlottableLegendItem::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPPlottableLegendItem.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPPlottableLegendItemENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractLegendItem::qt_metacast(_clname);
 }
@@ -5118,7 +5727,40 @@ int QCPPlottableLegendItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPLegend_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPLegendENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPLegendENDCLASS = QtMocHelpers::stringData(
+    "QCPLegend",
+    "selectionChanged",
+    "",
+    "QCPLegend::SelectableParts",
+    "parts",
+    "selectableChanged",
+    "setSelectableParts",
+    "SelectableParts",
+    "selectableParts",
+    "setSelectedParts",
+    "selectedParts",
+    "borderPen",
+    "brush",
+    "font",
+    "textColor",
+    "iconSize",
+    "iconTextPadding",
+    "iconBorderPen",
+    "selectedBorderPen",
+    "selectedIconBorderPen",
+    "selectedBrush",
+    "selectedFont",
+    "selectedTextColor",
+    "SelectablePart",
+    "spNone",
+    "spLegendBox",
+    "spItems"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPLegendENDCLASS_t {
     uint offsetsAndSizes[54];
     char stringdata0[10];
     char stringdata1[17];
@@ -5149,8 +5791,8 @@ struct qt_meta_stringdata_QCPLegend_t {
     char stringdata26[8];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPLegend_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPLegend_t qt_meta_stringdata_QCPLegend = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPLegendENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPLegendENDCLASS_t qt_meta_stringdata_CLASSQCPLegendENDCLASS = {
     {
         QT_MOC_LITERAL(0, 9),  // "QCPLegend"
         QT_MOC_LITERAL(10, 16),  // "selectionChanged"
@@ -5209,12 +5851,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPLegend_t qt_meta_stringdata_QCPLe
     "spItems"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPLegend[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPLegendENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        4,   14, // methods
@@ -5273,11 +5916,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPLegend[] = {
 
 Q_CONSTINIT const QMetaObject QCPLegend::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutGrid::staticMetaObject>(),
-    qt_meta_stringdata_QCPLegend.offsetsAndSizes,
-    qt_meta_data_QCPLegend,
+    qt_meta_stringdata_CLASSQCPLegendENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPLegendENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPLegend_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPLegendENDCLASS_t,
         // property 'borderPen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'brush'
@@ -5407,7 +6050,7 @@ const QMetaObject *QCPLegend::metaObject() const
 void *QCPLegend::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPLegend.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPLegendENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutGrid::qt_metacast(_clname);
 }
@@ -5448,7 +6091,30 @@ void QCPLegend::selectableChanged(QCPLegend::SelectableParts _t1)
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPTextElement_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPTextElementENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPTextElementENDCLASS = QtMocHelpers::stringData(
+    "QCPTextElement",
+    "selectionChanged",
+    "",
+    "selected",
+    "selectableChanged",
+    "selectable",
+    "clicked",
+    "QMouseEvent*",
+    "event",
+    "doubleClicked",
+    "setSelectable",
+    "setSelected",
+    "text",
+    "font",
+    "textColor",
+    "selectedFont",
+    "selectedTextColor"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPTextElementENDCLASS_t {
     uint offsetsAndSizes[34];
     char stringdata0[15];
     char stringdata1[17];
@@ -5469,8 +6135,8 @@ struct qt_meta_stringdata_QCPTextElement_t {
     char stringdata16[18];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPTextElement_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPTextElement_t qt_meta_stringdata_QCPTextElement = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPTextElementENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPTextElementENDCLASS_t qt_meta_stringdata_CLASSQCPTextElementENDCLASS = {
     {
         QT_MOC_LITERAL(0, 14),  // "QCPTextElement"
         QT_MOC_LITERAL(15, 16),  // "selectionChanged"
@@ -5509,12 +6175,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPTextElement_t qt_meta_stringdata_
     "selectedTextColor"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPTextElement[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPTextElementENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -5558,11 +6225,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPTextElement[] = {
 
 Q_CONSTINIT const QMetaObject QCPTextElement::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutElement::staticMetaObject>(),
-    qt_meta_stringdata_QCPTextElement.offsetsAndSizes,
-    qt_meta_data_QCPTextElement,
+    qt_meta_stringdata_CLASSQCPTextElementENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPTextElementENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPTextElement_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPTextElementENDCLASS_t,
         // property 'text'
         QtPrivate::TypeAndForceComplete<QString, std::true_type>,
         // property 'font'
@@ -5686,7 +6353,7 @@ const QMetaObject *QCPTextElement::metaObject() const
 void *QCPTextElement::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPTextElement.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPTextElementENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutElement::qt_metacast(_clname);
 }
@@ -5741,7 +6408,20 @@ void QCPTextElement::doubleClicked(QMouseEvent * _t1)
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPColorScaleAxisRectPrivate_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS = QtMocHelpers::stringData(
+    "QCPColorScaleAxisRectPrivate",
+    "axisSelectionChanged",
+    "",
+    "QCPAxis::SelectableParts",
+    "selectedParts",
+    "axisSelectableChanged",
+    "selectableParts"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[29];
     char stringdata1[21];
@@ -5752,8 +6432,8 @@ struct qt_meta_stringdata_QCPColorScaleAxisRectPrivate_t {
     char stringdata6[16];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPColorScaleAxisRectPrivate_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPColorScaleAxisRectPrivate_t qt_meta_stringdata_QCPColorScaleAxisRectPrivate = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS_t qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS = {
     {
         QT_MOC_LITERAL(0, 28),  // "QCPColorScaleAxisRectPrivate"
         QT_MOC_LITERAL(29, 20),  // "axisSelectionChanged"
@@ -5772,12 +6452,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPColorScaleAxisRectPrivate_t qt_me
     "selectableParts"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPColorScaleAxisRectPrivate[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPColorScaleAxisRectPrivateENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
@@ -5800,11 +6481,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPColorScaleAxisRectPrivate[] = {
 
 Q_CONSTINIT const QMetaObject QCPColorScaleAxisRectPrivate::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAxisRect::staticMetaObject>(),
-    qt_meta_stringdata_QCPColorScaleAxisRectPrivate.offsetsAndSizes,
-    qt_meta_data_QCPColorScaleAxisRectPrivate,
+    qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPColorScaleAxisRectPrivateENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPColorScaleAxisRectPrivate_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPColorScaleAxisRectPrivate, std::true_type>,
         // method 'axisSelectionChanged'
@@ -5838,7 +6519,7 @@ const QMetaObject *QCPColorScaleAxisRectPrivate::metaObject() const
 void *QCPColorScaleAxisRectPrivate::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPColorScaleAxisRectPrivate.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPColorScaleAxisRectPrivateENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAxisRect::qt_metacast(_clname);
 }
@@ -5860,7 +6541,36 @@ int QCPColorScaleAxisRectPrivate::qt_metacall(QMetaObject::Call _c, int _id, voi
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPColorScale_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPColorScaleENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPColorScaleENDCLASS = QtMocHelpers::stringData(
+    "QCPColorScale",
+    "dataRangeChanged",
+    "",
+    "QCPRange",
+    "newRange",
+    "dataScaleTypeChanged",
+    "QCPAxis::ScaleType",
+    "scaleType",
+    "gradientChanged",
+    "QCPColorGradient",
+    "newGradient",
+    "setDataRange",
+    "dataRange",
+    "setDataScaleType",
+    "setGradient",
+    "gradient",
+    "type",
+    "QCPAxis::AxisType",
+    "dataScaleType",
+    "label",
+    "barWidth",
+    "rangeDrag",
+    "rangeZoom"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPColorScaleENDCLASS_t {
     uint offsetsAndSizes[46];
     char stringdata0[14];
     char stringdata1[17];
@@ -5887,8 +6597,8 @@ struct qt_meta_stringdata_QCPColorScale_t {
     char stringdata22[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPColorScale_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPColorScale_t qt_meta_stringdata_QCPColorScale = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPColorScaleENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPColorScaleENDCLASS_t qt_meta_stringdata_CLASSQCPColorScaleENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPColorScale"
         QT_MOC_LITERAL(14, 16),  // "dataRangeChanged"
@@ -5939,12 +6649,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPColorScale_t qt_meta_stringdata_Q
     "rangeZoom"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPColorScale[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPColorScaleENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -5987,18 +6698,18 @@ Q_CONSTINIT static const uint qt_meta_data_QCPColorScale[] = {
        0        // eod
 };
 
-Q_CONSTINIT static const QMetaObject::SuperData qt_meta_extradata_QCPColorScale[] = {
+Q_CONSTINIT static const QMetaObject::SuperData qt_meta_extradata_CLASSQCPColorScaleENDCLASS[] = {
     QMetaObject::SuperData::link<QCPAxis::staticMetaObject>(),
     nullptr
 };
 
 Q_CONSTINIT const QMetaObject QCPColorScale::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutElement::staticMetaObject>(),
-    qt_meta_stringdata_QCPColorScale.offsetsAndSizes,
-    qt_meta_data_QCPColorScale,
+    qt_meta_stringdata_CLASSQCPColorScaleENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPColorScaleENDCLASS,
     qt_static_metacall,
-    qt_meta_extradata_QCPColorScale,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPColorScale_t,
+    qt_meta_extradata_CLASSQCPColorScaleENDCLASS,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPColorScaleENDCLASS_t,
         // property 'type'
         QtPrivate::TypeAndForceComplete<QCPAxis::AxisType, std::true_type>,
         // property 'dataRange'
@@ -6102,8 +6813,7 @@ void QCPColorScale::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 2:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPAxis::ScaleType >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPColorScale *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -6146,7 +6856,7 @@ const QMetaObject *QCPColorScale::metaObject() const
 void *QCPColorScale::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPColorScale.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPColorScaleENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutElement::qt_metacast(_clname);
 }
@@ -6194,7 +6904,28 @@ void QCPColorScale::gradientChanged(const QCPColorGradient & _t1)
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPGraph_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPGraphENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPGraphENDCLASS = QtMocHelpers::stringData(
+    "QCPGraph",
+    "lineStyle",
+    "LineStyle",
+    "scatterStyle",
+    "QCPScatterStyle",
+    "scatterSkip",
+    "channelFillGraph",
+    "QCPGraph*",
+    "adaptiveSampling",
+    "lsNone",
+    "lsLine",
+    "lsStepLeft",
+    "lsStepRight",
+    "lsStepCenter",
+    "lsImpulse"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPGraphENDCLASS_t {
     uint offsetsAndSizes[30];
     char stringdata0[9];
     char stringdata1[10];
@@ -6213,8 +6944,8 @@ struct qt_meta_stringdata_QCPGraph_t {
     char stringdata14[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPGraph_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPGraph_t qt_meta_stringdata_QCPGraph = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPGraphENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPGraphENDCLASS_t qt_meta_stringdata_CLASSQCPGraphENDCLASS = {
     {
         QT_MOC_LITERAL(0, 8),  // "QCPGraph"
         QT_MOC_LITERAL(9, 9),  // "lineStyle"
@@ -6249,12 +6980,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPGraph_t qt_meta_stringdata_QCPGra
     "lsImpulse"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPGraph[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPGraphENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -6287,11 +7019,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPGraph[] = {
 
 Q_CONSTINIT const QMetaObject QCPGraph::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable1D<QCPGraphData>::staticMetaObject>(),
-    qt_meta_stringdata_QCPGraph.offsetsAndSizes,
-    qt_meta_data_QCPGraph,
+    qt_meta_stringdata_CLASSQCPGraphENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPGraphENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPGraph_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPGraphENDCLASS_t,
         // property 'lineStyle'
         QtPrivate::TypeAndForceComplete<LineStyle, std::true_type>,
         // property 'scatterStyle'
@@ -6316,8 +7048,7 @@ void QCPGraph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 3:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPGraph* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPGraph *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -6355,7 +7086,7 @@ const QMetaObject *QCPGraph::metaObject() const
 void *QCPGraph::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPGraph.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPGraphENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractPlottable1D<QCPGraphData>::qt_metacast(_clname);
 }
@@ -6374,7 +7105,21 @@ int QCPGraph::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPCurve_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPCurveENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPCurveENDCLASS = QtMocHelpers::stringData(
+    "QCPCurve",
+    "scatterStyle",
+    "QCPScatterStyle",
+    "scatterSkip",
+    "lineStyle",
+    "LineStyle",
+    "lsNone",
+    "lsLine"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPCurveENDCLASS_t {
     uint offsetsAndSizes[16];
     char stringdata0[9];
     char stringdata1[13];
@@ -6386,8 +7131,8 @@ struct qt_meta_stringdata_QCPCurve_t {
     char stringdata7[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPCurve_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPCurve_t qt_meta_stringdata_QCPCurve = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPCurveENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPCurveENDCLASS_t qt_meta_stringdata_CLASSQCPCurveENDCLASS = {
     {
         QT_MOC_LITERAL(0, 8),  // "QCPCurve"
         QT_MOC_LITERAL(9, 12),  // "scatterStyle"
@@ -6408,12 +7153,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPCurve_t qt_meta_stringdata_QCPCur
     "lsLine"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPCurve[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPCurveENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -6440,11 +7186,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPCurve[] = {
 
 Q_CONSTINIT const QMetaObject QCPCurve::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable1D<QCPCurveData>::staticMetaObject>(),
-    qt_meta_stringdata_QCPCurve.offsetsAndSizes,
-    qt_meta_data_QCPCurve,
+    qt_meta_stringdata_CLASSQCPCurveENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPCurveENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPCurve_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPCurveENDCLASS_t,
         // property 'scatterStyle'
         QtPrivate::TypeAndForceComplete<QCPScatterStyle, std::true_type>,
         // property 'scatterSkip'
@@ -6496,7 +7242,7 @@ const QMetaObject *QCPCurve::metaObject() const
 void *QCPCurve::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPCurve.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPCurveENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractPlottable1D<QCPCurveData>::qt_metacast(_clname);
 }
@@ -6515,7 +7261,20 @@ int QCPCurve::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPBarsGroup_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS = QtMocHelpers::stringData(
+    "QCPBarsGroup",
+    "spacingType",
+    "SpacingType",
+    "spacing",
+    "stAbsolute",
+    "stAxisRectRatio",
+    "stPlotCoords"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[13];
     char stringdata1[12];
@@ -6526,8 +7285,8 @@ struct qt_meta_stringdata_QCPBarsGroup_t {
     char stringdata6[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPBarsGroup_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPBarsGroup_t qt_meta_stringdata_QCPBarsGroup = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS_t qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "QCPBarsGroup"
         QT_MOC_LITERAL(13, 11),  // "spacingType"
@@ -6546,12 +7305,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPBarsGroup_t qt_meta_stringdata_QC
     "stPlotCoords"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPBarsGroup[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPBarsGroupENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -6578,11 +7338,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPBarsGroup[] = {
 
 Q_CONSTINIT const QMetaObject QCPBarsGroup::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_QCPBarsGroup.offsetsAndSizes,
-    qt_meta_data_QCPBarsGroup,
+    qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPBarsGroupENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPBarsGroup_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS_t,
         // property 'spacingType'
         QtPrivate::TypeAndForceComplete<SpacingType, std::true_type>,
         // property 'spacing'
@@ -6630,7 +7390,7 @@ const QMetaObject *QCPBarsGroup::metaObject() const
 void *QCPBarsGroup::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPBarsGroup.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPBarsGroupENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
@@ -6649,7 +7409,27 @@ int QCPBarsGroup::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPBars_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPBarsENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPBarsENDCLASS = QtMocHelpers::stringData(
+    "QCPBars",
+    "width",
+    "widthType",
+    "WidthType",
+    "barsGroup",
+    "QCPBarsGroup*",
+    "baseValue",
+    "stackingGap",
+    "barBelow",
+    "QCPBars*",
+    "barAbove",
+    "wtAbsolute",
+    "wtAxisRectRatio",
+    "wtPlotCoords"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPBarsENDCLASS_t {
     uint offsetsAndSizes[28];
     char stringdata0[8];
     char stringdata1[6];
@@ -6667,8 +7447,8 @@ struct qt_meta_stringdata_QCPBars_t {
     char stringdata13[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPBars_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPBars_t qt_meta_stringdata_QCPBars = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPBarsENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPBarsENDCLASS_t qt_meta_stringdata_CLASSQCPBarsENDCLASS = {
     {
         QT_MOC_LITERAL(0, 7),  // "QCPBars"
         QT_MOC_LITERAL(8, 5),  // "width"
@@ -6701,12 +7481,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPBars_t qt_meta_stringdata_QCPBars
     "wtPlotCoords"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPBars[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPBarsENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -6738,11 +7519,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPBars[] = {
 
 Q_CONSTINIT const QMetaObject QCPBars::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable1D<QCPBarsData>::staticMetaObject>(),
-    qt_meta_stringdata_QCPBars.offsetsAndSizes,
-    qt_meta_data_QCPBars,
+    qt_meta_stringdata_CLASSQCPBarsENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPBarsENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPBars_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPBarsENDCLASS_t,
         // property 'width'
         QtPrivate::TypeAndForceComplete<double, std::true_type>,
         // property 'widthType'
@@ -6774,8 +7555,7 @@ void QCPBars::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 2:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPBarsGroup* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPBars *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -6815,7 +7595,7 @@ const QMetaObject *QCPBars::metaObject() const
 void *QCPBars::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPBars.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPBarsENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractPlottable1D<QCPBarsData>::qt_metacast(_clname);
 }
@@ -6834,7 +7614,22 @@ int QCPBars::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPStatisticalBox_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS = QtMocHelpers::stringData(
+    "QCPStatisticalBox",
+    "width",
+    "whiskerWidth",
+    "whiskerPen",
+    "whiskerBarPen",
+    "whiskerAntialiased",
+    "medianPen",
+    "outlierStyle",
+    "QCPScatterStyle"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS_t {
     uint offsetsAndSizes[18];
     char stringdata0[18];
     char stringdata1[6];
@@ -6847,8 +7642,8 @@ struct qt_meta_stringdata_QCPStatisticalBox_t {
     char stringdata8[16];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPStatisticalBox_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPStatisticalBox_t qt_meta_stringdata_QCPStatisticalBox = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS_t qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS = {
     {
         QT_MOC_LITERAL(0, 17),  // "QCPStatisticalBox"
         QT_MOC_LITERAL(18, 5),  // "width"
@@ -6871,12 +7666,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPStatisticalBox_t qt_meta_stringda
     "QCPScatterStyle"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPStatisticalBox[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPStatisticalBoxENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -6900,11 +7696,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPStatisticalBox[] = {
 
 Q_CONSTINIT const QMetaObject QCPStatisticalBox::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable1D<QCPStatisticalBoxData>::staticMetaObject>(),
-    qt_meta_stringdata_QCPStatisticalBox.offsetsAndSizes,
-    qt_meta_data_QCPStatisticalBox,
+    qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPStatisticalBoxENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPStatisticalBox_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS_t,
         // property 'width'
         QtPrivate::TypeAndForceComplete<double, std::true_type>,
         // property 'whiskerWidth'
@@ -6972,7 +7768,7 @@ const QMetaObject *QCPStatisticalBox::metaObject() const
 void *QCPStatisticalBox::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPStatisticalBox.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPStatisticalBoxENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractPlottable1D<QCPStatisticalBoxData>::qt_metacast(_clname);
 }
@@ -6991,7 +7787,38 @@ int QCPStatisticalBox::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPColorMap_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPColorMapENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPColorMapENDCLASS = QtMocHelpers::stringData(
+    "QCPColorMap",
+    "dataRangeChanged",
+    "",
+    "QCPRange",
+    "newRange",
+    "dataScaleTypeChanged",
+    "QCPAxis::ScaleType",
+    "scaleType",
+    "gradientChanged",
+    "QCPColorGradient",
+    "newGradient",
+    "setDataRange",
+    "dataRange",
+    "setDataScaleType",
+    "setGradient",
+    "gradient",
+    "updateLegendIcon",
+    "Qt::TransformationMode",
+    "transformMode",
+    "thumbSize",
+    "dataScaleType",
+    "interpolate",
+    "tightBoundary",
+    "colorScale",
+    "QCPColorScale*"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPColorMapENDCLASS_t {
     uint offsetsAndSizes[50];
     char stringdata0[12];
     char stringdata1[17];
@@ -7020,8 +7847,8 @@ struct qt_meta_stringdata_QCPColorMap_t {
     char stringdata24[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPColorMap_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPColorMap_t qt_meta_stringdata_QCPColorMap = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPColorMapENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPColorMapENDCLASS_t qt_meta_stringdata_CLASSQCPColorMapENDCLASS = {
     {
         QT_MOC_LITERAL(0, 11),  // "QCPColorMap"
         QT_MOC_LITERAL(12, 16),  // "dataRangeChanged"
@@ -7076,12 +7903,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPColorMap_t qt_meta_stringdata_QCP
     "QCPColorScale*"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPColorMap[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPColorMapENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        9,   14, // methods
@@ -7128,18 +7956,18 @@ Q_CONSTINIT static const uint qt_meta_data_QCPColorMap[] = {
        0        // eod
 };
 
-Q_CONSTINIT static const QMetaObject::SuperData qt_meta_extradata_QCPColorMap[] = {
+Q_CONSTINIT static const QMetaObject::SuperData qt_meta_extradata_CLASSQCPColorMapENDCLASS[] = {
     QMetaObject::SuperData::link<QCPAxis::staticMetaObject>(),
     nullptr
 };
 
 Q_CONSTINIT const QMetaObject QCPColorMap::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable::staticMetaObject>(),
-    qt_meta_stringdata_QCPColorMap.offsetsAndSizes,
-    qt_meta_data_QCPColorMap,
+    qt_meta_stringdata_CLASSQCPColorMapENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPColorMapENDCLASS,
     qt_static_metacall,
-    qt_meta_extradata_QCPColorMap,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPColorMap_t,
+    qt_meta_extradata_CLASSQCPColorMapENDCLASS,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPColorMapENDCLASS_t,
         // property 'dataRange'
         QtPrivate::TypeAndForceComplete<QCPRange, std::true_type>,
         // property 'dataScaleType'
@@ -7251,8 +8079,7 @@ void QCPColorMap::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 5:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPColorScale* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPColorMap *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -7291,7 +8118,7 @@ const QMetaObject *QCPColorMap::metaObject() const
 void *QCPColorMap::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPColorMap.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPColorMapENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractPlottable::qt_metacast(_clname);
 }
@@ -7339,7 +8166,29 @@ void QCPColorMap::gradientChanged(const QCPColorGradient & _t1)
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPFinancial_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPFinancialENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPFinancialENDCLASS = QtMocHelpers::stringData(
+    "QCPFinancial",
+    "chartStyle",
+    "ChartStyle",
+    "width",
+    "widthType",
+    "WidthType",
+    "twoColored",
+    "brushPositive",
+    "brushNegative",
+    "penPositive",
+    "penNegative",
+    "wtAbsolute",
+    "wtAxisRectRatio",
+    "wtPlotCoords",
+    "csOhlc",
+    "csCandlestick"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPFinancialENDCLASS_t {
     uint offsetsAndSizes[32];
     char stringdata0[13];
     char stringdata1[11];
@@ -7359,8 +8208,8 @@ struct qt_meta_stringdata_QCPFinancial_t {
     char stringdata15[14];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPFinancial_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPFinancial_t qt_meta_stringdata_QCPFinancial = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPFinancialENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPFinancialENDCLASS_t qt_meta_stringdata_CLASSQCPFinancialENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "QCPFinancial"
         QT_MOC_LITERAL(13, 10),  // "chartStyle"
@@ -7397,12 +8246,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPFinancial_t qt_meta_stringdata_QC
     "csCandlestick"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPFinancial[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPFinancialENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -7438,11 +8288,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPFinancial[] = {
 
 Q_CONSTINIT const QMetaObject QCPFinancial::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable1D<QCPFinancialData>::staticMetaObject>(),
-    qt_meta_stringdata_QCPFinancial.offsetsAndSizes,
-    qt_meta_data_QCPFinancial,
+    qt_meta_stringdata_CLASSQCPFinancialENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPFinancialENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPFinancial_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPFinancialENDCLASS_t,
         // property 'chartStyle'
         QtPrivate::TypeAndForceComplete<ChartStyle, std::true_type>,
         // property 'width'
@@ -7514,7 +8364,7 @@ const QMetaObject *QCPFinancial::metaObject() const
 void *QCPFinancial::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPFinancial.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPFinancialENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractPlottable1D<QCPFinancialData>::qt_metacast(_clname);
 }
@@ -7533,7 +8383,24 @@ int QCPFinancial::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPErrorBars_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS = QtMocHelpers::stringData(
+    "QCPErrorBars",
+    "data",
+    "QSharedPointer<QCPErrorBarsDataContainer>",
+    "dataPlottable",
+    "QCPAbstractPlottable*",
+    "errorType",
+    "ErrorType",
+    "whiskerWidth",
+    "symbolGap",
+    "etKeyError",
+    "etValueError"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS_t {
     uint offsetsAndSizes[22];
     char stringdata0[13];
     char stringdata1[5];
@@ -7548,8 +8415,8 @@ struct qt_meta_stringdata_QCPErrorBars_t {
     char stringdata10[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPErrorBars_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPErrorBars_t qt_meta_stringdata_QCPErrorBars = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS_t qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "QCPErrorBars"
         QT_MOC_LITERAL(13, 4),  // "data"
@@ -7576,12 +8443,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPErrorBars_t qt_meta_stringdata_QC
     "etValueError"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPErrorBars[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPErrorBarsENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -7610,11 +8478,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPErrorBars[] = {
 
 Q_CONSTINIT const QMetaObject QCPErrorBars::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractPlottable::staticMetaObject>(),
-    qt_meta_stringdata_QCPErrorBars.offsetsAndSizes,
-    qt_meta_data_QCPErrorBars,
+    qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPErrorBarsENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPErrorBars_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS_t,
         // property 'data'
         QtPrivate::TypeAndForceComplete<QSharedPointer<QCPErrorBarsDataContainer>, std::true_type>,
         // property 'dataPlottable'
@@ -7639,8 +8507,7 @@ void QCPErrorBars::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 1:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPAbstractPlottable* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPErrorBars *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -7678,7 +8545,7 @@ const QMetaObject *QCPErrorBars::metaObject() const
 void *QCPErrorBars::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPErrorBars.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPErrorBarsENDCLASS.stringdata0))
         return static_cast<void*>(this);
     if (!strcmp(_clname, "QCPPlottableInterface1D"))
         return static_cast< QCPPlottableInterface1D*>(this);
@@ -7699,15 +8566,24 @@ int QCPErrorBars::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemStraightLine_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS = QtMocHelpers::stringData(
+    "QCPItemStraightLine",
+    "pen",
+    "selectedPen"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS_t {
     uint offsetsAndSizes[6];
     char stringdata0[20];
     char stringdata1[4];
     char stringdata2[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemStraightLine_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemStraightLine_t qt_meta_stringdata_QCPItemStraightLine = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS_t qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS = {
     {
         QT_MOC_LITERAL(0, 19),  // "QCPItemStraightLine"
         QT_MOC_LITERAL(20, 3),  // "pen"
@@ -7718,12 +8594,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemStraightLine_t qt_meta_string
     "selectedPen"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemStraightLine[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemStraightLineENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -7742,11 +8619,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemStraightLine[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemStraightLine::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemStraightLine.offsetsAndSizes,
-    qt_meta_data_QCPItemStraightLine,
+    qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemStraightLineENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemStraightLine_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -7794,7 +8671,7 @@ const QMetaObject *QCPItemStraightLine::metaObject() const
 void *QCPItemStraightLine::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemStraightLine.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemStraightLineENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -7813,7 +8690,19 @@ int QCPItemStraightLine::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemLine_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemLineENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemLineENDCLASS = QtMocHelpers::stringData(
+    "QCPItemLine",
+    "pen",
+    "selectedPen",
+    "head",
+    "QCPLineEnding",
+    "tail"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemLineENDCLASS_t {
     uint offsetsAndSizes[12];
     char stringdata0[12];
     char stringdata1[4];
@@ -7823,8 +8712,8 @@ struct qt_meta_stringdata_QCPItemLine_t {
     char stringdata5[5];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemLine_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemLine_t qt_meta_stringdata_QCPItemLine = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemLineENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemLineENDCLASS_t qt_meta_stringdata_CLASSQCPItemLineENDCLASS = {
     {
         QT_MOC_LITERAL(0, 11),  // "QCPItemLine"
         QT_MOC_LITERAL(12, 3),  // "pen"
@@ -7841,12 +8730,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemLine_t qt_meta_stringdata_QCP
     "tail"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemLine[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemLineENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -7867,11 +8757,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemLine[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemLine::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemLine.offsetsAndSizes,
-    qt_meta_data_QCPItemLine,
+    qt_meta_stringdata_CLASSQCPItemLineENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemLineENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemLine_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemLineENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -7927,7 +8817,7 @@ const QMetaObject *QCPItemLine::metaObject() const
 void *QCPItemLine::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemLine.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemLineENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -7946,7 +8836,19 @@ int QCPItemLine::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemCurve_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemCurveENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemCurveENDCLASS = QtMocHelpers::stringData(
+    "QCPItemCurve",
+    "pen",
+    "selectedPen",
+    "head",
+    "QCPLineEnding",
+    "tail"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemCurveENDCLASS_t {
     uint offsetsAndSizes[12];
     char stringdata0[13];
     char stringdata1[4];
@@ -7956,8 +8858,8 @@ struct qt_meta_stringdata_QCPItemCurve_t {
     char stringdata5[5];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemCurve_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemCurve_t qt_meta_stringdata_QCPItemCurve = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemCurveENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemCurveENDCLASS_t qt_meta_stringdata_CLASSQCPItemCurveENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "QCPItemCurve"
         QT_MOC_LITERAL(13, 3),  // "pen"
@@ -7974,12 +8876,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemCurve_t qt_meta_stringdata_QC
     "tail"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemCurve[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemCurveENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8000,11 +8903,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemCurve[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemCurve::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemCurve.offsetsAndSizes,
-    qt_meta_data_QCPItemCurve,
+    qt_meta_stringdata_CLASSQCPItemCurveENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemCurveENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemCurve_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemCurveENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -8060,7 +8963,7 @@ const QMetaObject *QCPItemCurve::metaObject() const
 void *QCPItemCurve::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemCurve.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemCurveENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -8079,7 +8982,18 @@ int QCPItemCurve::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemRect_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemRectENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemRectENDCLASS = QtMocHelpers::stringData(
+    "QCPItemRect",
+    "pen",
+    "selectedPen",
+    "brush",
+    "selectedBrush"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemRectENDCLASS_t {
     uint offsetsAndSizes[10];
     char stringdata0[12];
     char stringdata1[4];
@@ -8088,8 +9002,8 @@ struct qt_meta_stringdata_QCPItemRect_t {
     char stringdata4[14];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemRect_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemRect_t qt_meta_stringdata_QCPItemRect = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemRectENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemRectENDCLASS_t qt_meta_stringdata_CLASSQCPItemRectENDCLASS = {
     {
         QT_MOC_LITERAL(0, 11),  // "QCPItemRect"
         QT_MOC_LITERAL(12, 3),  // "pen"
@@ -8104,12 +9018,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemRect_t qt_meta_stringdata_QCP
     "selectedBrush"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemRect[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemRectENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8130,11 +9045,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemRect[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemRect::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemRect.offsetsAndSizes,
-    qt_meta_data_QCPItemRect,
+    qt_meta_stringdata_CLASSQCPItemRectENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemRectENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemRect_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemRectENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -8190,7 +9105,7 @@ const QMetaObject *QCPItemRect::metaObject() const
 void *QCPItemRect::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemRect.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemRectENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -8209,7 +9124,29 @@ int QCPItemRect::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemText_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemTextENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemTextENDCLASS = QtMocHelpers::stringData(
+    "QCPItemText",
+    "color",
+    "selectedColor",
+    "pen",
+    "selectedPen",
+    "brush",
+    "selectedBrush",
+    "font",
+    "selectedFont",
+    "text",
+    "positionAlignment",
+    "Qt::Alignment",
+    "textAlignment",
+    "rotation",
+    "padding",
+    "QMargins"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemTextENDCLASS_t {
     uint offsetsAndSizes[32];
     char stringdata0[12];
     char stringdata1[6];
@@ -8229,8 +9166,8 @@ struct qt_meta_stringdata_QCPItemText_t {
     char stringdata15[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemText_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemText_t qt_meta_stringdata_QCPItemText = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemTextENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemTextENDCLASS_t qt_meta_stringdata_CLASSQCPItemTextENDCLASS = {
     {
         QT_MOC_LITERAL(0, 11),  // "QCPItemText"
         QT_MOC_LITERAL(12, 5),  // "color"
@@ -8267,12 +9204,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemText_t qt_meta_stringdata_QCP
     "QMargins"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemText[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemTextENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8302,11 +9240,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemText[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemText::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemText.offsetsAndSizes,
-    qt_meta_data_QCPItemText,
+    qt_meta_stringdata_CLASSQCPItemTextENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemTextENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemText_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemTextENDCLASS_t,
         // property 'color'
         QtPrivate::TypeAndForceComplete<QColor, std::true_type>,
         // property 'selectedColor'
@@ -8398,7 +9336,7 @@ const QMetaObject *QCPItemText::metaObject() const
 void *QCPItemText::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemText.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemTextENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -8417,7 +9355,18 @@ int QCPItemText::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemEllipse_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS = QtMocHelpers::stringData(
+    "QCPItemEllipse",
+    "pen",
+    "selectedPen",
+    "brush",
+    "selectedBrush"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS_t {
     uint offsetsAndSizes[10];
     char stringdata0[15];
     char stringdata1[4];
@@ -8426,8 +9375,8 @@ struct qt_meta_stringdata_QCPItemEllipse_t {
     char stringdata4[14];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemEllipse_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemEllipse_t qt_meta_stringdata_QCPItemEllipse = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS_t qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS = {
     {
         QT_MOC_LITERAL(0, 14),  // "QCPItemEllipse"
         QT_MOC_LITERAL(15, 3),  // "pen"
@@ -8442,12 +9391,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemEllipse_t qt_meta_stringdata_
     "selectedBrush"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemEllipse[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemEllipseENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8468,11 +9418,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemEllipse[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemEllipse::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemEllipse.offsetsAndSizes,
-    qt_meta_data_QCPItemEllipse,
+    qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemEllipseENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemEllipse_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -8528,7 +9478,7 @@ const QMetaObject *QCPItemEllipse::metaObject() const
 void *QCPItemEllipse::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemEllipse.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemEllipseENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -8547,7 +9497,22 @@ int QCPItemEllipse::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemPixmap_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS = QtMocHelpers::stringData(
+    "QCPItemPixmap",
+    "pixmap",
+    "scaled",
+    "aspectRatioMode",
+    "Qt::AspectRatioMode",
+    "transformationMode",
+    "Qt::TransformationMode",
+    "pen",
+    "selectedPen"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS_t {
     uint offsetsAndSizes[18];
     char stringdata0[14];
     char stringdata1[7];
@@ -8560,8 +9525,8 @@ struct qt_meta_stringdata_QCPItemPixmap_t {
     char stringdata8[12];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemPixmap_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemPixmap_t qt_meta_stringdata_QCPItemPixmap = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS_t qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPItemPixmap"
         QT_MOC_LITERAL(14, 6),  // "pixmap"
@@ -8584,12 +9549,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemPixmap_t qt_meta_stringdata_Q
     "selectedPen"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemPixmap[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemPixmapENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8612,11 +9578,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemPixmap[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemPixmap::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemPixmap.offsetsAndSizes,
-    qt_meta_data_QCPItemPixmap,
+    qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemPixmapENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemPixmap_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS_t,
         // property 'pixmap'
         QtPrivate::TypeAndForceComplete<QPixmap, std::true_type>,
         // property 'scaled'
@@ -8678,7 +9644,7 @@ const QMetaObject *QCPItemPixmap::metaObject() const
 void *QCPItemPixmap::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemPixmap.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemPixmapENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -8697,7 +9663,30 @@ int QCPItemPixmap::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemTracer_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemTracerENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemTracerENDCLASS = QtMocHelpers::stringData(
+    "QCPItemTracer",
+    "pen",
+    "selectedPen",
+    "brush",
+    "selectedBrush",
+    "size",
+    "style",
+    "TracerStyle",
+    "graph",
+    "QCPGraph*",
+    "graphKey",
+    "interpolating",
+    "tsNone",
+    "tsPlus",
+    "tsCrosshair",
+    "tsCircle",
+    "tsSquare"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemTracerENDCLASS_t {
     uint offsetsAndSizes[34];
     char stringdata0[14];
     char stringdata1[4];
@@ -8718,8 +9707,8 @@ struct qt_meta_stringdata_QCPItemTracer_t {
     char stringdata16[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemTracer_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemTracer_t qt_meta_stringdata_QCPItemTracer = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemTracerENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemTracerENDCLASS_t qt_meta_stringdata_CLASSQCPItemTracerENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPItemTracer"
         QT_MOC_LITERAL(14, 3),  // "pen"
@@ -8758,12 +9747,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemTracer_t qt_meta_stringdata_Q
     "tsSquare"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemTracer[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemTracerENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8799,11 +9789,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemTracer[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemTracer::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemTracer.offsetsAndSizes,
-    qt_meta_data_QCPItemTracer,
+    qt_meta_stringdata_CLASSQCPItemTracerENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemTracerENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemTracer_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemTracerENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -8836,8 +9826,7 @@ void QCPItemTracer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 6:
             *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QCPGraph* >(); break;
         }
-    }
-else if (_c == QMetaObject::ReadProperty) {
+    } else if (_c == QMetaObject::ReadProperty) {
         auto *_t = static_cast<QCPItemTracer *>(_o);
         (void)_t;
         void *_v = _a[0];
@@ -8883,7 +9872,7 @@ const QMetaObject *QCPItemTracer::metaObject() const
 void *QCPItemTracer::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemTracer.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemTracerENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -8902,7 +9891,23 @@ int QCPItemTracer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPItemBracket_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPItemBracketENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPItemBracketENDCLASS = QtMocHelpers::stringData(
+    "QCPItemBracket",
+    "pen",
+    "selectedPen",
+    "length",
+    "style",
+    "BracketStyle",
+    "bsSquare",
+    "bsRound",
+    "bsCurly",
+    "bsCalligraphic"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPItemBracketENDCLASS_t {
     uint offsetsAndSizes[20];
     char stringdata0[15];
     char stringdata1[4];
@@ -8916,8 +9921,8 @@ struct qt_meta_stringdata_QCPItemBracket_t {
     char stringdata9[15];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPItemBracket_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPItemBracket_t qt_meta_stringdata_QCPItemBracket = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPItemBracketENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPItemBracketENDCLASS_t qt_meta_stringdata_CLASSQCPItemBracketENDCLASS = {
     {
         QT_MOC_LITERAL(0, 14),  // "QCPItemBracket"
         QT_MOC_LITERAL(15, 3),  // "pen"
@@ -8942,12 +9947,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPItemBracket_t qt_meta_stringdata_
     "bsCalligraphic"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPItemBracket[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPItemBracketENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -8977,11 +9983,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPItemBracket[] = {
 
 Q_CONSTINIT const QMetaObject QCPItemBracket::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPItemBracket.offsetsAndSizes,
-    qt_meta_data_QCPItemBracket,
+    qt_meta_stringdata_CLASSQCPItemBracketENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPItemBracketENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPItemBracket_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPItemBracketENDCLASS_t,
         // property 'pen'
         QtPrivate::TypeAndForceComplete<QPen, std::true_type>,
         // property 'selectedPen'
@@ -9037,7 +10043,7 @@ const QMetaObject *QCPItemBracket::metaObject() const
 void *QCPItemBracket::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPItemBracket.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPItemBracketENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractItem::qt_metacast(_clname);
 }
@@ -9056,7 +10062,49 @@ int QCPItemBracket::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPPolarAxisRadial_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS = QtMocHelpers::stringData(
+    "QCPPolarAxisRadial",
+    "rangeChanged",
+    "",
+    "QCPRange",
+    "newRange",
+    "oldRange",
+    "scaleTypeChanged",
+    "QCPPolarAxisRadial::ScaleType",
+    "scaleType",
+    "selectionChanged",
+    "QCPPolarAxisRadial::SelectableParts",
+    "parts",
+    "selectableChanged",
+    "setScaleType",
+    "type",
+    "setRange",
+    "range",
+    "setSelectableParts",
+    "selectableParts",
+    "setSelectedParts",
+    "selectedParts",
+    "AngleReference",
+    "arAbsolute",
+    "arAngularAxis",
+    "ScaleType",
+    "stLinear",
+    "stLogarithmic",
+    "SelectablePart",
+    "spNone",
+    "spAxis",
+    "spTickLabels",
+    "spAxisLabel",
+    "SelectableParts",
+    "LabelMode",
+    "lmUpright",
+    "lmRotated"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS_t {
     uint offsetsAndSizes[72];
     char stringdata0[19];
     char stringdata1[13];
@@ -9096,8 +10144,8 @@ struct qt_meta_stringdata_QCPPolarAxisRadial_t {
     char stringdata35[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPolarAxisRadial_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPolarAxisRadial_t qt_meta_stringdata_QCPPolarAxisRadial = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS_t qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS = {
     {
         QT_MOC_LITERAL(0, 18),  // "QCPPolarAxisRadial"
         QT_MOC_LITERAL(19, 12),  // "rangeChanged"
@@ -9174,12 +10222,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPPolarAxisRadial_t qt_meta_stringd
     "lmRotated"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPolarAxisRadial[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPolarAxisRadialENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        9,   14, // methods
@@ -9243,11 +10292,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPolarAxisRadial[] = {
 
 Q_CONSTINIT const QMetaObject QCPPolarAxisRadial::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPPolarAxisRadial.offsetsAndSizes,
-    qt_meta_data_QCPPolarAxisRadial,
+    qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPolarAxisRadialENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPolarAxisRadial_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPolarAxisRadial, std::true_type>,
         // method 'rangeChanged'
@@ -9365,7 +10414,7 @@ const QMetaObject *QCPPolarAxisRadial::metaObject() const
 void *QCPPolarAxisRadial::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPPolarAxisRadial.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPPolarAxisRadialENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -9422,7 +10471,38 @@ void QCPPolarAxisRadial::selectableChanged(const QCPPolarAxisRadial::SelectableP
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPPolarAxisAngular_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS = QtMocHelpers::stringData(
+    "QCPPolarAxisAngular",
+    "rangeChanged",
+    "",
+    "QCPRange",
+    "newRange",
+    "oldRange",
+    "selectionChanged",
+    "QCPPolarAxisAngular::SelectableParts",
+    "parts",
+    "selectableChanged",
+    "setRange",
+    "range",
+    "setSelectableParts",
+    "selectableParts",
+    "setSelectedParts",
+    "selectedParts",
+    "SelectablePart",
+    "spNone",
+    "spAxis",
+    "spTickLabels",
+    "spAxisLabel",
+    "SelectableParts",
+    "LabelMode",
+    "lmUpright",
+    "lmRotated"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS_t {
     uint offsetsAndSizes[50];
     char stringdata0[20];
     char stringdata1[13];
@@ -9451,8 +10531,8 @@ struct qt_meta_stringdata_QCPPolarAxisAngular_t {
     char stringdata24[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPolarAxisAngular_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPolarAxisAngular_t qt_meta_stringdata_QCPPolarAxisAngular = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS_t qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS = {
     {
         QT_MOC_LITERAL(0, 19),  // "QCPPolarAxisAngular"
         QT_MOC_LITERAL(20, 12),  // "rangeChanged"
@@ -9507,12 +10587,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPPolarAxisAngular_t qt_meta_string
     "lmRotated"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPolarAxisAngular[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPolarAxisAngularENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        7,   14, // methods
@@ -9566,11 +10647,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPolarAxisAngular[] = {
 
 Q_CONSTINIT const QMetaObject QCPPolarAxisAngular::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayoutElement::staticMetaObject>(),
-    qt_meta_stringdata_QCPPolarAxisAngular.offsetsAndSizes,
-    qt_meta_data_QCPPolarAxisAngular,
+    qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPolarAxisAngularENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPolarAxisAngular_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPolarAxisAngular, std::true_type>,
         // method 'rangeChanged'
@@ -9655,7 +10736,7 @@ const QMetaObject *QCPPolarAxisAngular::metaObject() const
 void *QCPPolarAxisAngular::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPPolarAxisAngular.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPPolarAxisAngularENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayoutElement::qt_metacast(_clname);
 }
@@ -9705,7 +10786,20 @@ void QCPPolarAxisAngular::selectableChanged(const QCPPolarAxisAngular::Selectabl
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCPPolarGrid_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPolarGridENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPolarGridENDCLASS = QtMocHelpers::stringData(
+    "QCPPolarGrid",
+    "GridType",
+    "gtAngular",
+    "gtRadial",
+    "gtAll",
+    "gtNone",
+    "GridTypes"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPolarGridENDCLASS_t {
     uint offsetsAndSizes[14];
     char stringdata0[13];
     char stringdata1[9];
@@ -9716,8 +10810,8 @@ struct qt_meta_stringdata_QCPPolarGrid_t {
     char stringdata6[10];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPolarGrid_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPolarGrid_t qt_meta_stringdata_QCPPolarGrid = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPolarGridENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPolarGridENDCLASS_t qt_meta_stringdata_CLASSQCPPolarGridENDCLASS = {
     {
         QT_MOC_LITERAL(0, 12),  // "QCPPolarGrid"
         QT_MOC_LITERAL(13, 8),  // "GridType"
@@ -9736,12 +10830,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPPolarGrid_t qt_meta_stringdata_QC
     "GridTypes"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPolarGrid[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPolarGridENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -9770,11 +10865,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPolarGrid[] = {
 
 Q_CONSTINIT const QMetaObject QCPPolarGrid::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPPolarGrid.offsetsAndSizes,
-    qt_meta_data_QCPPolarGrid,
+    qt_meta_stringdata_CLASSQCPPolarGridENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPolarGridENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPolarGrid_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPolarGridENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPolarGrid, std::true_type>
     >,
@@ -9797,7 +10892,7 @@ const QMetaObject *QCPPolarGrid::metaObject() const
 void *QCPPolarGrid::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPPolarGrid.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPPolarGridENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -9808,25 +10903,33 @@ int QCPPolarGrid::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPPolarLegendItem_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS = QtMocHelpers::stringData(
+    "QCPPolarLegendItem"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS_t {
     uint offsetsAndSizes[2];
     char stringdata0[19];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPolarLegendItem_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPolarLegendItem_t qt_meta_stringdata_QCPPolarLegendItem = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS_t qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS = {
     {
         QT_MOC_LITERAL(0, 18)   // "QCPPolarLegendItem"
     },
     "QCPPolarLegendItem"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPolarLegendItem[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPolarLegendItemENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -9841,11 +10944,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPolarLegendItem[] = {
 
 Q_CONSTINIT const QMetaObject QCPPolarLegendItem::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPAbstractLegendItem::staticMetaObject>(),
-    qt_meta_stringdata_QCPPolarLegendItem.offsetsAndSizes,
-    qt_meta_data_QCPPolarLegendItem,
+    qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPolarLegendItemENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPolarLegendItem_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPolarLegendItem, std::true_type>
     >,
@@ -9868,7 +10971,7 @@ const QMetaObject *QCPPolarLegendItem::metaObject() const
 void *QCPPolarLegendItem::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPPolarLegendItem.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPPolarLegendItemENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPAbstractLegendItem::qt_metacast(_clname);
 }
@@ -9879,7 +10982,27 @@ int QCPPolarLegendItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 namespace {
-struct qt_meta_stringdata_QCPPolarGraph_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS = QtMocHelpers::stringData(
+    "QCPPolarGraph",
+    "selectionChanged",
+    "",
+    "selected",
+    "QCPDataSelection",
+    "selection",
+    "selectableChanged",
+    "QCP::SelectionType",
+    "selectable",
+    "setSelectable",
+    "setSelection",
+    "LineStyle",
+    "lsNone",
+    "lsLine"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS_t {
     uint offsetsAndSizes[28];
     char stringdata0[14];
     char stringdata1[17];
@@ -9897,8 +11020,8 @@ struct qt_meta_stringdata_QCPPolarGraph_t {
     char stringdata13[7];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCPPolarGraph_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCPPolarGraph_t qt_meta_stringdata_QCPPolarGraph = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS_t qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS = {
     {
         QT_MOC_LITERAL(0, 13),  // "QCPPolarGraph"
         QT_MOC_LITERAL(14, 16),  // "selectionChanged"
@@ -9931,12 +11054,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCPPolarGraph_t qt_meta_stringdata_Q
     "lsLine"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCPPolarGraph[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPPolarGraphENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        5,   14, // methods
@@ -9976,11 +11100,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCPPolarGraph[] = {
 
 Q_CONSTINIT const QMetaObject QCPPolarGraph::staticMetaObject = { {
     QMetaObject::SuperData::link<QCPLayerable::staticMetaObject>(),
-    qt_meta_stringdata_QCPPolarGraph.offsetsAndSizes,
-    qt_meta_data_QCPPolarGraph,
+    qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPPolarGraphENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCPPolarGraph_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<QCPPolarGraph, std::true_type>,
         // method 'selectionChanged'
@@ -10067,7 +11191,7 @@ const QMetaObject *QCPPolarGraph::metaObject() const
 void *QCPPolarGraph::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_QCPPolarGraph.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSQCPPolarGraphENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QCPLayerable::qt_metacast(_clname);
 }
@@ -10110,7 +11234,77 @@ void QCPPolarGraph::selectableChanged(QCP::SelectionType _t1)
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 namespace {
-struct qt_meta_stringdata_QCP_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSQCPENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSQCPENDCLASS = QtMocHelpers::stringData(
+    "QCP",
+    "ResolutionUnit",
+    "ruDotsPerMeter",
+    "ruDotsPerCentimeter",
+    "ruDotsPerInch",
+    "ExportPen",
+    "epNoCosmetic",
+    "epAllowCosmetic",
+    "SignDomain",
+    "sdNegative",
+    "sdBoth",
+    "sdPositive",
+    "MarginSide",
+    "msLeft",
+    "msRight",
+    "msTop",
+    "msBottom",
+    "msAll",
+    "msNone",
+    "MarginSides",
+    "AntialiasedElement",
+    "aeAxes",
+    "aeGrid",
+    "aeSubGrid",
+    "aeLegend",
+    "aeLegendItems",
+    "aePlottables",
+    "aeItems",
+    "aeScatters",
+    "aeFills",
+    "aeZeroLine",
+    "aeOther",
+    "aeAll",
+    "aeNone",
+    "AntialiasedElements",
+    "PlottingHint",
+    "phNone",
+    "phFastPolylines",
+    "phImmediateRefresh",
+    "phCacheLabels",
+    "PlottingHints",
+    "Interaction",
+    "iNone",
+    "iRangeDrag",
+    "iRangeZoom",
+    "iMultiSelect",
+    "iSelectPlottables",
+    "iSelectAxes",
+    "iSelectLegend",
+    "iSelectItems",
+    "iSelectOther",
+    "iSelectPlottablesBeyondAxisRect",
+    "Interactions",
+    "SelectionRectMode",
+    "srmNone",
+    "srmZoom",
+    "srmSelect",
+    "srmCustom",
+    "SelectionType",
+    "stNone",
+    "stWhole",
+    "stSingleData",
+    "stDataRange",
+    "stMultipleDataRanges"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSQCPENDCLASS_t {
     uint offsetsAndSizes[128];
     char stringdata0[4];
     char stringdata1[15];
@@ -10178,8 +11372,8 @@ struct qt_meta_stringdata_QCP_t {
     char stringdata63[21];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_QCP_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_QCP_t qt_meta_stringdata_QCP = {
+    uint(sizeof(qt_meta_stringdata_CLASSQCPENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSQCPENDCLASS_t qt_meta_stringdata_CLASSQCPENDCLASS = {
     {
         QT_MOC_LITERAL(0, 3),  // "QCP"
         QT_MOC_LITERAL(4, 14),  // "ResolutionUnit"
@@ -10312,12 +11506,13 @@ Q_CONSTINIT static const qt_meta_stringdata_QCP_t qt_meta_stringdata_QCP = {
     "stMultipleDataRanges"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_QCP[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSQCPENDCLASS[] = {
 
  // content:
-      10,       // revision
+      11,       // revision
        0,       // classname
        0,    0, // classinfo
        0,    0, // methods
@@ -10432,11 +11627,11 @@ Q_CONSTINIT static const uint qt_meta_data_QCP[] = {
 
 Q_CONSTINIT const QMetaObject QCP::staticMetaObject = { {
     nullptr,
-    qt_meta_stringdata_QCP.offsetsAndSizes,
-    qt_meta_data_QCP,
+    qt_meta_stringdata_CLASSQCPENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSQCPENDCLASS,
     nullptr,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_QCP_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSQCPENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<void, std::true_type>
     >,
@@ -10444,4 +11639,3 @@ Q_CONSTINIT const QMetaObject QCP::staticMetaObject = { {
 } };
 
 QT_WARNING_POP
-QT_END_MOC_NAMESPACE

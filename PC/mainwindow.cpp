@@ -165,13 +165,13 @@ void MainWindow::GetData(){
             auto d = getQuery.value("fecha").toString();
             auto d_to_int = QDateTime::fromString(d, "dd.MM.yyyy HH:mm:ss.z").toMSecsSinceEpoch();
             myData->append(d_to_int, getQuery.value("ps").toDouble());
-            // qDebug() << d_to_int << getQuery.value("ps").toDouble();
+            qDebug() << d_to_int << getQuery.value("ps").toDouble();
 
-            // qDebug()<< myData;
+            qDebug()<< myData;
         }
-        // auto d = QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss.z");
-        // auto d_to_int = QDateTime::fromString(d, "dd.MM.yyyy HH:mm:ss.z").toMSecsSinceEpoch();
-        //     qDebug()<< d << d_to_int;
+        auto d = QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss.z");
+        auto d_to_int = QDateTime::fromString(d, "dd.MM.yyyy HH:mm:ss.z").toMSecsSinceEpoch();
+            qDebug()<< d << d_to_int;
     }
 
 }

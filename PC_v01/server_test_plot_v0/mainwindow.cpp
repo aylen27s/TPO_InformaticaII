@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // *** conexión a la base de datos de sqlite ***
     db = QSqlDatabase::addDatabase("QSQLITE", "miConexion");                              // crea una conexión de base de datos con el driver QSQLITE y la etiqueta "miConexion"
-    db.setDatabaseName("/home/guido/Documentos/TPO_InformaticaII/file_past.db");          // ruta del archivo sqlite que se va a abrir
+    db.setDatabaseName("/home/aylen/Escritorio/Info2/TPO_InformaticaII/file_past.db");          // ruta del archivo sqlite que se va a abrir
     if (!db.open()) {                                                                     // intenta abrir conexión, si falla entra al if
         qDebug() << "Error: " << db.lastError().text();                                   // comentario por consola si falló la conexión
     } else {
