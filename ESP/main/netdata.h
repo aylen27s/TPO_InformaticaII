@@ -1,2 +1,2 @@
-#define MY_SSID "Completar con nombre de la red" 
-#define MY_PASS "Completar con contraseña de la red" 
+#define MY_SSID "TeleCentro-859b" 
+#define MY_PASS "CJNYYTZMJMZ2" 

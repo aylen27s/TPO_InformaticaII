@@ -11,4 +11,5 @@ idf_component_register(
         driver
         esp_timer
         lwip
+        esp_http_client
 )

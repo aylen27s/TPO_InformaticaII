@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
+//Defino utilidades para establecer conexión con el server
+#define MY_IP_SERVER    "192.168.0.72"  //Del server ESP
+#define MY_PORT_SERVER  10234           //Puerto en en el que escucha el server ESP
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -10,13 +15,17 @@ MainWindow::MainWindow(QWidget *parent)
     m_viewingWindowSeconds = 300;                                                         // ajusta la ventana de visualización en 300 [s] (últimas muestras almacenadas en los útlimos 5 minutos)
 
     // *** conexión a la base de datos de sqlite ***
-    db = QSqlDatabase::addDatabase("QSQLITE", "miConexion");                              // crea una conexión de base de datos con el driver QSQLITE y la etiqueta "miConexion"
-    db.setDatabaseName("/home/aylen/Escritorio/Info2/TPO_InformaticaII/file_past.db");          // ruta del archivo sqlite que se va a abrir
-    if (!db.open()) {                                                                     // intenta abrir conexión, si falla entra al if
-        qDebug() << "Error: " << db.lastError().text();                                   // comentario por consola si falló la conexión
+    // db = QSqlDatabase::addDatabase("QSQLITE", "miConexion");                              // crea una conexión de base de datos con el driver QSQLITE y la etiqueta "miConexion"
+    MY_DB.setDatabaseName(DB_PATH);                                                          // ruta del archivo sqlite que se va a abrir
+    if (!MY_DB.open()) {                                                                     // intenta abrir conexión, si falla entra al if
+        qDebug() << "Error: " << MY_DB.lastError().text();                                   // comentario por consola si falló la conexión
     } else {
         qDebug() << "Base de datos conectada exitosamente.";                              // conexión exitosa
     }
+
+    /* ---- Configuración de socket cliente TCP ----*/
+    m_socket.connectToHost(QHostAddress(MY_IP_SERVER), MY_PORT_SERVER);                 //Equivalente a hacer el bind entre socket y direccion
+    connect(&m_socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));                 //readyRead() es signal de QT
 
     // *** configuración inicial de QCustomPlot ***
     ui->customPlot->xAxis->setLabel("Fecha y Hora");                                      // etiqueta del eje x
@@ -44,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    db.close();                // cierra la conexión con la base de datos al cerrar la ventana
+    MY_DB.close();                // cierra la conexión con la base de datos al cerrar la ventana
     delete ui;                 // libera la memoria del objeto ui creado en el constructor anteriormente
 }
 
@@ -73,14 +82,15 @@ void MainWindow::plotData()                                     // consulta la b
     QVector<double> timestamps;                                 // vector que almacena timestamps (segundos desde epoch) que irán al eje x
     QVector<double> values;                                     // vector que almacena valores sensados de presión arterial que irán al eje y
 
-    QSqlDatabase db = QSqlDatabase::database("miConexion");     // obtiene la conexión a la base de datos previamente establecida
-    if (!db.isOpen()) {                                         // verifica que la conexión esté abierta
+    /*QSqlDatabase db = QSqlDatabase::database("miConexion");     // obtiene la conexión a la base de datos previamente establecida
+    if (!db.isOpen()) { */
+    if (!MY_DB.isOpen()) {    // verifica que la conexión esté abierta
         qDebug() << "La base de datos no está abierta.";
         return;
     }
 
     // interacción con la base de datos
-    QSqlQuery query("SELECT fecha, ps FROM data ORDER BY fecha DESC LIMIT 1000", db);               // se limita en 1000 muestras los datos que levanta
+    QSqlQuery query("SELECT fecha, ps FROM data ORDER BY fecha DESC LIMIT 1000", MY_DB);               // se limita en 1000 muestras los datos que levanta
     while (query.next()) {                                                                          // recorre los resultados de la consulta a la db fila por fila
         QDateTime dt = QDateTime::fromString(query.value(0).toString(), "yyyy-MM-dd HH:mm:ss");     // convierte el campo (fecha (string)) a QDateTime en ese formato
         timestamps.prepend(dt.toSecsSinceEpoch());                                                  // inserta al inicio del vector timestamps el valor en segundos desde epoch para mantener el orden ascendente cronológico (se usa prepend para eso ya que las levantó en orden descendente)
@@ -128,13 +138,14 @@ void MainWindow::on_calendarWidget_clicked(const QDate &date)                   
     QVector<double> timestamps;                                                     // vector que almacena timestamps de la fecha seleccionada
     QVector<double> values;                                                         // vector que almacena valores sensados de presión arterial de la fecha seleccionada
 
-    QSqlDatabase db = QSqlDatabase::database("miConexion");                         // obtiene la conexión a la base de datos previamente establecida
-    if(!db.isOpen()){
+    // QSqlDatabase db = QSqlDatabase::database("miConexion");                         // obtiene la conexión a la base de datos previamente establecida
+    // if(!db.isOpen()){
+    if(!MY_DB.isOpen()){
         qDebug() << "La base de datos no está abierta.";
         return;
     }
 
-    QSqlQuery query(db);                                                                            // interacción con la base de datos
+    QSqlQuery query(MY_DB);                                                                            // interacción con la base de datos
     query.prepare("SELECT fecha, ps FROM data WHERE fecha LIKE :dateFilter ORDER BY fecha ASC");    // busca los datos cuya columna fecha sea la que se seleccionó en el calendario
     query.bindValue(":dateFilter", date.toString("yyyy-MM-dd") + "%");                              // se filtran todas las entradas de esa fecha
 
@@ -163,4 +174,44 @@ void MainWindow::on_calendarWidget_clicked(const QDate &date)                   
 
     // se inicial el timer por si el usuario deja la vista del calendario inactiva
     m_inactivityTimer->start(15000); // 15 segundos
+}
+
+/* --- Lectura de trama TCP --- */
+void MainWindow::onReadyRead(){
+
+    QByteArray tcpData = m_socket.readAll();    //Lectura de info que llega por socket. Input esperado SSS,DDD,FFFFFFFFFFFFFFFFFFF
+    QString fullStringResponse(tcpData);        //Parseo a string
+    QStringList dataResponse = fullStringResponse.split(',');   //Separo cada dato que me interesa guardar
+
+    float _ps = dataResponse.at(0).toFloat();
+    float _pd = dataResponse.at(1).toFloat();
+    QString _date = dataResponse.at(2);
+
+    qDebug() << "Datos recibidos:" << dataResponse;
+
+    insertDataBaseInfo(_ps,_pd,_date); //Escribo en DB local
+}
+
+/* --- Metodos custom de la app --- */
+
+void MainWindow::insertDataBaseInfo(float _ps, float _pd, QString _fecha){
+    QString myQuery = QString("INSERT INTO %1 (ps, pd, fecha) VALUES (:ps, :pd, :fecha)").arg(DB_TABLE);
+    qDebug()<< myQuery;
+
+    QSqlQuery insertQuery(MY_DB);
+    insertQuery.prepare(myQuery);
+
+    insertQuery.bindValue(":ps", _ps);
+    insertQuery.bindValue(":pd", _pd);
+    insertQuery.bindValue(":fecha", _fecha);
+
+
+    if (!insertQuery.exec()) {
+        qDebug() << "Error al insertar datos:" << insertQuery.lastError().text();
+    }else{
+        qDebug() << "Los datos se han insertado.";
+    }
+
+    qDebug()<<"Saliendo por insertDataBaseInfo";
+
 }

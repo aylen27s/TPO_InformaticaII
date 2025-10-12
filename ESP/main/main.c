@@ -15,6 +15,7 @@
 // Para poder obtener fecha y hora actual
 #include "time.h"
 #include "esp_sntp.h"
+#include "esp_http_client.h"
 
 // Para poder levantar servidor TCP
 #include <string.h>
@@ -22,7 +23,8 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-// Archivito con pass y ssid
+
+// Archivito con los datos para WIFI_SSID y WIFI_PASS
 #include "netdata.h"
 
 
@@ -71,21 +73,23 @@ void connectEspToWifi(void)
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     esp_wifi_init(&cfg);
-    esp_wifi_set_mode(WIFI_MODE_STA);
+
+    esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &onGotIp, NULL);
+    esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &onWifiDisconnect, NULL);
+
+    // esp_wifi_set_mode(WIFI_MODE_STA);
 
     wifi_config_t wifi_config = {
         .sta = {
             .ssid = WIFI_SSID,
             .password = WIFI_PASS,
-            .threshold.authmode = WIFI_AUTH_WPA2_PSK
+            // .threshold.authmode = WIFI_AUTH_WPA2_PSK
         }
     };
 
-    esp_wifi_set_config(WIFI_IF_STA, &wifi_config);
+    esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config);
 
-    esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &onGotIp, NULL);
-    esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &onWifiDisconnect, NULL);
-
+    
     esp_wifi_start();
     esp_wifi_connect();
     // ESP_LOGI(TAG, "WiFi inicializado con SSID: %s", WIFI_SSID);
@@ -124,8 +128,8 @@ static void timeSyncCallback(struct timeval *tv) {
 void configTimeNTP(void){
    
     // Configuramos el modo de sincronización y el servidor
-    esp_sntp_setoperatingmode(ESP_SNTP_OPMODE_POLL);
-    esp_sntp_setservername(0, "pool.ntp.org");
+    sntp_setoperatingmode(ESP_SNTP_OPMODE_POLL);
+    sntp_setservername(0, "pool.ntp.org");
 
     // Registramos el callback que se llama automáticamente al sincronizar
     sntp_set_time_sync_notification_cb(timeSyncCallback);
@@ -135,12 +139,79 @@ void configTimeNTP(void){
     tzset();
 
     // Iniciamos SNTP
-    esp_sntp_init();
+    sntp_init();
 
     ESP_LOGI(TAG, "Iniciando sincronización con servidor NTP...");
 }
 
+static void obtainTime(void){
+    configTimeNTP();
+    time_t now = 0;
+    struct tm timeinfo = { 0 };
+    int retry = 0;
+    const int retry_count = 10;
+    while (esp_sntp_get_sync_status() == SNTP_SYNC_STATUS_RESET && ++retry < retry_count) {
+        ESP_LOGI("TIME-SYNC", "Aguardando res NTP... (%d/%d)", retry, retry_count);
+        vTaskDelay(2000 / portTICK_PERIOD_MS);
+    }
+    time(&now);
+    localtime_r(&now, &timeinfo);
+}
+
+void SetSystemTimeSNTP()  {
+
+	time_t now;
+    struct tm timeinfo;
+    time(&now);
+    localtime_r(&now, &timeinfo);
+    if (timeinfo.tm_year < (2025 - 1900)) {
+        ESP_LOGI("TIME_SYNC", "Fecha sin sincronizar");
+        obtainTime();
+        time(&now);
+    }
+}
+
+
 /* ------ ESP como cliente HTTP para obtner fecha y hora por API pública [solucion parchesisima] -----*/
+// esp_err_t handlerGetTimeSync(esp_http_client_event_handle_t evt)
+// {
+//     switch (evt->event_id)
+//     {
+//     case HTTP_EVENT_ON_DATA:
+//         printf("HTTP_EVENT_ON_DATA: %.*s\n", evt->data_len, (char *)evt->data);
+//         break;
+
+//     default:
+//         break;
+//     }
+//     return ESP_OK;
+// }
+// static void getTimeSync(void)
+// {
+//     esp_http_client_config_t config = {
+//         .url = "http://worldclockapi.com/api/json/utc/now",
+//         .method = HTTP_METHOD_GET,
+//         .cert_pem = NULL,
+//         .event_handler = handlerGetTimeSync
+//     };
+//     ESP_LOGI("TIME-SYNC-LOW-COST", "Sync hora de API pública...");
+
+//     esp_http_client_handle_t client = esp_http_client_init(&config);
+//     esp_err_t err = esp_http_client_perform(client);
+    
+
+//     if (err == ESP_OK) {
+//         ESP_LOGI("TIME-SYNC-LOW-COST", "HTTPS Status = %d, content_length = %"PRId64,
+//                 esp_http_client_get_status_code(client),
+//                 esp_http_client_get_content_length(client));
+//     } else {
+//         ESP_LOGE("TIME-SYNC-LOW-COST", "Error perform http request %s", esp_err_to_name(err));
+//     }
+
+//     esp_http_client_cleanup(client);
+// }
+
+
 
 
 /* ------ ESP como Servidor TCP para intercambio de información con app cliente QT ------- */
@@ -249,20 +320,22 @@ void initServer(void) {
 void app_main(void){
 
     /* --- Chequeo de errores --- */
-    // esp_err_t ret = nvs_flash_init();
-    // if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-    //     ESP_ERROR_CHECK(nvs_flash_erase());
-    //     ret = nvs_flash_init();
-    // }
-    // ESP_ERROR_CHECK(ret);
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
     
     /* Cnofigurar y conectar WIFI*/
+    ESP_LOGI("WIFI","Conectando WiFi en SSID %s ...", WIFI_SSID);
     connectEspToWifi();
-    ESP_LOGI("WIFI","Conexion WiFi exitosa en SSID %s", WIFI_SSID);
+    
 
     /* Obtener fecha y hora de servidor externo */
-    ESP_LOGI("NTP", "Sincronizando fecha y hora con servidor NTP...");
-    configTimeNTP();
+    ESP_LOGI("TIME-SYNC", "Chequeando fecha y hora del sistema...");
+    SetSystemTimeSNTP();
+    // getTimeSync();
 
     /* Configurar y habilitar UART */
     // ESP_LOGI(TAG, "Init UART");
@@ -273,14 +346,18 @@ void app_main(void){
 
     while (1) {
         //Test de horario sincronizado.
-        vTaskDelay(pdMS_TO_TICKS(10000));
-
+        vTaskDelay(pdMS_TO_TICKS(20000));
         time_t now;
         struct tm timeinfo;
+        char time_buffer[80];
+
         time(&now);
         localtime_r(&now, &timeinfo);
+        strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
 
         ESP_LOGI("TIME", "Hora actual: %s", asctime(&timeinfo));
+        ESP_LOGI("TIME", "Hora actual: %s", time_buffer);
+    
 
 
         /* 1.Reviso si hay datos para levantar por la UART */
