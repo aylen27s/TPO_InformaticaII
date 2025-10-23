@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void insertDataBaseInfo(float _ps,float _pd, QString _fecha);
+    void insertDataBaseInfo(int _ps,int _pd, QString _fecha);
 
 private slots:
     void plotData(); // slot para dibujar/actualizar los datos

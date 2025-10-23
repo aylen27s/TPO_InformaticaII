@@ -92,7 +92,7 @@ void connectEspToWifi(void)
     
     esp_wifi_start();
     esp_wifi_connect();
-    // ESP_LOGI(TAG, "WiFi inicializado con SSID: %s", WIFI_SSID);
+    ESP_LOGI(TAG, "WiFi inicializado exitosamente en SSID: %s", WIFI_SSID);
 }
 
 /* ------- Configuración UART ESP* ---------- */
@@ -124,7 +124,7 @@ static void timeSyncCallback(struct timeval *tv) {
     ESP_LOGI("NTP", "TODAY-IS: %s", asctime(&timeinfo));
 }
 
-/* ----- Conexion con servidor NTP para sincronizar fecha y hora actual [ NO ANDA =( ]----- */
+/* ----- Conexion con servidor NTP para sincronizar fecha y hora actual ----- */
 void configTimeNTP(void){
    
     // Configuramos el modo de sincronización y el servidor
@@ -172,58 +172,36 @@ void SetSystemTimeSNTP()  {
 }
 
 
-/* ------ ESP como cliente HTTP para obtner fecha y hora por API pública [solucion parchesisima] -----*/
-// esp_err_t handlerGetTimeSync(esp_http_client_event_handle_t evt)
-// {
-//     switch (evt->event_id)
-//     {
-//     case HTTP_EVENT_ON_DATA:
-//         printf("HTTP_EVENT_ON_DATA: %.*s\n", evt->data_len, (char *)evt->data);
-//         break;
-
-//     default:
-//         break;
-//     }
-//     return ESP_OK;
-// }
-// static void getTimeSync(void)
-// {
-//     esp_http_client_config_t config = {
-//         .url = "http://worldclockapi.com/api/json/utc/now",
-//         .method = HTTP_METHOD_GET,
-//         .cert_pem = NULL,
-//         .event_handler = handlerGetTimeSync
-//     };
-//     ESP_LOGI("TIME-SYNC-LOW-COST", "Sync hora de API pública...");
-
-//     esp_http_client_handle_t client = esp_http_client_init(&config);
-//     esp_err_t err = esp_http_client_perform(client);
-    
-
-//     if (err == ESP_OK) {
-//         ESP_LOGI("TIME-SYNC-LOW-COST", "HTTPS Status = %d, content_length = %"PRId64,
-//                 esp_http_client_get_status_code(client),
-//                 esp_http_client_get_content_length(client));
-//     } else {
-//         ESP_LOGE("TIME-SYNC-LOW-COST", "Error perform http request %s", esp_err_to_name(err));
-//     }
-
-//     esp_http_client_cleanup(client);
-// }
-
-
-
 
 /* ------ ESP como Servidor TCP para intercambio de información con app cliente QT ------- */
 
-static void sendUartToClientData(void *arg) {           //funcion que manda desde la uart hacia el servidor
+static void sendUartToClientData(void *arg) {       //funcion que manda desde la uart hacia el servidor
     uint8_t buf[BUF_SIZE];                          //define buffer
     while (1) {                                     //entro en el loop
         if (client_sock < 0) {                      // si el cliente no está en estado readonly
-            vTaskDelay(pdMS_TO_TICKS(100));
+            vTaskDelay(pdMS_TO_TICKS(1000));
             continue;
         }
-        int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(100));
+
+        vTaskDelay(pdMS_TO_TICKS(5000)); // espero 5 segs antes de mandar datos
+        // int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(1000));
+
+        /* bloque de test*/
+            strcpy((char*)buf,"128,85,"); // medicion de pruebita
+            time_t now;
+            struct tm timeinfo;
+            char time_buffer[80];
+
+            time(&now);
+            localtime_r(&now, &timeinfo);
+            strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+
+            strcpy((char*)buf+7,time_buffer);
+            strcpy((char*)buf+26,",");
+            ESP_LOGI(TAG, "test datos -> %s", buf);
+            int len = strlen((char*)buf);
+        /* fin bloque de test*/
+
         if (len > 0) {
             int sent = send(client_sock, buf, len, 0);
             if (sent < 0) {
@@ -240,7 +218,7 @@ static void sendClientToUartData(void *arg) {
     uint8_t buf[BUF_SIZE];
     while (1) {
         if (client_sock < 0) {
-            vTaskDelay(pdMS_TO_TICKS(100));
+            vTaskDelay(pdMS_TO_TICKS(1000));
             continue;
         }
         int len = recv(client_sock, buf, BUF_SIZE, 0);
@@ -303,10 +281,11 @@ void initServer(void) {
 
         //Cuando el cliente se conecta, le doy lo que tenga en el buffer de la UART y escribo en la UART lo que me mande el cliente
         xTaskCreate(sendUartToClientData, "sendUartToClientData", 4096, NULL, 10, NULL); 
-        xTaskCreate(sendClientToUartData, "sendClientToUartData", 4096, NULL, 10, NULL);
+        // xTaskCreate(sendClientToUartData, "sendClientToUartData", 4096, NULL, 10, NULL);
 
         while (client_sock >= 0) {
-            vTaskDelay(pdMS_TO_TICKS(500));
+            // vTaskDelay(pdMS_TO_TICKS(500)); //manda datos cada 5ms ?
+            vTaskDelay(pdMS_TO_TICKS(5000)); //subo para que tarde un poquito mas
         }
 
         ESP_LOGI(TAG, "Cliente desconectado, esperando nuevo cliente");
@@ -335,28 +314,28 @@ void app_main(void){
     /* Obtener fecha y hora de servidor externo */
     ESP_LOGI("TIME-SYNC", "Chequeando fecha y hora del sistema...");
     SetSystemTimeSNTP();
-    // getTimeSync();
 
     /* Configurar y habilitar UART */
     // ESP_LOGI(TAG, "Init UART");
     // configUart();
 
     /* Iniciar servidor y escuchar cliente TCP. Dentro de esta función se resuleve el envio de datos desde la UART hacia el cliente y viceversa */
-    // initServer();
+    initServer();
 
     while (1) {
         //Test de horario sincronizado.
-        vTaskDelay(pdMS_TO_TICKS(20000));
-        time_t now;
-        struct tm timeinfo;
-        char time_buffer[80];
+        vTaskDelay(pdMS_TO_TICKS(5000));
+        ESP_LOGI("ESP", "wait...");
+        // time_t now;
+        // struct tm timeinfo;
+        // char time_buffer[80];
 
-        time(&now);
-        localtime_r(&now, &timeinfo);
-        strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+        // time(&now);
+        // localtime_r(&now, &timeinfo);
+        // strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
 
-        ESP_LOGI("TIME", "Hora actual: %s", asctime(&timeinfo));
-        ESP_LOGI("TIME", "Hora actual: %s", time_buffer);
+        // ESP_LOGI("TIME", "Hora actual: %s", asctime(&timeinfo));
+        // ESP_LOGI("TIME", "Hora actual: %s", time_buffer);
     
 
 

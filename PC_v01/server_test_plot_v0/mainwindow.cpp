@@ -49,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent)
     plotData();                                                                                     // comienza a graficar
 
     // ~ ACLARACIÓN: Si el usuario está viendo muestras pasadas en el gráfico y se detecta inactividad, volverá automáticamente despues del conteo establecido a las muestras del presente ~
+
+    /* ----- Inicialización de elementos de UI -----*/
+    ui->dateEdit_minDay->setDate(QDate::currentDate());
+    ui->dateEdit_maxDay->setDate(QDate::currentDate().addDays(-7));
 }
 
 MainWindow::~MainWindow()
@@ -183,20 +187,22 @@ void MainWindow::onReadyRead(){
     QString fullStringResponse(tcpData);        //Parseo a string
     QStringList dataResponse = fullStringResponse.split(',');   //Separo cada dato que me interesa guardar
 
-    float _ps = dataResponse.at(0).toFloat();
-    float _pd = dataResponse.at(1).toFloat();
+    int _ps = dataResponse.at(0).toFloat();
+    int _pd = dataResponse.at(1).toFloat();
     QString _date = dataResponse.at(2);
 
-    qDebug() << "Datos recibidos:" << dataResponse;
+    // qDebug() << "Trama recibida" <<tcpData << "--fin--";
+    qDebug() << "Datos spliteados:" <<_ps<<_pd<< _date; //no me funcionaba el internet cuando quise probar esto :(
 
     insertDataBaseInfo(_ps,_pd,_date); //Escribo en DB local
+
 }
 
 /* --- Metodos custom de la app --- */
 
-void MainWindow::insertDataBaseInfo(float _ps, float _pd, QString _fecha){
+void MainWindow::insertDataBaseInfo(int _ps, int _pd, QString _fecha){
     QString myQuery = QString("INSERT INTO %1 (ps, pd, fecha) VALUES (:ps, :pd, :fecha)").arg(DB_TABLE);
-    qDebug()<< myQuery;
+    // qDebug()<< myQuery;
 
     QSqlQuery insertQuery(MY_DB);
     insertQuery.prepare(myQuery);
@@ -209,9 +215,9 @@ void MainWindow::insertDataBaseInfo(float _ps, float _pd, QString _fecha){
     if (!insertQuery.exec()) {
         qDebug() << "Error al insertar datos:" << insertQuery.lastError().text();
     }else{
-        qDebug() << "Los datos se han insertado.";
+        qDebug() << "Datos insertados correctamente.";
     }
 
-    qDebug()<<"Saliendo por insertDataBaseInfo";
+    // qDebug()<<"Saliendo por insertDataBaseInfo";
 
 }
