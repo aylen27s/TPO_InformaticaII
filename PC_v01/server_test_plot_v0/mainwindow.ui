@@ -27,8 +27,8 @@
    <widget class="QCalendarWidget" name="calendarWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>120</y>
+      <x>50</x>
+      <y>70</y>
       <width>296</width>
       <height>179</height>
      </rect>
@@ -37,7 +37,7 @@
    <widget class="QPushButton" name="liveViewButton">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>570</x>
       <y>410</y>
       <width>231</width>
       <height>31</height>
@@ -47,38 +47,25 @@
      <string>Muestreo en Tiempo Real</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_periodo">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>90</y>
-      <width>111</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Periodo</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_visualizar">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>10</y>
-      <width>101</width>
+      <y>30</y>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>Visualizar por</string>
+     <string>Visualizar por día</string>
     </property>
    </widget>
    <widget class="QDateEdit" name="dateEdit_maxDay">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>90</y>
-      <width>81</width>
+      <x>140</x>
+      <y>300</y>
+      <width>91</width>
       <height>26</height>
      </rect>
     </property>
@@ -86,50 +73,50 @@
    <widget class="QDateEdit" name="dateEdit_minDay">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>90</y>
-      <width>81</width>
+      <x>50</x>
+      <y>300</y>
+      <width>91</width>
       <height>26</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_dia">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>50</y>
-      <width>111</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Día actual</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_export">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>340</y>
-      <width>88</width>
+      <x>50</x>
+      <y>360</y>
+      <width>141</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>Exportar</string>
+     <string>Exportar datos</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_import">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>340</y>
+      <x>250</x>
+      <y>300</y>
       <width>88</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>Ver</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_visualizar_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>270</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Visualizar por período</string>
     </property>
    </widget>
   </widget>

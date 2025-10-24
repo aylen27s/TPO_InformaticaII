@@ -43,12 +43,12 @@ static constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers:
     "MainWindow",
     "plotData",
     "",
-    "userInteracted",
     "on_liveViewButton_clicked",
     "on_calendarWidget_clicked",
     "date",
     "switchToLiveView",
-    "onReadyRead"
+    "onReadyRead",
+    "on_pushButton_import_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
@@ -56,12 +56,12 @@ struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {
     char stringdata0[11];
     char stringdata1[9];
     char stringdata2[1];
-    char stringdata3[15];
+    char stringdata3[26];
     char stringdata4[26];
-    char stringdata5[26];
-    char stringdata6[5];
-    char stringdata7[17];
-    char stringdata8[12];
+    char stringdata5[5];
+    char stringdata6[17];
+    char stringdata7[12];
+    char stringdata8[29];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSMainWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -70,22 +70,22 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSMainWindowENDCLASS_t qt_meta_st
         QT_MOC_LITERAL(0, 10),  // "MainWindow"
         QT_MOC_LITERAL(11, 8),  // "plotData"
         QT_MOC_LITERAL(20, 0),  // ""
-        QT_MOC_LITERAL(21, 14),  // "userInteracted"
-        QT_MOC_LITERAL(36, 25),  // "on_liveViewButton_clicked"
-        QT_MOC_LITERAL(62, 25),  // "on_calendarWidget_clicked"
-        QT_MOC_LITERAL(88, 4),  // "date"
-        QT_MOC_LITERAL(93, 16),  // "switchToLiveView"
-        QT_MOC_LITERAL(110, 11)   // "onReadyRead"
+        QT_MOC_LITERAL(21, 25),  // "on_liveViewButton_clicked"
+        QT_MOC_LITERAL(47, 25),  // "on_calendarWidget_clicked"
+        QT_MOC_LITERAL(73, 4),  // "date"
+        QT_MOC_LITERAL(78, 16),  // "switchToLiveView"
+        QT_MOC_LITERAL(95, 11),  // "onReadyRead"
+        QT_MOC_LITERAL(107, 28)   // "on_pushButton_import_clicked"
     },
     "MainWindow",
     "plotData",
     "",
-    "userInteracted",
     "on_liveViewButton_clicked",
     "on_calendarWidget_clicked",
     "date",
     "switchToLiveView",
-    "onReadyRead"
+    "onReadyRead",
+    "on_pushButton_import_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -107,16 +107,16 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        1,    0,   50,    2, 0x08,    1 /* Private */,
        3,    0,   51,    2, 0x08,    2 /* Private */,
-       4,    0,   52,    2, 0x08,    3 /* Private */,
-       5,    1,   53,    2, 0x08,    4 /* Private */,
+       4,    1,   52,    2, 0x08,    3 /* Private */,
+       6,    0,   55,    2, 0x08,    5 /* Private */,
        7,    0,   56,    2, 0x08,    6 /* Private */,
        8,    0,   57,    2, 0x08,    7 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QDate,    5,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QDate,    6,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -134,8 +134,6 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
         // method 'plotData'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'userInteracted'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_liveViewButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_calendarWidget_clicked'
@@ -144,6 +142,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'switchToLiveView'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onReadyRead'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_pushButton_import_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -156,11 +156,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         (void)_t;
         switch (_id) {
         case 0: _t->plotData(); break;
-        case 1: _t->userInteracted(); break;
-        case 2: _t->on_liveViewButton_clicked(); break;
-        case 3: _t->on_calendarWidget_clicked((*reinterpret_cast< std::add_pointer_t<QDate>>(_a[1]))); break;
-        case 4: _t->switchToLiveView(); break;
-        case 5: _t->onReadyRead(); break;
+        case 1: _t->on_liveViewButton_clicked(); break;
+        case 2: _t->on_calendarWidget_clicked((*reinterpret_cast< std::add_pointer_t<QDate>>(_a[1]))); break;
+        case 3: _t->switchToLiveView(); break;
+        case 4: _t->onReadyRead(); break;
+        case 5: _t->on_pushButton_import_clicked(); break;
         default: ;
         }
     }
