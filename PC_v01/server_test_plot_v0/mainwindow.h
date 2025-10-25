@@ -18,14 +18,26 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
-//
+//Para exportar datos
+#include <QFile>
+#include <QTextStream>
+
+//Archivos propios de la app
 #include "datadb.h"
 
-//Defino intervalo para refrescar las muestras para el plot en tiempo real
-#define TIME_TO_REFRESH 5000
+//Definiciones propias de la app
+#define TIME_TO_REFRESH 1000
+#define LIMIT_RECORDS 150
 
-//Defino enumeraciones para manejo del plot
+//Definicion de enumeraciones para manejo del plot
 enum MyModePlot {LAST_SAMPLE,DAY_SAMPLE,PERIOD_SAMPLE};
+
+//Definicion de estructura para almacenar las muestras
+struct MySample {
+    double ps;
+// int pd;
+    QDateTime fecha;
+}typedef MySample;
 
 
 QT_BEGIN_NAMESPACE
@@ -45,7 +57,6 @@ public:
 
 private slots:
     void plotData(); // slot para dibujar/actualizar los datos
-    // void userInteracted();
     void on_liveViewButton_clicked();
     void on_calendarWidget_clicked(const QDate &date);
     void switchToLiveView();    // Slot para reanudar el modo en vivo
@@ -54,18 +65,20 @@ private slots:
 
     void on_pushButton_import_clicked();
 
+    void on_pushButton_export_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QSqlDatabase db;    // objeto para la conexión a la DB
-    QTimer *dataTimer;  // timer para refrescar
-    // bool m_isUserExploring = false; // flag para saber si se esta explorando el gráfico
-    QDate m_selectedDate;
+    QTimer *dataTimer;                  // timer para refrescar
+    QDate m_selectedDate;               //Atributo para guardar el dia seleccionado
     double m_viewingWindowSeconds;
-    // QTimer *m_inactivityTimer;  // Timer para detectar inactividad del usuario --inhabilio para que solo vuelva a muestreo en tiempo real por accion manual.
-    QTcpSocket m_socket;        //Socket para comunicacion con ESP
+    QTcpSocket m_socket;                //Socket para comunicacion con ESP
 
-    MyModePlot m_modePlot = LAST_SAMPLE; //flag para indicar al plot que mostrará un rango de fechas. Por defecto la UI muestra los datos del dia actual.
+    MyModePlot m_modePlot;              //flag para indicar al plot que mostrará un rango de fechas. Por defecto la UI muestra los datos del dia actual.
     QString m_dateMin;                  //atributo para guardar los rangos de fechas a filtrar en plot. Solo se utilizan cuando m_modePlot es PERIOD_SAMPLE
     QString m_dateMax;                  //idem m_dateMin
+    // QVector<MySample> m_queryResults;
+    QVector<double> timestamps;
+    QVector<double> values;
 };
 #endif // MAINWINDOW_H

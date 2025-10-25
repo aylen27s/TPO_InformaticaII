@@ -4,7 +4,7 @@ Cliente que manda datos de pulso cardíaco simulado cada 1 segundo
 const axios = require("axios");
 
 const SERVER_URL = "http://localhost:3000/api/data";
-
+const SEGS_TO_SEND = 1000 * 3;
 // contador de tiempo en segundos
 let t = 0;
 
@@ -72,5 +72,5 @@ function sendData() {
 }
 
 // Enviar cada 1 segundo
-setInterval(sendData, 1000);
+setInterval(sendData, SEGS_TO_SEND);
 console.log("Simulación de pulso cardíaco iniciado...");
