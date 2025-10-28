@@ -16,7 +16,7 @@ public:
     ~Conexion();
 
 signals:
-    void sendDataToMain(QString data);
+    void sendConexionToMain(QString ssid, QString psw);
 
 private slots:
     void on_pb_conectar_clicked();

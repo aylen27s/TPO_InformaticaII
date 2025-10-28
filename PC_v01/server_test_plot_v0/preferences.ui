@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Preferences</class>
+ <widget class="QDialog" name="Preferences">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>540</width>
+    <height>449</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>330</y>
+     <width>341</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="pushButton_aplicar">
+      <property name="text">
+       <string>Aplicar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_cerrar">
+      <property name="text">
+       <string>Cerrar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>60</y>
+     <width>341</width>
+     <height>241</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0" columnstretch="2,1" rowminimumheight="0,0,0,0,0,0" columnminimumwidth="0,0">
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="2" column="1">
+     <widget class="QPlainTextEdit" name="te_pd_max"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_ps_min">
+      <property name="text">
+       <string>Presión sistólica mínima</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_pd_min">
+      <property name="text">
+       <string>Presión diastólica mínima </string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_ps_max">
+      <property name="text">
+       <string>Presion sistólica máxima</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPlainTextEdit" name="te_pd_min"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPlainTextEdit" name="te_ps_max"/>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPlainTextEdit" name="te_ps_min"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_t_sample">
+      <property name="text">
+       <string>Tiempo de muestreo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPlainTextEdit" name="te_t_sample"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_pd_max">
+      <property name="text">
+       <string>Presión diastólica máxima </string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

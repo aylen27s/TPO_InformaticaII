@@ -134,7 +134,7 @@
      <string>Configuración</string>
     </property>
     <addaction name="actionConexi_n"/>
-    <addaction name="actionRangos"/>
+    <addaction name="actionPreferencias"/>
    </widget>
    <addaction name="menuConfiguraci_n"/>
   </widget>
@@ -144,7 +144,7 @@
     <string>Conexión</string>
    </property>
   </action>
-  <action name="actionRangos">
+  <action name="actionPreferencias">
    <property name="text">
     <string>Preferencias</string>
    </property>

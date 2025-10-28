@@ -41,16 +41,16 @@ MainWindow::MainWindow(QWidget *parent)
     m_dateMax = ui->dateEdit_maxDay->date().toString("yyyy-MM-dd");
     m_selectedDate = QDate().currentDate();     // inicializa m_selectedDate con un QDate vacío
     m_viewingWindowSeconds = 300;               // ajusta la ventana de visualización en 300 [s] (últimas muestras almacenadas en los útlimos 5 minutos)
-    m_modePlot = LAST_SAMPLE;                   //Por defecto, plotea las últimas 1000 muestras [los datos de la última hora, aproximadamente]
+    m_modePlot = LAST_SAMPLE;                   //Por defecto, plotea en tiempo real las últimas 1000 muestras [los datos de la última hora, aproximadamente]
+    m_configPreferences = {PS_MAX_DEF,PS_MIN_DEF,PD_MAX_DEF,PD_MIN_DEF,TIME_TO_REFRESH};                   //Setea los valores limite de presion por defecto
 
     // *** configuración del timer para actualización automática ***
     dataTimer = new QTimer(this);                                       // se crea un QTImer para actualizaciones periódicas
     connect(dataTimer, &QTimer::timeout, this, &MainWindow::plotData);  // conecta la señal timeout del timer a la función plotData() para actualizar el gráfico cada vez que el timer expire
-    PS_LIMIT_MAX = PS_DEFAULT_VALUE;
 
     /* --- Acciones iniciales de la app --- */
     plotData();                         //Primer llamado al plot al iniciar la app.
-    dataTimer->start(TIME_TO_REFRESH);  // se llamará a plotData cada 1000 [ms]
+    dataTimer->start(m_configPreferences.tSample);  // se llamará a plotData cada 1000 [ms]
 
     // QDateTime testDate = QDateTime::currentDateTime();
     // double testDateSec= testDate.toSecsSinceEpoch();
@@ -198,7 +198,7 @@ void MainWindow::switchToLiveView(){
     ui->calendarWidget->setSelectedDate(QDate::currentDate());                  // ajusta la fecha del calendario a la fecha que se está muestreando
     m_selectedDate = QDate().currentDate();
     m_modePlot = LAST_SAMPLE;
-    dataTimer->start(TIME_TO_REFRESH);
+    dataTimer->start(m_configPreferences.tSample);
     plotData();
 }
 
@@ -276,14 +276,33 @@ void MainWindow::on_actionConexi_n_triggered()
     m_uiConexion = new Conexion(this);
 
     //Conectar la accion de la ventana emergente con el slot correspondiente
-    connect(m_uiConexion, &Conexion::sendDataToMain, this, &MainWindow::rcvDataFromDialog);
+    connect(m_uiConexion, &Conexion::sendConexionToMain, this, &MainWindow::handleConexion);
 
-    //Abrir la ventana emergente
+    //Abrir la ventana emergente de manera bloqueante.
     m_uiConexion->exec();
 
 }
 
-void MainWindow::rcvDataFromDialog(QString data){
-    //Logica para pasar datos a ESP y que se conecte al WiFi
-    qDebug()<<"Recibiendo datos de dialog: "<< data;
+
+void MainWindow::on_actionPreferencias_triggered()
+{
+    //Instanciar nueva ventana emergente de tipo Conexion
+    m_uiPreferences = new Preferences(m_configPreferences,this);
+
+    //Conectar la accion de la ventana emergente con el slot correspondiente
+    connect(m_uiPreferences, &Preferences::sendPreferencesToMain, this, &MainWindow::handlePreferences);
+
+    //Abrir la ventana emergente de manera bloqueante.
+    m_uiPreferences->exec();
 }
+
+void MainWindow::handleConexion(QString ssid, QString psw){
+    //Logica para pasar datos a ESP via UART para configurar el WiFi
+    qDebug()<<"Recibiendo datos de Conexion: "<< ssid << psw;
+}
+
+void MainWindow::handlePreferences(mConfig data){
+    qDebug()<<"Actualizando datos de Preferencias... "<< data.psMax;
+    //Chequear si hay diferencias y hacer replot/alarmas
+}
+

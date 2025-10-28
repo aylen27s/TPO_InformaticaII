@@ -10,7 +10,7 @@ Conexion::Conexion(QWidget *parent)
 
 Conexion::~Conexion()
 {
-    qDebug()<< "Ventana emergente destruida";
+    qDebug()<< "Ventana Conexion destruida";
     delete ui;
 
 }
@@ -19,7 +19,7 @@ Conexion::~Conexion()
 void Conexion::on_pb_conectar_clicked()
 {
     qDebug()<<"click botoncito conectar, mandando data al main"<< ui->textEdit_psw->toPlainText() << ui->textEdit_ssid->toPlainText();
-    emit sendDataToMain(ui->textEdit_psw->toPlainText());
+    emit sendConexionToMain(ui->textEdit_ssid->toPlainText(), ui->textEdit_psw->toPlainText());
 }
 
 

@@ -13,17 +13,20 @@ SOURCES += \
     datadb.cpp \
     main.cpp \
     mainwindow.cpp \
+    preferences.cpp \
     qcustomplot.cpp
 
 HEADERS += \
     conexion.h \
     datadb.h \
     mainwindow.h \
+    preferences.h \
     qcustomplot.h
 
 FORMS += \
     conexion.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    preferences.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

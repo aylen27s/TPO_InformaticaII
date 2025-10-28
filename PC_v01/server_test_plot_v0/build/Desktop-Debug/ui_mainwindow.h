@@ -29,7 +29,7 @@ class Ui_MainWindow
 {
 public:
     QAction *actionConexi_n;
-    QAction *actionRangos;
+    QAction *actionPreferencias;
     QWidget *centralwidget;
     QCustomPlot *customPlot;
     QCalendarWidget *calendarWidget;
@@ -51,8 +51,8 @@ public:
         MainWindow->resize(1028, 508);
         actionConexi_n = new QAction(MainWindow);
         actionConexi_n->setObjectName("actionConexi_n");
-        actionRangos = new QAction(MainWindow);
-        actionRangos->setObjectName("actionRangos");
+        actionPreferencias = new QAction(MainWindow);
+        actionPreferencias->setObjectName("actionPreferencias");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         customPlot = new QCustomPlot(centralwidget);
@@ -95,7 +95,7 @@ public:
 
         menubar->addAction(menuConfiguraci_n->menuAction());
         menuConfiguraci_n->addAction(actionConexi_n);
-        menuConfiguraci_n->addAction(actionRangos);
+        menuConfiguraci_n->addAction(actionPreferencias);
 
         retranslateUi(MainWindow);
 
@@ -106,7 +106,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionConexi_n->setText(QCoreApplication::translate("MainWindow", "Conexi\303\263n", nullptr));
-        actionRangos->setText(QCoreApplication::translate("MainWindow", "Rangos", nullptr));
+        actionPreferencias->setText(QCoreApplication::translate("MainWindow", "Preferencias", nullptr));
         liveViewButton->setText(QCoreApplication::translate("MainWindow", "Muestreo en Tiempo Real", nullptr));
         label_visualizar->setText(QCoreApplication::translate("MainWindow", "Visualizar por d\303\255a", nullptr));
         pushButton_export->setText(QCoreApplication::translate("MainWindow", "Exportar datos", nullptr));
