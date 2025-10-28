@@ -52,15 +52,19 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../datadb.cpp \
+SOURCES       = ../../conexion.cpp \
+		../../datadb.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
-		../../qcustomplot.cpp moc_mainwindow.cpp \
+		../../qcustomplot.cpp moc_conexion.cpp \
+		moc_mainwindow.cpp \
 		moc_qcustomplot.cpp
-OBJECTS       = datadb.o \
+OBJECTS       = conexion.o \
+		datadb.o \
 		main.o \
 		mainwindow.o \
 		qcustomplot.o \
+		moc_conexion.o \
 		moc_mainwindow.o \
 		moc_qcustomplot.o
 DIST          = /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/spec_pre.prf \
@@ -359,9 +363,11 @@ DIST          = /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/exceptions.prf \
 		/home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/yacc.prf \
 		/home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/lex.prf \
-		../../../../server_test_plot_v0.pro ../../datadb.h \
+		../../../../server_test_plot_v0.pro ../../conexion.h \
+		../../datadb.h \
 		../../mainwindow.h \
-		../../qcustomplot.h ../../datadb.cpp \
+		../../qcustomplot.h ../../conexion.cpp \
+		../../datadb.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../qcustomplot.cpp
@@ -373,7 +379,7 @@ TARGET        = server_test_plot_v0
 first: all
 ####### Build rules
 
-server_test_plot_v0: ui_mainwindow.h $(OBJECTS)  
+server_test_plot_v0: ui_conexion.h ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../../server_test_plot_v0.pro /home/aylen/Qt/6.5.3/gcc_64/mkspecs/linux-g++/qmake.conf /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/spec_pre.prf \
@@ -998,9 +1004,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../datadb.h ../../mainwindow.h ../../qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../datadb.cpp ../../main.cpp ../../mainwindow.cpp ../../qcustomplot.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../conexion.h ../../datadb.h ../../mainwindow.h ../../qcustomplot.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../conexion.cpp ../../datadb.cpp ../../main.cpp ../../mainwindow.cpp ../../qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../conexion.ui ../../mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1032,9 +1038,171 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_qcustomplot.cpp
+compiler_moc_header_make_all: moc_conexion.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_qcustomplot.cpp
+	-$(DEL_FILE) moc_conexion.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
+moc_conexion.cpp: ../../conexion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialog \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialog.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qglobal.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtversionchecks.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qconfig.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtcore-config.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtconfigmacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtcoreexports.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtpreprocessorsupport.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtnoop.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qassert.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtypes.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtclasshelpermacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtversion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsysinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qlogging.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qflags.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcompare_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qatomic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qconstructormacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdarwinhelpers.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qexceptionhandling.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qforeach.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtdeprecationmarkers.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qttypetraits.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfunctionpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmalloc.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qminmax.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnumeric.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qoverload.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qswap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtenvironmentvariables.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtresource.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qttranslation.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qversiontagging.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtgui-config.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtguiexports.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qwidget.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnamespace.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobject.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstring.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qchar.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearray.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qrefcount.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qarraydata.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpair.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qarraydataops.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qxptype_traits.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringfwd.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/q20type_traits.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringliteral.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qanystringview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qlist.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiterator.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringlist.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qalgorithms.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcoreevent.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmetatype.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcompare.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdatastream.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfloat16.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmath.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiterable.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qscopeguard.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobject_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbindingstorage.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmargins.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qaction.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qkeysequence.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qicon.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsize.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpixmap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qrect.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpoint.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qcolor.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qrgb.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qrgba64.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qshareddata.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qimage.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpixelformat.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtransform.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpolygon.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qregion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qline.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qvariant.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdebug.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtextstream.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringconverter_base.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qshareddata_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qset.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qhash.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/q20memory.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpalette.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qbrush.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfont.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfontinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qcursor.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qbitmap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qevent.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiodevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qurl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qeventpoint.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qvector2d.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qvectornd.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpointingdevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qinputdevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qscreen.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QList \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QObject \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QRect \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QSize \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QSizeF \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QTransform \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnativeinterface.h \
+		moc_predefs.h \
+		/home/aylen/Qt/6.5.3/gcc_64/libexec/moc
+	/home/aylen/Qt/6.5.3/gcc_64/libexec/moc $(DEFINES) --include /home/aylen/Escritorio/Info2/TPO_InformaticaII/PC_v01/server_test_plot_v0/build/Desktop-Debug/moc_predefs.h -I/home/aylen/Qt/6.5.3/gcc_64/mkspecs/linux-g++ -I/home/aylen/Escritorio/Info2/TPO_InformaticaII/PC_v01/server_test_plot_v0 -I/home/aylen/Qt/6.5.3/gcc_64/include -I/home/aylen/Qt/6.5.3/gcc_64/include/QtPrintSupport -I/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets -I/home/aylen/Qt/6.5.3/gcc_64/include/QtGui -I/home/aylen/Qt/6.5.3/gcc_64/include/QtSql -I/home/aylen/Qt/6.5.3/gcc_64/include/QtNetwork -I/home/aylen/Qt/6.5.3/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../conexion.h -o moc_conexion.cpp
+
 moc_mainwindow.cpp: ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QMainWindow \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -2007,9 +2175,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_conexion.h ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_conexion.h ui_mainwindow.h
+ui_conexion.h: ../../conexion.ui \
+		/home/aylen/Qt/6.5.3/gcc_64/libexec/uic
+	/home/aylen/Qt/6.5.3/gcc_64/libexec/uic ../../conexion.ui -o ui_conexion.h
+
 ui_mainwindow.h: ../../mainwindow.ui \
 		/home/aylen/Qt/6.5.3/gcc_64/libexec/uic \
 		../../qcustomplot.h \
@@ -2574,6 +2746,213 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+conexion.o: ../../conexion.cpp ../../conexion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialog \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialog.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qglobal.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtversionchecks.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qconfig.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtcore-config.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtconfigmacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtcoreexports.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtpreprocessorsupport.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtnoop.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qassert.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtypes.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtclasshelpermacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtversion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsysinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qlogging.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qflags.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcompare_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qatomic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qconstructormacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdarwinhelpers.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qexceptionhandling.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qforeach.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtdeprecationmarkers.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qttypetraits.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfunctionpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmalloc.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qminmax.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnumeric.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qoverload.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qswap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtenvironmentvariables.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtresource.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qttranslation.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qversiontagging.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtgui-config.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtguiexports.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qwidget.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnamespace.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtmetamacros.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobject.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstring.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qchar.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearray.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qrefcount.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qarraydata.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpair.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qarraydataops.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qxptype_traits.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearrayview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringfwd.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/q20type_traits.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringliteral.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qanystringview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qutf8stringview.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringtokenizer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qlist.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiterator.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringlist.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qalgorithms.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcoreevent.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmetatype.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcompare.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdatastream.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiodevicebase.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfloat16.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmath.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiterable.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmetacontainer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontainerinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtaggedpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qscopeguard.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qobject_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qbindingstorage.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmargins.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qaction.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qkeysequence.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qicon.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsize.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpixmap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qrect.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpoint.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qcolor.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qrgb.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qrgba64.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qshareddata.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qimage.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpixelformat.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtransform.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpolygon.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qregion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qline.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qvariant.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdebug.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtextstream.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qstringconverter_base.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qshareddata_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qset.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qhash.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/q20memory.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpalette.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qbrush.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfont.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfontinfo.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qcursor.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qbitmap.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qevent.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qiodevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpointer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qurl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qeventpoint.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qvector2d.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qvectornd.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpointingdevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qinputdevice.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qscreen.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QList \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QObject \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QRect \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QSize \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QSizeF \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QTransform \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnativeinterface.h \
+		ui_conexion.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QVariant \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QAbstractButton \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QApplication \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qapplication.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qeventloop.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfuture.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfutureinterface.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmutex.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtsan_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qresultstore.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfuture_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qthreadpool.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qthread.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdeadlinetimer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qelapsedtimer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qrunnable.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qexception.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpromise.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qguiapplication.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qinputmethod.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qlocale.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qguiapplication_platform.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QGridLayout \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QLabel \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlabel.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qframe.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpicture.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextdocument.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QSpacerItem \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QTextEdit \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextoption.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextcursor.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextformat.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpen.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QWidget
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o conexion.o ../../conexion.cpp
 
 datadb.o: ../../datadb.cpp ../../datadb.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QString \
@@ -3472,6 +3851,7 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QTextStream \
 		../../datadb.h \
 		ui_mainwindow.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QAction \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QApplication \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qapplication.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QCalendarWidget \
@@ -3482,9 +3862,10 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QLabel \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlabel.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qframe.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QMenu \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qmenu.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QMenuBar \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qmenubar.h \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qmenu.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QPushButton \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -3524,7 +3905,6 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qaccessiblewidget.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qaction.h \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QAction \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qactiongroup.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QActionGroup \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qboxlayout.h \
@@ -4199,6 +4579,9 @@ qcustomplot.o: ../../qcustomplot.cpp ../../qcustomplot.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QElapsedTimer \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QTimeZone
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qcustomplot.o ../../qcustomplot.cpp
+
+moc_conexion.o: moc_conexion.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_conexion.o moc_conexion.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

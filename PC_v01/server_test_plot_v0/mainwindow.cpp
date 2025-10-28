@@ -2,10 +2,6 @@
 #include "ui_mainwindow.h"
 
 
-//Defino utilidades para establecer conexión con el server
-#define MY_IP_SERVER    "192.168.0.72"  //Del server ESP
-#define MY_PORT_SERVER  10234           //Puerto en en el que escucha el server ESP
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -50,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     // *** configuración del timer para actualización automática ***
     dataTimer = new QTimer(this);                                       // se crea un QTImer para actualizaciones periódicas
     connect(dataTimer, &QTimer::timeout, this, &MainWindow::plotData);  // conecta la señal timeout del timer a la función plotData() para actualizar el gráfico cada vez que el timer expire
-
+    PS_LIMIT_MAX = PS_DEFAULT_VALUE;
 
     /* --- Acciones iniciales de la app --- */
     plotData();                         //Primer llamado al plot al iniciar la app.
@@ -73,8 +69,6 @@ MainWindow::~MainWindow()
 }
 
 // *** DEFINICIONES DE LOS SLOTS DEFAULTS de UI ***
-
-
 
 
 void MainWindow::on_liveViewButton_clicked()                                  // restaura la vista de muestreo en tiempo real tocando el botón
@@ -144,7 +138,7 @@ void MainWindow::plotData()                                     // consulta la b
     }
 
 
-    qDebug() << myQuery;
+    // qDebug() << myQuery;
 
     query.prepare(myQuery);
 
@@ -157,7 +151,7 @@ void MainWindow::plotData()                                     // consulta la b
         qDebug() << "Error en la consulta";
 
     } else {
-        qDebug() << "La consulta arrojó resultados.";
+        // qDebug() << "La consulta arrojó resultados.";
 
         int totalRecords = 0;
         while (query.next()) {
@@ -173,14 +167,13 @@ void MainWindow::plotData()                                     // consulta la b
         // ~ ACLARACIÓN: dt.toSecsSinceEpoch() devuelve un entero muy grande que representa la cantidad de segundos transcurridos desde la época (epoch) [1 de enero de 1970 a las 00:00:00 UTC] ~
         // ~ este número entero sirve para graficar en el eje x, se evitan problemas de formato. QCPAxisTickerDateTime se encarga de asignarle a este número la fecha/hora linda en el eje       ~
 
-        qDebug()<< "Cantidad de registros seleccionados:" << totalRecords ;
+        // qDebug()<< "Cantidad de registros seleccionados:" << totalRecords ;
 
         if (0 >= totalRecords) {
             QMessageBox msgBox;
-            msgBox.setText("No se registran datos para la selección actual.");
-            msgBox.setInformativeText("Intente con otra fecha.");
+            msgBox.setText("No se registran datos para la selección actual. Intente nuevamente con otra fecha.");
+            msgBox.setInformativeText("Se volverá al modo Muestreo en tiempo real.");
             msgBox.setIcon(QMessageBox::Information);
-            // msgBox.setStandardButtons(QMessageBox::Close);
             msgBox.exec();
             switchToLiveView();
             return;                                                                                     // no hay datos para graficar
@@ -276,3 +269,21 @@ void MainWindow::on_pushButton_export_clicked()
     archivo.close();
 }
 
+/* --- Metodo para abrir ventana de conexion de red wifi del dispositivo ---- */
+void MainWindow::on_actionConexi_n_triggered()
+{
+    //Instanciar nueva ventana emergente de tipo Conexion
+    m_uiConexion = new Conexion(this);
+
+    //Conectar la accion de la ventana emergente con el slot correspondiente
+    connect(m_uiConexion, &Conexion::sendDataToMain, this, &MainWindow::rcvDataFromDialog);
+
+    //Abrir la ventana emergente
+    m_uiConexion->exec();
+
+}
+
+void MainWindow::rcvDataFromDialog(QString data){
+    //Logica para pasar datos a ESP y que se conecte al WiFi
+    qDebug()<<"Recibiendo datos de dialog: "<< data;
+}

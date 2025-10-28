@@ -10,11 +10,13 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -26,6 +28,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionConexi_n;
+    QAction *actionRangos;
     QWidget *centralwidget;
     QCustomPlot *customPlot;
     QCalendarWidget *calendarWidget;
@@ -37,6 +41,7 @@ public:
     QPushButton *pushButton_import;
     QLabel *label_visualizar_2;
     QMenuBar *menubar;
+    QMenu *menuConfiguraci_n;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -44,6 +49,10 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(1028, 508);
+        actionConexi_n = new QAction(MainWindow);
+        actionConexi_n->setObjectName("actionConexi_n");
+        actionRangos = new QAction(MainWindow);
+        actionRangos->setObjectName("actionRangos");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         customPlot = new QCustomPlot(centralwidget);
@@ -77,10 +86,16 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 1028, 22));
+        menuConfiguraci_n = new QMenu(menubar);
+        menuConfiguraci_n->setObjectName("menuConfiguraci_n");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuConfiguraci_n->menuAction());
+        menuConfiguraci_n->addAction(actionConexi_n);
+        menuConfiguraci_n->addAction(actionRangos);
 
         retranslateUi(MainWindow);
 
@@ -90,11 +105,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionConexi_n->setText(QCoreApplication::translate("MainWindow", "Conexi\303\263n", nullptr));
+        actionRangos->setText(QCoreApplication::translate("MainWindow", "Rangos", nullptr));
         liveViewButton->setText(QCoreApplication::translate("MainWindow", "Muestreo en Tiempo Real", nullptr));
         label_visualizar->setText(QCoreApplication::translate("MainWindow", "Visualizar por d\303\255a", nullptr));
         pushButton_export->setText(QCoreApplication::translate("MainWindow", "Exportar datos", nullptr));
         pushButton_import->setText(QCoreApplication::translate("MainWindow", "Ver", nullptr));
         label_visualizar_2->setText(QCoreApplication::translate("MainWindow", "Visualizar por per\303\255odo", nullptr));
+        menuConfiguraci_n->setTitle(QCoreApplication::translate("MainWindow", "Configuraci\303\263n", nullptr));
     } // retranslateUi
 
 };
