@@ -13,6 +13,7 @@ SOURCES += \
     datadb.cpp \
     main.cpp \
     mainwindow.cpp \
+    mconfigdata.cpp \
     preferences.cpp \
     qcustomplot.cpp
 
@@ -20,6 +21,7 @@ HEADERS += \
     conexion.h \
     datadb.h \
     mainwindow.h \
+    mconfigdata.h \
     preferences.h \
     qcustomplot.h
 

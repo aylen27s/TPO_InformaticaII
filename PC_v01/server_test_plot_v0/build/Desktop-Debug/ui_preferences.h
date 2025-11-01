@@ -40,18 +40,19 @@ public:
     QFrame *line;
     QPlainTextEdit *te_ps_max;
     QPlainTextEdit *te_ps_min;
-    QLabel *label_t_sample;
     QPlainTextEdit *te_t_sample;
     QLabel *label_pd_max;
+    QLabel *label_t_sample;
+    QLabel *label_changesUpdate;
 
     void setupUi(QDialog *Preferences)
     {
         if (Preferences->objectName().isEmpty())
             Preferences->setObjectName("Preferences");
-        Preferences->resize(540, 449);
+        Preferences->resize(541, 483);
         horizontalLayoutWidget = new QWidget(Preferences);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(90, 330, 341, 51));
+        horizontalLayoutWidget->setGeometry(QRect(90, 370, 341, 51));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -68,7 +69,7 @@ public:
         horizontalLayout->setStretch(0, 1);
         gridLayoutWidget = new QWidget(Preferences);
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(90, 60, 341, 241));
+        gridLayoutWidget->setGeometry(QRect(90, 60, 341, 221));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(0);
         gridLayout->setObjectName("gridLayout");
@@ -122,11 +123,6 @@ public:
 
         gridLayout->addWidget(te_ps_min, 1, 1, 1, 1);
 
-        label_t_sample = new QLabel(gridLayoutWidget);
-        label_t_sample->setObjectName("label_t_sample");
-
-        gridLayout->addWidget(label_t_sample, 5, 0, 1, 1);
-
         te_t_sample = new QPlainTextEdit(gridLayoutWidget);
         te_t_sample->setObjectName("te_t_sample");
 
@@ -137,8 +133,16 @@ public:
 
         gridLayout->addWidget(label_pd_max, 2, 0, 1, 1);
 
+        label_t_sample = new QLabel(gridLayoutWidget);
+        label_t_sample->setObjectName("label_t_sample");
+
+        gridLayout->addWidget(label_t_sample, 5, 0, 1, 1);
+
         gridLayout->setColumnStretch(0, 2);
         gridLayout->setColumnStretch(1, 1);
+        label_changesUpdate = new QLabel(Preferences);
+        label_changesUpdate->setObjectName("label_changesUpdate");
+        label_changesUpdate->setGeometry(QRect(90, 300, 341, 21));
 
         retranslateUi(Preferences);
 
@@ -153,8 +157,9 @@ public:
         label_ps_min->setText(QCoreApplication::translate("Preferences", "Presi\303\263n sist\303\263lica m\303\255nima", nullptr));
         label_pd_min->setText(QCoreApplication::translate("Preferences", "Presi\303\263n diast\303\263lica m\303\255nima ", nullptr));
         label_ps_max->setText(QCoreApplication::translate("Preferences", "Presion sist\303\263lica m\303\241xima", nullptr));
-        label_t_sample->setText(QCoreApplication::translate("Preferences", "Tiempo de muestreo", nullptr));
         label_pd_max->setText(QCoreApplication::translate("Preferences", "Presi\303\263n diast\303\263lica m\303\241xima ", nullptr));
+        label_t_sample->setText(QCoreApplication::translate("Preferences", "Tiempo de muestreo", nullptr));
+        label_changesUpdate->setText(QCoreApplication::translate("Preferences", "No hay nuevos cambios aplicados", nullptr));
     } // retranslateUi
 
 };

@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_selectedDate = QDate().currentDate();     // inicializa m_selectedDate con un QDate vacío
     m_viewingWindowSeconds = 300;               // ajusta la ventana de visualización en 300 [s] (últimas muestras almacenadas en los útlimos 5 minutos)
     m_modePlot = LAST_SAMPLE;                   //Por defecto, plotea en tiempo real las últimas 1000 muestras [los datos de la última hora, aproximadamente]
-    m_configPreferences = {PS_MAX_DEF,PS_MIN_DEF,PD_MAX_DEF,PD_MIN_DEF,TIME_TO_REFRESH};                   //Setea los valores limite de presion por defecto
+    // m_configPreferences = {PS_MAX_DEF,PS_MIN_DEF,PD_MAX_DEF,PD_MIN_DEF,TIME_TO_REFRESH};                   //Setea los valores limite de presion por defecto
 
     // *** configuración del timer para actualización automática ***
     dataTimer = new QTimer(this);                                       // se crea un QTImer para actualizaciones periódicas
@@ -291,6 +291,7 @@ void MainWindow::on_actionPreferencias_triggered()
 
     //Conectar la accion de la ventana emergente con el slot correspondiente
     connect(m_uiPreferences, &Preferences::sendPreferencesToMain, this, &MainWindow::handlePreferences);
+    connect(this, &MainWindow::updateStatus, m_uiPreferences, &Preferences::readSatus);
 
     //Abrir la ventana emergente de manera bloqueante.
     m_uiPreferences->exec();
@@ -301,8 +302,15 @@ void MainWindow::handleConexion(QString ssid, QString psw){
     qDebug()<<"Recibiendo datos de Conexion: "<< ssid << psw;
 }
 
-void MainWindow::handlePreferences(mConfig data){
-    qDebug()<<"Actualizando datos de Preferencias... "<< data.psMax;
+void MainWindow::handlePreferences(MConfigData data){
+    qDebug()<<"Recibiendo datos de Preferencias... "<< data.psMax;
     //Chequear si hay diferencias y hacer replot/alarmas
+    if(data == m_configPreferences){
+        emit updateStatus(false);
+    }else{
+        emit updateStatus(true);
+        m_configPreferences = data;
+        qDebug()<< "Se actualizó la configuración psMax nuevo: "<< m_configPreferences.psMax;
+    }
 }
 

@@ -1,7 +1,8 @@
 #include "preferences.h"
 #include "ui_preferences.h"
 
-Preferences::Preferences(mConfig data, QWidget *parent)
+// Preferences::Preferences(mConfig data, QWidget *parent)
+Preferences::Preferences(MConfigData data, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Preferences)
 {
@@ -12,6 +13,7 @@ Preferences::Preferences(mConfig data, QWidget *parent)
     ui->te_ps_max->setPlainText(QString::number(data.psMax));
     ui->te_ps_min->setPlainText(QString::number(data.psMin));
     ui->te_t_sample->setPlainText(QString::number(data.tSample));
+    m_status = false;
 }
 
 Preferences::~Preferences()
@@ -29,14 +31,25 @@ void Preferences::on_pushButton_cerrar_clicked()
 void Preferences::on_pushButton_aplicar_clicked()
 {
     //Reconfigurar los plots y mandar datos al main para reconfigurar LPC
-    mConfig reconfig = {
+    // mConfig reconfig = {
+    //     ui->te_ps_max->toPlainText().toFloat(),
+    //     ui->te_ps_min->toPlainText().toFloat(),
+    //     ui->te_pd_max->toPlainText().toFloat(),
+    //     ui->te_pd_min->toPlainText().toFloat(),
+    //     ui->te_t_sample->toPlainText().toInt()
+    // };
+
+    MConfigData reconfig(
         ui->te_ps_max->toPlainText().toFloat(),
         ui->te_ps_min->toPlainText().toFloat(),
         ui->te_pd_max->toPlainText().toFloat(),
         ui->te_pd_min->toPlainText().toFloat(),
         ui->te_t_sample->toPlainText().toInt()
-    };
-
+    );
     emit sendPreferencesToMain(reconfig);
 }
 
+void Preferences::readSatus(bool status){
+    qDebug()<< "recibiendo cambio de status" << status;
+    if(status) ui->label_changesUpdate->setText("Cambios sincronizados");
+}

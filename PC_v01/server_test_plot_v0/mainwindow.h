@@ -28,18 +28,14 @@
 //Headers de forms de configuracion
 #include "conexion.h"
 #include "preferences.h"
+#include "mconfigdata.h"
 
 //Definiciones propias de la app
-#define TIME_TO_REFRESH     1000            //Tiempo para el muestro en tiempo real
 #define LIMIT_RECORDS       150
 #define MY_IP_SERVER        "192.168.0.72"  //Del server ESP
 #define MY_PORT_SERVER      10234           //Puerto en en el que escucha el server ESP
 
-//Valores por defecto
-#define PS_MAX_DEF      150
-#define PS_MIN_DEF      110
-#define PD_MAX_DEF      70
-#define PD_MIN_DEF      98
+
 
 //Definicion de enumeraciones para manejo del plot
 enum MyModePlot {LAST_SAMPLE,DAY_SAMPLE,PERIOD_SAMPLE};
@@ -56,13 +52,16 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+signals:
+    void updateStatus(bool status);
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void insertDataBaseInfo(int _ps,int _pd, QString _fecha); //Metodo para insertar los datos que llegan por TCP del ESP
     void handleConexion(QString, QString);
-    void handlePreferences(mConfig);
+    // void handlePreferences(mConfig);
+    void handlePreferences(MConfigData);
 
 private slots:
     void plotData(); // slot para dibujar/actualizar los datos
@@ -90,8 +89,9 @@ private:
     QString m_dateMax;                  //idem m_dateMin
     QVector<double> timestamps;
     QVector<double> values;
-    mConfig m_configPreferences;    // vector de strings para
-    //Ventana de configuracion de para asignarle red WiFi al dispositivo.
+    // mConfig m_configPreferences;    // vector de strings para
+    MConfigData m_configPreferences;
+    //Ventana de configuracion de para asignarle red WiFi al dispositivo y pasar parametros al lpc.
     Conexion *m_uiConexion;
     Preferences *m_uiPreferences;
 };

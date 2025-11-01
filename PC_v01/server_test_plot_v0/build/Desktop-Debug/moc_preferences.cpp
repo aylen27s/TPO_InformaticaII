@@ -41,7 +41,7 @@ static constexpr auto qt_meta_stringdata_CLASSPreferencesENDCLASS = QtMocHelpers
     "Preferences",
     "sendPreferencesToMain",
     "",
-    "mConfig",
+    "MConfigData",
     "on_pushButton_cerrar_clicked",
     "on_pushButton_aplicar_clicked"
 );
@@ -51,7 +51,7 @@ struct qt_meta_stringdata_CLASSPreferencesENDCLASS_t {
     char stringdata0[12];
     char stringdata1[22];
     char stringdata2[1];
-    char stringdata3[8];
+    char stringdata3[12];
     char stringdata4[29];
     char stringdata5[30];
 };
@@ -62,14 +62,14 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSPreferencesENDCLASS_t qt_meta_s
         QT_MOC_LITERAL(0, 11),  // "Preferences"
         QT_MOC_LITERAL(12, 21),  // "sendPreferencesToMain"
         QT_MOC_LITERAL(34, 0),  // ""
-        QT_MOC_LITERAL(35, 7),  // "mConfig"
-        QT_MOC_LITERAL(43, 28),  // "on_pushButton_cerrar_clicked"
-        QT_MOC_LITERAL(72, 29)   // "on_pushButton_aplicar_clicked"
+        QT_MOC_LITERAL(35, 11),  // "MConfigData"
+        QT_MOC_LITERAL(47, 28),  // "on_pushButton_cerrar_clicked"
+        QT_MOC_LITERAL(76, 29)   // "on_pushButton_aplicar_clicked"
     },
     "Preferences",
     "sendPreferencesToMain",
     "",
-    "mConfig",
+    "MConfigData",
     "on_pushButton_cerrar_clicked",
     "on_pushButton_aplicar_clicked"
 };
@@ -118,7 +118,7 @@ Q_CONSTINIT const QMetaObject Preferences::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<Preferences, std::true_type>,
         // method 'sendPreferencesToMain'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<mConfig, std::false_type>,
+        QtPrivate::TypeAndForceComplete<MConfigData, std::false_type>,
         // method 'on_pushButton_cerrar_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton_aplicar_clicked'
@@ -133,7 +133,7 @@ void Preferences::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         auto *_t = static_cast<Preferences *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->sendPreferencesToMain((*reinterpret_cast< std::add_pointer_t<mConfig>>(_a[1]))); break;
+        case 0: _t->sendPreferencesToMain((*reinterpret_cast< std::add_pointer_t<MConfigData>>(_a[1]))); break;
         case 1: _t->on_pushButton_cerrar_clicked(); break;
         case 2: _t->on_pushButton_aplicar_clicked(); break;
         default: ;
@@ -141,7 +141,7 @@ void Preferences::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (Preferences::*)(mConfig );
+            using _t = void (Preferences::*)(MConfigData );
             if (_t _q_method = &Preferences::sendPreferencesToMain; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -181,7 +181,7 @@ int Preferences::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Preferences::sendPreferencesToMain(mConfig _t1)
+void Preferences::sendPreferencesToMain(MConfigData _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

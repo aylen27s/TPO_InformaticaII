@@ -56,6 +56,7 @@ SOURCES       = ../../conexion.cpp \
 		../../datadb.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
+		../../mconfigdata.cpp \
 		../../preferences.cpp \
 		../../qcustomplot.cpp moc_conexion.cpp \
 		moc_mainwindow.cpp \
@@ -65,6 +66,7 @@ OBJECTS       = conexion.o \
 		datadb.o \
 		main.o \
 		mainwindow.o \
+		mconfigdata.o \
 		preferences.o \
 		qcustomplot.o \
 		moc_conexion.o \
@@ -370,11 +372,13 @@ DIST          = /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../server_test_plot_v0.pro ../../conexion.h \
 		../../datadb.h \
 		../../mainwindow.h \
+		../../mconfigdata.h \
 		../../preferences.h \
 		../../qcustomplot.h ../../conexion.cpp \
 		../../datadb.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
+		../../mconfigdata.cpp \
 		../../preferences.cpp \
 		../../qcustomplot.cpp
 QMAKE_TARGET  = server_test_plot_v0
@@ -1010,8 +1014,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/aylen/Qt/6.5.3/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../conexion.h ../../datadb.h ../../mainwindow.h ../../preferences.h ../../qcustomplot.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../conexion.cpp ../../datadb.cpp ../../main.cpp ../../mainwindow.cpp ../../preferences.cpp ../../qcustomplot.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../conexion.h ../../datadb.h ../../mainwindow.h ../../mconfigdata.h ../../preferences.h ../../qcustomplot.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../conexion.cpp ../../datadb.cpp ../../main.cpp ../../mainwindow.cpp ../../mconfigdata.cpp ../../preferences.cpp ../../qcustomplot.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../conexion.ui ../../mainwindow.ui ../../preferences.ui $(DISTDIR)/
 
 
@@ -1618,9 +1622,7 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QFile \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QTextStream \
 		../../datadb.h \
-		../../conexion.h \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialog \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialog.h \
+		../../mconfigdata.h \
 		moc_predefs.h \
 		/home/aylen/Qt/6.5.3/gcc_64/libexec/moc
 	/home/aylen/Qt/6.5.3/gcc_64/libexec/moc $(DEFINES) --include /home/aylen/Escritorio/Info2/TPO_InformaticaII/PC_v01/server_test_plot_v0/build/Desktop-Debug/moc_predefs.h -I/home/aylen/Qt/6.5.3/gcc_64/mkspecs/linux-g++ -I/home/aylen/Escritorio/Info2/TPO_InformaticaII/PC_v01/server_test_plot_v0 -I/home/aylen/Qt/6.5.3/gcc_64/include -I/home/aylen/Qt/6.5.3/gcc_64/include/QtPrintSupport -I/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets -I/home/aylen/Qt/6.5.3/gcc_64/include/QtGui -I/home/aylen/Qt/6.5.3/gcc_64/include/QtSql -I/home/aylen/Qt/6.5.3/gcc_64/include/QtNetwork -I/home/aylen/Qt/6.5.3/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/gcc/x86_64-linux-gnu/13/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../mainwindow.h -o moc_mainwindow.cpp
@@ -3612,9 +3614,7 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QFile \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QTextStream \
 		../../datadb.h \
-		../../conexion.h \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialog \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialog.h \
+		../../mconfigdata.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QApplication \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
@@ -4028,9 +4028,7 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QFile \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QTextStream \
 		../../datadb.h \
-		../../conexion.h \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialog \
-		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialog.h \
+		../../mconfigdata.h \
 		ui_mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QAction \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QApplication \
@@ -4095,6 +4093,7 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qcheckbox.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qcolordialog.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qdialog.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qcolormap.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qcolumnview.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qcombobox.h \
@@ -4206,6 +4205,9 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QElapsedTimer \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QTimeZone
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
+
+mconfigdata.o: ../../mconfigdata.cpp ../../mconfigdata.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mconfigdata.o ../../mconfigdata.cpp
 
 preferences.o: ../../preferences.cpp ../../preferences.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QDialog \
@@ -4365,7 +4367,59 @@ preferences.o: ../../preferences.cpp ../../preferences.h \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QSizeF \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/QTransform \
 		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qnativeinterface.h \
-		ui_preferences.h
+		ui_preferences.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/QVariant \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QApplication \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qapplication.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qeventloop.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfuture.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfutureinterface.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qmutex.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qtsan_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qresultstore.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qfuture_impl.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qthreadpool.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qthread.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qdeadlinetimer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qelapsedtimer.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qrunnable.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qexception.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qpromise.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qguiapplication.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qinputmethod.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtCore/qlocale.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qguiapplication_platform.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QFrame \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qframe.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QGridLayout \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QLabel \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qlabel.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpicture.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextdocument.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QPlainTextEdit \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qplaintextedit.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextoption.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextcursor.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextformat.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qpen.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qtextlayout.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qglyphrun.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qrawfont.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtGui/qfontdatabase.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QPushButton \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/aylen/Qt/6.5.3/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o preferences.o ../../preferences.cpp
 
 qcustomplot.o: ../../qcustomplot.cpp ../../qcustomplot.h \
