@@ -184,10 +184,12 @@ static void sendUartToClientData(void *arg) {       //funcion que manda desde la
         }
 
         vTaskDelay(pdMS_TO_TICKS(5000)); // espero 5 segs antes de mandar datos
+
+        /* Logica lectura de datos de UART [medidas del sensor] */
         // int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(1000));
 
-        /* bloque de test*/
-            strcpy((char*)buf,"128,85,"); // medicion de pruebita
+        /* bloque de test envio de muestras*/
+            strcpy((char*)buf,"?,128,85,"); // medicion de pruebita
             time_t now;
             struct tm timeinfo;
             char time_buffer[80];
@@ -196,12 +198,14 @@ static void sendUartToClientData(void *arg) {       //funcion que manda desde la
             localtime_r(&now, &timeinfo);
             strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
 
-            strcpy((char*)buf+7,time_buffer);
-            strcpy((char*)buf+26,",");
+            strcpy((char*)buf+9,time_buffer);
+            strcpy((char*)buf+28,",");
             ESP_LOGI(TAG, "test datos -> %s", buf);
             int len = strlen((char*)buf);
         /* fin bloque de test*/
 
+        
+        /* Logica para mandar trama al QT por TCP */
         if (len > 0) {
             int sent = send(client_sock, buf, len, 0);
             if (sent < 0) {
@@ -214,7 +218,24 @@ static void sendUartToClientData(void *arg) {       //funcion que manda desde la
     }
 }
 
+static void sendConfirmClient (void *arg){
+    /*  Logica para trama  byte de confirmacion de recepcion de configuracion  */
+    int sent = send(client_sock, "$", 1, 0);
+    if (sent < 0) {
+        ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
+        shutdown(client_sock, 0);
+        close(client_sock);
+        client_sock = -1;
+    }
+    vTaskDelete(NULL);
+}
+
 static void sendClientToUartData(void *arg) {
+    /*
+        Recepción de trama de configuración para pasar al LPC. Cualquier otro formato de trama debe ser descartado.
+        -Formato de trama: >XXX,YYY,ZZ,HH,CCCCCC
+    */
+
     uint8_t buf[BUF_SIZE];
     while (1) {
         if (client_sock < 0) {
@@ -223,7 +244,12 @@ static void sendClientToUartData(void *arg) {
         }
         int len = recv(client_sock, buf, BUF_SIZE, 0);
         if (len > 0) {
-            uart_write_bytes(UART_NUM_2, (const char *)buf, len);
+            /* Si hay más de un dato, evaluar que la trama sea correcta y mandar por UART al LPC*/
+            uart_write_bytes(UART_NUM_2, (const char *)buf, len); 
+            
+            //Avisar al cliente TCP que sus datos se recepcionaron
+            xTaskCreate(sendConfirmClient, "sendConfirmClient", 4096, NULL, 10, NULL);
+
         } else if (len == 0) {
             ESP_LOGI(TAG, "Cliente TCP desconectado");
             shutdown(client_sock, 0);
@@ -279,9 +305,13 @@ void initServer(void) {
 
         ESP_LOGI(TAG, "Cliente TCP conectado");
 
-        //Cuando el cliente se conecta, le doy lo que tenga en el buffer de la UART y escribo en la UART lo que me mande el cliente
+        //Cuando el cliente se conecta, le doy lo que tenga en el buffer de la UART
         xTaskCreate(sendUartToClientData, "sendUartToClientData", 4096, NULL, 10, NULL); 
-        // xTaskCreate(sendClientToUartData, "sendClientToUartData", 4096, NULL, 10, NULL);
+        
+        //El cliente TCP (app QT) puede mandar datos para configurar el LPC, leo lo que me mande por TCP y lo escribo en la UART:
+        xTaskCreate(sendClientToUartData, "sendClientToUartData", 4096, NULL, 10, NULL);
+        
+
 
         while (client_sock >= 0) {
             // vTaskDelay(pdMS_TO_TICKS(500)); //manda datos cada 5ms ?
@@ -291,7 +321,6 @@ void initServer(void) {
         ESP_LOGI(TAG, "Cliente desconectado, esperando nuevo cliente");
     }
 }
-
 
 
 
@@ -307,17 +336,17 @@ void app_main(void){
     ESP_ERROR_CHECK(ret);
     
     /* Cnofigurar y conectar WIFI*/
-    ESP_LOGI("WIFI","Conectando WiFi en SSID %s ...", WIFI_SSID);
+    ESP_LOGI("WIFI","Ejecutando conexion WiFi en SSID %s ...", WIFI_SSID);
     connectEspToWifi();
     
 
     /* Obtener fecha y hora de servidor externo */
-    ESP_LOGI("TIME-SYNC", "Chequeando fecha y hora del sistema...");
+    ESP_LOGI("TIME-SYNC", "Ejecutando chequeo fecha y hora del sistema...");
     SetSystemTimeSNTP();
 
     /* Configurar y habilitar UART */
-    // ESP_LOGI(TAG, "Init UART");
-    // configUart();
+    ESP_LOGI(TAG, "Ejecutando configuracion UART...");
+    configUart();
 
     /* Iniciar servidor y escuchar cliente TCP. Dentro de esta función se resuleve el envio de datos desde la UART hacia el cliente y viceversa */
     initServer();

@@ -43,14 +43,15 @@ MainWindow::MainWindow(QWidget *parent)
     m_viewingWindowSeconds = 300;               // ajusta la ventana de visualización en 300 [s] (últimas muestras almacenadas en los útlimos 5 minutos)
     m_modePlot = LAST_SAMPLE;                   //Por defecto, plotea en tiempo real las últimas 1000 muestras [los datos de la última hora, aproximadamente]
     // m_configPreferences = {PS_MAX_DEF,PS_MIN_DEF,PD_MAX_DEF,PD_MIN_DEF,TIME_TO_REFRESH};                   //Setea los valores limite de presion por defecto
+    m_awaitESPConfirmation = false;             //Flag para controlar recepcion de trama del lado del ESP
 
     // *** configuración del timer para actualización automática ***
     dataTimer = new QTimer(this);                                       // se crea un QTImer para actualizaciones periódicas
     connect(dataTimer, &QTimer::timeout, this, &MainWindow::plotData);  // conecta la señal timeout del timer a la función plotData() para actualizar el gráfico cada vez que el timer expire
 
     /* --- Acciones iniciales de la app --- */
-    plotData();                         //Primer llamado al plot al iniciar la app.
-    dataTimer->start(m_configPreferences.tSample);  // se llamará a plotData cada 1000 [ms]
+    plotData();                                         //Primer llamado al plot al iniciar la app.
+    dataTimer->start(m_configPreferences.tSample);      // se llamará a plotData cada 1000 [ms]
 
     // QDateTime testDate = QDateTime::currentDateTime();
     // double testDateSec= testDate.toSecsSinceEpoch();
@@ -205,19 +206,58 @@ void MainWindow::switchToLiveView(){
 
 /* --- Lectura de trama TCP --- */
 void MainWindow::onReadyRead(){
+    /*  Lectura de info que llega por socket.
+        -Formato de trama de muestra de datos: >,SSS,DDD,FFFFFFFFFFFFFFFFFFF
+        -Formato de trama de confirmación de cambios de preferencias:  $
+    */
 
-    QByteArray tcpData = m_socket.readAll();    //Lectura de info que llega por socket. Input esperado SSS,DDD,FFFFFFFFFFFFFFFFFFF
+    QByteArray tcpData = m_socket.readAll();
     QString fullStringResponse(tcpData);        //Parseo a string
     QStringList dataResponse = fullStringResponse.split(',');   //Separo cada dato que me interesa guardar
 
-    int _ps = dataResponse.at(0).toFloat();
-    int _pd = dataResponse.at(1).toFloat();
-    QString _date = dataResponse.at(2);
 
-    // qDebug() << "Trama recibida" <<tcpData << "--fin--";
-    qDebug() << "Datos spliteados:" <<_ps<<_pd<< _date; //no me funcionaba el internet cuando quise probar esto :(
+    /*Evaluo el primer caracter de la trama, que sera ">" o "$". En base a eso se determina si hay que almacenar datos o avisar al front que se aplicaron los cambios */
+    MyTypeTrama typeReception = NO_TRAMA;
 
-    insertDataBaseInfo(_ps,_pd,_date); //Escribo en DB local
+    if( dataResponse.at(0) == "$"){ typeReception = READ_STAT; }
+
+    if( dataResponse.at(0) == ">"){ typeReception = READ_SENSOR; }
+
+    switch (typeReception) {
+    case READ_SENSOR:
+        // int _ps = dataResponse.at(1).toFloat();
+        // int _pd = dataResponse.at(2).toFloat();
+        // QString _date = dataResponse.at(3);
+
+        // qDebug() << "Trama recibida" <<tcpData << "--fin--";
+        // qDebug() << "Datos spliteados:" <<_ps<<_pd<< _date;
+
+        // insertDataBaseInfo(_ps,_pd,_date); //Escribo en DB local
+        insertDataBaseInfo(
+            dataResponse.at(1).toFloat(),
+            dataResponse.at(2).toFloat(),
+            dataResponse.at(3)
+            );
+
+        break;
+
+    case READ_STAT:
+        qDebug()<<"saliendo por $";
+        if(m_awaitESPConfirmation){
+            m_awaitESPConfirmation = false;
+            emit updateStatus(true);
+            qDebug()<< "Se actualizó la configuración";
+        }
+        break;
+
+    case NO_TRAMA:
+        qDebug()<<"Trama no compatible";
+        break;
+
+    default:
+        typeReception = NO_TRAMA;
+        break;
+    }
 
 }
 
@@ -300,6 +340,7 @@ void MainWindow::on_actionPreferencias_triggered()
 void MainWindow::handleConexion(QString ssid, QString psw){
     //Logica para pasar datos a ESP via UART para configurar el WiFi
     qDebug()<<"Recibiendo datos de Conexion: "<< ssid << psw;
+
 }
 
 void MainWindow::handlePreferences(MConfigData data){
@@ -308,9 +349,14 @@ void MainWindow::handlePreferences(MConfigData data){
     if(data == m_configPreferences){
         emit updateStatus(false);
     }else{
-        emit updateStatus(true);
-        m_configPreferences = data;
-        qDebug()<< "Se actualizó la configuración psMax nuevo: "<< m_configPreferences.psMax;
+        //Para escribir al ESP via socket no hay que configurar ninguna señal en Qt, pero sí hay que configurar el handler de lectura en el ESP
+        qDebug()<< "Nueva configuracion: "<< data.psMax;
+        m_configPreferences = data;                                                     // Guardo la nueva configuración
+        QByteArray myTrama = QString(">%1<").arg(m_configPreferences.pdMax).toUtf8();   // La transmisión es byte a byte, por eso hacemos la conversión de datos.
+        m_socket.write(myTrama);
+
+        m_awaitESPConfirmation = true;      //Flag para esperar la confirmación de recepción. Cuando llegue por ReadyRead se lanza emit para avisar al front.
+        //Acá debería haber un timer para no esperar eternamente la confirmación del ESP y pedir al usuario que vuelva a interactuar con el front.
     }
 }
 

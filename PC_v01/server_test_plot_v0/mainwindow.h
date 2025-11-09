@@ -36,11 +36,10 @@
 #define MY_PORT_SERVER      10234           //Puerto en en el que escucha el server ESP
 
 
-
 //Definicion de enumeraciones para manejo del plot
 enum MyModePlot {LAST_SAMPLE,DAY_SAMPLE,PERIOD_SAMPLE};
 
-
+enum MyTypeTrama {NO_TRAMA,READ_SENSOR,READ_STAT};
 
 
 QT_BEGIN_NAMESPACE
@@ -94,5 +93,6 @@ private:
     //Ventana de configuracion de para asignarle red WiFi al dispositivo y pasar parametros al lpc.
     Conexion *m_uiConexion;
     Preferences *m_uiPreferences;
+    bool m_awaitESPConfirmation;
 };
 #endif // MAINWINDOW_H
