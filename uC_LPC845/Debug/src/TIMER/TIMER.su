@@ -1,0 +1,5 @@
+../src/TIMER/TIMER.cpp:10:6:void TIMER::Start(uint32_t, uint32_t, void (*)())	24	static
+../src/TIMER/TIMER.cpp:17:1:TIMER::TIMER(uint32_t, uint32_t, void (*)())	24	static
+../src/TIMER/TIMER.cpp:22:6:void TIMER::Stop()	16	static
+../src/TIMER/TIMER.cpp:27:6:void TIMER::Discount()	16	static
+../src/TIMER/TIMER.cpp:39:6:virtual void TIMER::Callback()	16	static

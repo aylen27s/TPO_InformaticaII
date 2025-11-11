@@ -1,0 +1,6 @@
+../src/MAX30102_DRIVER/MAX30102_BeatDetector.cpp:25:1:BeatDetector::BeatDetector()	0	static
+../src/MAX30102_DRIVER/MAX30102_BeatDetector.cpp:39:20:uint32_t BeatDetector::getRate()	8	static
+../src/MAX30102_DRIVER/MAX30102_BeatDetector.cpp:48:19:int32_t BeatDetector::getCurrentThreshold()	0	static
+../src/MAX30102_DRIVER/MAX30102_BeatDetector.cpp:116:6:void BeatDetector::decreaseThreshold()	16	static
+../src/MAX30102_DRIVER/MAX30102_BeatDetector.cpp:53:6:bool BeatDetector::checkForBeat(int32_t)	16	static
+../src/MAX30102_DRIVER/MAX30102_BeatDetector.cpp:34:6:bool BeatDetector::addSample(int32_t)	8	static

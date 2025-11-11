@@ -1,0 +1,9 @@
+../src/MAX30102_DRIVER/max30102_int.cpp:62:6:void SetFlagLecturaMAX30102(uint8_t)	0	static
+../src/MAX30102_DRIVER/max30102_int.cpp:67:9:uint8_t GetFlagLecturaMAX30102()	0	static
+../src/MAX30102_DRIVER/max30102_int.cpp:289:6:void MAX30102_Write(uint8_t, uint8_t)	16	static
+../src/MAX30102_DRIVER/max30102_int.cpp:195:6:void MAX30102ResetPointers()	8	static
+../src/MAX30102_DRIVER/max30102_int.cpp:202:9:uint8_t MAX30102InitialConfig()	16	static
+../src/MAX30102_DRIVER/max30102_int.cpp:298:9:uint8_t MAX30102_Read(uint8_t)	8	static
+../src/MAX30102_DRIVER/max30102_int.cpp:312:6:void MAX30102_Read_Sample(uint8_t, uint8_t*)	16	static
+../src/MAX30102_DRIVER/max30102_int.cpp:328:6:void MAX30102_Read_FIFO(uint8_t, uint8_t*, uint8_t, uint32_t*, uint32_t*)	40	static
+../src/MAX30102_DRIVER/max30102_int.cpp:73:6:void MAX30102()	64	static

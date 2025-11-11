@@ -1,0 +1,6 @@
+../src/CALLBACK/CALLBACK.cpp:12:6:virtual void CALLBACK::Callback()	0	static
+/usr/local/mcuxpressoide-25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.linux_25.6.0.202501151204/tools/arm-none-eabi/include/c++/14.2.1/bits/stl_vector.h:733:7:std::vector<_Tp, _Alloc>::~vector() [with _Tp = CALLBACK*; _Alloc = std::allocator<CALLBACK*>]	8	static
+../src/CALLBACK/CALLBACK.cpp:21:6:static void CALLBACK::SysTickCall()	16	static
+/usr/local/mcuxpressoide-25.6.136/ide/plugins/com.nxp.mcuxpresso.tools.linux_25.6.0.202501151204/tools/arm-none-eabi/include/c++/14.2.1/bits/vector.tcc:581:7:) [with _Args = {CALLBACK*}; _Tp = CALLBACK*; _Alloc = std::allocator<CALLBACK*>]	32	static
+../src/CALLBACK/CALLBACK.cpp:17:1:CALLBACK::CALLBACK()	16	static
+../src/CALLBACK/CALLBACK.cpp:25:1:cpp)	8	static
