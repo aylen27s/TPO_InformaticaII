@@ -32,13 +32,13 @@
 #include "mconfigdata.h"
 
 //Definiciones propias de la app
-#define LIMIT_RECORDS       150
+#define LIMIT_RECORDS       50
 #define MY_IP_SERVER        "192.168.0.72"  //Del server ESP
 #define MY_PORT_SERVER      10234           //Puerto en en el que escucha el server ESP
 
 
 //Definicion de enumeraciones para manejo del plot
-enum MyModePlot {LAST_SAMPLE,DAY_SAMPLE,PERIOD_SAMPLE};
+enum MyModePlot {LAST_SAMPLE,DAY_SAMPLE,PERIOD_SAMPLE, LIVE};
 
 enum MyTypeTrama {NO_TRAMA,READ_SENSOR,READ_STAT};
 

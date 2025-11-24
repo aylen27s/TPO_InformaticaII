@@ -8,7 +8,7 @@
 #define PS_MIN_DEF      110
 #define PD_MAX_DEF      70
 #define PD_MIN_DEF      98
-#define TIME_TO_REFRESH     1000            //Tiempo para el muestro en tiempo real
+#define TIME_TO_REFRESH     3000            //Tiempo para el muestro en tiempo real
 
 class MConfigData
 {

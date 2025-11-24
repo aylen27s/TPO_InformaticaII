@@ -160,9 +160,12 @@ void MainWindow::plotData()                                     // consulta la b
             // recorre los resultados de la consulta a la db fila por fila
             QDateTime dt = QDateTime::fromString(query.value(0).toString(), "yyyy-MM-dd HH:mm:ss");     // convierte el campo (fecha (string)) a QDateTime en ese formato
 
-            timestamps.push_back(dt.toSecsSinceEpoch());                                                  // inserta al inicio del vector timestamps el valor en segundos desde epoch para mantener el orden ascendente cronológico (se usa prepend para eso ya que las levantó en orden descendente)
+            // timestamps.push_back(dt.toSecsSinceEpoch());                                                  // inserta al inicio del vector timestamps el valor en segundos desde epoch para mantener el orden ascendente cronológico (se usa prepend para eso ya que las levantó en orden descendente)
+            //values.push_back(query.value(1).toDouble());                                                  // inserta al inicio del vector values el valor númerico del valor sensado
 
-            values.push_back(query.value(1).toDouble());                                                  // inserta al inicio del vector values el valor númerico del valor sensado
+            timestamps.prepend(dt.toSecsSinceEpoch());                                                  // inserta al inicio del vector timestamps el valor en segundos desde epoch para mantener el orden ascendente cronológico (se usa prepend para eso ya que las levantó en orden descendente)
+            values.prepend(query.value(1).toDouble());                                                  // inserta al inicio del vector values el valor númerico del valor sensado
+
             totalRecords++;
 
         }// antes de push_back, estaba con "prepend" revisar diferencia
@@ -171,12 +174,13 @@ void MainWindow::plotData()                                     // consulta la b
 
         // qDebug()<< "Cantidad de registros seleccionados:" << totalRecords ;
 
-        if (0 >= totalRecords) {
+        if (0 >= totalRecords && (m_modePlot == DAY_SAMPLE || m_modePlot == PERIOD_SAMPLE) ) {
             QMessageBox msgBox;
             msgBox.setText("No se registran datos para la selección actual. Intente nuevamente con otra fecha.");
             msgBox.setInformativeText("Se volverá al modo Muestreo en tiempo real.");
             msgBox.setIcon(QMessageBox::Information);
             msgBox.exec();
+
             switchToLiveView();
             return;                                                                                     // no hay datos para graficar
         } else {
@@ -213,7 +217,7 @@ void MainWindow::onReadyRead(){
     */
 
     QByteArray tcpData = m_socket.readAll();
-    QString fullStringResponse(tcpData);        //Parseo a string
+    QString fullStringResponse(tcpData);                    //Parseo a string
     QStringList dataResponse = fullStringResponse.split(',');   //Separo cada dato que me interesa guardar
     qDebug()<< "Trama recibida:"<< fullStringResponse;
 
@@ -222,7 +226,7 @@ void MainWindow::onReadyRead(){
 
     if( dataResponse.at(0) == "$"){ typeReception = READ_STAT; }
 
-    if( dataResponse.at(0) == ">"){ typeReception = READ_SENSOR; }
+    if( dataResponse.at(0) == "+"){ typeReception = READ_SENSOR; }
 
     switch (typeReception) {
     case READ_SENSOR:
@@ -235,11 +239,11 @@ void MainWindow::onReadyRead(){
             qDebug() << "Datos spliteados:" <<_ps<<_pd<< _date;
 
             insertDataBaseInfo(_ps,_pd,_date); //Escribo en DB local
-            insertDataBaseInfo(
-                dataResponse.at(1).toFloat(),
-                dataResponse.at(2).toFloat(),
-                dataResponse.at(3)
-                );
+            // insertDataBaseInfo(
+            //     dataResponse.at(1).toFloat(),
+            //     dataResponse.at(2).toFloat(),
+            //     dataResponse.at(3)
+            // );
         }else{
             qDebug()<< "Trama invalida:"<< fullStringResponse;
         }
