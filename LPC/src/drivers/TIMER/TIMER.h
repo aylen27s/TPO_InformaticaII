@@ -16,6 +16,8 @@ private:
 	void (*func)(void);
 
 public:
+	TIMER(){};
+
 	TIMER(uint32_t timeStart, uint32_t timeReload, void (*func)(void));
 
 	void Start(uint32_t timeStart, uint32_t timeReload, void (*func)(void));

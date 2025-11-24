@@ -4,6 +4,7 @@
 #include "freertos/task.h"
 #include "driver/uart.h"
 #include "esp_log.h"
+#include "soc/uart_channel.h"
 
 // Para configurar la conexión Wifi
 #include "nvs_flash.h"
@@ -28,8 +29,9 @@
 #include "netdata.h"
 
 
-#define UART_PORT_NUM      UART_NUM_2    // Usamos la UART2
+#define UART_PORT_NUM      UART_NUM_2    // Usamos la UART2 para enviar/recibir hacia/desde el LPC
 #define BUF_SIZE           1024
+// #define BUF_SIZE           32
 #define RXD_PIN            16            // GPIO para RX
 #define TXD_PIN            17            // GPIO para TX 
 
@@ -47,7 +49,20 @@ static esp_netif_t *sta_netif = NULL;
 static const char *TAG = "UART_2";
 uint8_t data[BUF_SIZE];
 
+typedef struct {
+    // uint8_t m_ssid[50];
+    // uint8_t m_psw[50];
+    char * m_ssid;
+    char * m_psw;
+}m_typeConfigNetwork;
 
+
+m_typeConfigNetwork m_ConfigNetwork = {
+    .m_ssid = WIFI_SSID,
+    .m_psw = WIFI_PASS
+};
+// strcpy( (char*) m_ConfigNetwork.m_ssid   ,WIFI_SSID);
+// strcpy( (char*) m_ConfigNetwork.m_psw    ,WIFI_PASS);
 
 int client_sock = -1; // Socket cliente actual ( fd: )
 
@@ -55,13 +70,13 @@ int client_sock = -1; // Socket cliente actual ( fd: )
 static void onGotIp(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
     ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
     const esp_netif_ip_info_t* ip_info = &event->ip_info;
-    ESP_LOGI("NETWORK", "IP: " IPSTR, IP2STR(&ip_info->ip));
-    ESP_LOGI("NETWORK", "Gateway: " IPSTR, IP2STR(&ip_info->gw));
-    ESP_LOGI("NETWORK", "Netmask: " IPSTR, IP2STR(&ip_info->netmask));
+    // ESP_LOGI("NETWORK", "IP: " IPSTR, IP2STR(&ip_info->ip));
+    // ESP_LOGI("NETWORK", "Gateway: " IPSTR, IP2STR(&ip_info->gw));
+    // ESP_LOGI("NETWORK", "Netmask: " IPSTR, IP2STR(&ip_info->netmask));
 }
 
 static void onWifiDisconnect(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
-    ESP_LOGW(TAG, "WiFi desconectado. Reintentando...");
+    // ESP_LOGW(TAG, "WiFi desconectado. Reintentando...");
     esp_wifi_connect();
 }
 
@@ -92,10 +107,10 @@ void connectEspToWifi(void)
     
     esp_wifi_start();
     esp_wifi_connect();
-    ESP_LOGI(TAG, "WiFi inicializado exitosamente en SSID: %s", WIFI_SSID);
+    // ESP_LOGI(TAG, "WiFi inicializado exitosamente en SSID: %s", WIFI_SSID);
 }
 
-/* ------- Configuración UART ESP* ---------- */
+/* ------- Configuración UART <> ESP [UART 2] ---------- */
 void configUart(void){
     const uart_config_t uart_config = {
         .baud_rate = 9600,
@@ -111,17 +126,33 @@ void configUart(void){
     uart_set_pin(UART_PORT_NUM, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 
 }
+/* ------- Configuración QT <> ESP [UART 0 cable USB para reconfigurar wifi] ---------- */
+void configUartESPtoQT(void){
+    const uart_config_t uart_config = {
+        .baud_rate = 9600,
+        .data_bits = UART_DATA_8_BITS,
+        .parity    = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+    };
+
+    // Instalacion del driver para usar UART de ESP
+    uart_driver_install(UART_NUM_0, BUF_SIZE, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM_0, &uart_config);
+    uart_set_pin(UART_NUM_0, UART_NUM_0_TXD_DIRECT_GPIO_NUM, UART_NUM_0_RXD_DIRECT_GPIO_NUM, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+
+}
 
 /* ----- Función para mostrar la hora sincronizada [TEST] ----- */
 static void timeSyncCallback(struct timeval *tv) {
-    ESP_LOGI("NTP", "Hora sincronizada exitosamente desde el servidor NTP.");
+    // ESP_LOGI("NTP", "Hora sincronizada exitosamente desde el servidor NTP.");
     
     // Mostrar la hora local (con la zona horaria configurada)
     time_t now;
     struct tm timeinfo;
     time(&now);
     localtime_r(&now, &timeinfo);
-    ESP_LOGI("NTP", "TODAY-IS: %s", asctime(&timeinfo));
+    // ESP_LOGI("NTP", "TODAY-IS: %s", asctime(&timeinfo));
 }
 
 /* ----- Conexion con servidor NTP para sincronizar fecha y hora actual ----- */
@@ -151,7 +182,7 @@ static void obtainTime(void){
     int retry = 0;
     const int retry_count = 10;
     while (esp_sntp_get_sync_status() == SNTP_SYNC_STATUS_RESET && ++retry < retry_count) {
-        ESP_LOGI("TIME-SYNC", "Aguardando res NTP... (%d/%d)", retry, retry_count);
+        // ESP_LOGI("TIME-SYNC", "Aguardando res NTP... (%d/%d)", retry, retry_count);
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
     time(&now);
@@ -176,46 +207,119 @@ void SetSystemTimeSNTP()  {
 /* ------ ESP como Servidor TCP para intercambio de información con app cliente QT ------- */
 
 static void sendUartToClientData(void *arg) {       //funcion que manda desde la uart hacia el servidor
-    uint8_t buf[BUF_SIZE];                          //define buffer
-    while (1) {                                     //entro en el loop
-        if (client_sock < 0) {                      // si el cliente no está en estado readonly
+    char buf[BUF_SIZE];                          //define buffer...
+    // char buf_sample[3];
+    int i;
+    char checksum_rcv = 0;
+    while (1) {                                     //entre en el loop...
+        if (client_sock < 0) {                      //si el cliente no está en estado readonly espera y vuelve a comenzar la secuencia...
             vTaskDelay(pdMS_TO_TICKS(1000));
             continue;
         }
 
-        vTaskDelay(pdMS_TO_TICKS(5000)); // espero 5 segs antes de mandar datos
+        vTaskDelay(pdMS_TO_TICKS(3000)); // espero 5 segs antes de mandar datos
 
+        int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(3000)); // la función retorna el numero de bytes leídos
+        // ESP_LOGI(TAG, "[Estoy fuera del if] LPC dice -> %s", buf);
+
+        if( len > 0 && (buf[0] == '+' || buf[0] == '_' )) {
+            // ESP_LOGI(TAG, "[Adentro del if] -> %s", buf);
+            
+            for(i=0; i <= 4; i++ ){
+                checksum_rcv += buf[i];
+            } 
+
+            if( checksum_rcv == buf[5] ){
+                strcpy((char*)buf+5, ",85,");     //Harcodeo la distolica, habria que tener otro sensor para esto
+                time_t now;
+                struct tm timeinfo;
+                char time_buffer[80];
+
+                time(&now);
+                localtime_r(&now, &timeinfo);
+                strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+
+                strcpy((char*)buf+9,time_buffer);   //Inyecto fecha y hora a la medición
+                strcpy((char*)buf+28,",");          //Fin de trama
+
+                // int sent = send(client_sock, buf, len, 0);
+                int sent = send(client_sock, buf, 29, 0); // 29 es cantidad de bytes que se mandan+1
+                ESP_LOGI("TCP", "SALIENDO POR TCP CON -> %s", buf);
+                checksum_rcv = 0;
+                
+                if (sent < 0) {
+                    ESP_LOGE("TCP", "Error enviando datos al cliente TCP, cerrando socket");
+                    shutdown(client_sock, 0);
+                    close(client_sock);
+                    client_sock = -1;
+                }
+            }                
+        }
+
+
+            // if(checksum_rcv == buf[len - 1]){   //Trama correcta, mando datos a Qt. Si no, no hago nada >,XXX,XX,
+            //     strcpy((char*)buf+6, ",85,");     //Harcodeo la distolica, habria que tener otro sensor para esto
+            //     time_t now;
+            //     struct tm timeinfo;
+            //     char time_buffer[80];
+
+            //     time(&now);
+            //     localtime_r(&now, &timeinfo);
+            //     strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+
+            //     strcpy((char*)buf+9,time_buffer);   //Inyecto fecha y hora a la medición
+            //     strcpy((char*)buf+28,",");          //Fin de trama
+
+            //     int sent = send(client_sock, buf, len, 0);
+            //     if (sent < 0) {
+            //         ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
+            //         shutdown(client_sock, 0);
+            //         close(client_sock);
+            //         client_sock = -1;
+            //     }
+            // }
+        // }
+        
         /* Logica lectura de datos de UART [medidas del sensor] */
-        // int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(1000));
+        // int rcvUart = uart_read_bytes(UART_NUM_2, buf_sample, 3, pdMS_TO_TICKS(1000));
 
-        /* bloque de test envio de muestras*/
-            strcpy((char*)buf,"?,128,85,"); // medicion de pruebita
-            time_t now;
-            struct tm timeinfo;
-            char time_buffer[80];
+        // if( rcvUart > 0 ){
+        //     /* [ BLOQUE TEST ] Envio de muestras sensor v1.1*/
 
-            time(&now);
-            localtime_r(&now, &timeinfo);
-            strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+        //     // strcpy((char*)buf,"?,128,85,"); // medicion de pruebita
+        //     strcpy((char*)buf,">,"); // medicion de pruebita
+        //     strcpy((char*)buf+3,(char*)buf_sample);
+        //     strcpy((char*)buf+6, "85,");     //Harcodeo la distolica, habria que tener otro sensor para esto
+        //     time_t now;
+        //     struct tm timeinfo;
+        //     char time_buffer[80];
 
-            strcpy((char*)buf+9,time_buffer);
-            strcpy((char*)buf+28,",");
-            ESP_LOGI(TAG, "test datos -> %s", buf);
-            int len = strlen((char*)buf);
+        //     time(&now);
+        //     localtime_r(&now, &timeinfo);
+        //     strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
+
+        //     strcpy((char*)buf+9,time_buffer);
+        //     strcpy((char*)buf+28,",");
+            // ESP_LOGI(TAG, "SALIENDO POR TCP CON -> %s", buf);
+        //     int len = strlen((char*)buf);
         /* fin bloque de test*/
+        // }
+
+        
 
         
         /* Logica para mandar trama al QT por TCP */
-        if (len > 0) {
-            int sent = send(client_sock, buf, len, 0);
-            if (sent < 0) {
-                ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
-                shutdown(client_sock, 0);
-                close(client_sock);
-                client_sock = -1;
-            }
-        }
+        // if (len > 0) {
+        //     int sent = send(client_sock, buf, len, 0);
+        //     if (sent < 0) {
+        //         ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
+        //         shutdown(client_sock, 0);
+        //         close(client_sock);
+        //         client_sock = -1;
+        //     }
+        // }
     }
+
 }
 
 static void sendConfirmClient (void *arg){
@@ -228,6 +332,12 @@ static void sendConfirmClient (void *arg){
         client_sock = -1;
     }
     vTaskDelete(NULL);
+}
+
+static void sendConfirmNetwork (void *arg){
+    /*  Logica para trama  byte de confirmacion de recepcion de configuracion  */
+    uart_write_bytes(UART_NUM_0, "?#$&", 5); 
+    // vTaskDelete(NULL);
 }
 
 static void sendClientToUartData(void *arg) {
@@ -244,24 +354,37 @@ static void sendClientToUartData(void *arg) {
         }
         int len = recv(client_sock, buf, BUF_SIZE, 0);
         if (len > 0) {
-            /* Si hay más de un dato, evaluar que la trama sea correcta y mandar por UART al LPC*/
+            /* Si hay datos, evaluar que la trama sea la de configuración de parametros y mandar por UART al LPC*/
             uart_write_bytes(UART_NUM_2, (const char *)buf, len); 
             
-            //Avisar al cliente TCP que sus datos se recepcionaron
+            //Avisar al cliente TCP que sus datos de configuración se recepcionaron
             xTaskCreate(sendConfirmClient, "sendConfirmClient", 4096, NULL, 10, NULL);
 
         } else if (len == 0) {
-            ESP_LOGI(TAG, "Cliente TCP desconectado");
+            // ESP_LOGI(TAG, "Cliente TCP desconectado");
             shutdown(client_sock, 0);
             close(client_sock);
             client_sock = -1;
         } else {
-            ESP_LOGE(TAG, "Error en recv(), cerrando socket");
+            // ESP_LOGE(TAG, "Error en recv(), cerrando socket");
             shutdown(client_sock, 0);
             close(client_sock);
             client_sock = -1;
         }
     }
+}
+
+
+static void rcvNetworkInfo(void *arg){
+    uint8_t buf[100];
+    int len = uart_read_bytes(UART_NUM_0, buf, 100, pdMS_TO_TICKS(1000));
+    while(1){
+        if(len > 0){
+            // ESP_LOGI("UART_0", "Recibi datos p/ network: %d", buf);
+            xTaskCreate(sendConfirmNetwork, "sendConfirmNetwork", 4096, NULL, 10, NULL);
+        }
+    }
+    
 }
 
 void initServer(void) {
@@ -286,12 +409,12 @@ void initServer(void) {
     }
 
     if (listen(listen_sock, 1) != 0) {          // Listen pone al socket a escuchar las peticiones de los clientes
-        ESP_LOGE(TAG, "Error en listen");
+        // ESP_LOGE(TAG, "Error en listen");
         close(listen_sock);
         return;
     }
 
-    ESP_LOGI(TAG, "Servidor TCP escuchando...");
+    // ESP_LOGI(TAG, "Servidor TCP escuchando...");
 
     while (1) {
         struct sockaddr_in client_addr;             //Estructura para la información del cliente
@@ -303,14 +426,16 @@ void initServer(void) {
             continue;
         }
 
-        ESP_LOGI(TAG, "Cliente TCP conectado");
+        // ESP_LOGI(TAG, "Cliente TCP conectado");
 
         //Cuando el cliente se conecta, le doy lo que tenga en el buffer de la UART
         xTaskCreate(sendUartToClientData, "sendUartToClientData", 4096, NULL, 10, NULL); 
         
         //El cliente TCP (app QT) puede mandar datos para configurar el LPC, leo lo que me mande por TCP y lo escribo en la UART:
-        xTaskCreate(sendClientToUartData, "sendClientToUartData", 4096, NULL, 10, NULL);
+        // xTaskCreate(sendClientToUartData, "sendClientToUartData", 4096, NULL, 10, NULL);
         
+        //Si el USB está conectado es posible recibir cambios de SSID y PSW para conectarse a otra red WIFI
+        // xTaskCreate(rcvNetworkInfo, "rcvNetworkInfo", 4096, NULL, 10, NULL); //Revisar esto que tiraba error cuand esta en ejecuicion
 
 
         while (client_sock >= 0) {
@@ -336,47 +461,24 @@ void app_main(void){
     ESP_ERROR_CHECK(ret);
     
     /* Cnofigurar y conectar WIFI*/
-    ESP_LOGI("WIFI","Ejecutando conexion WiFi en SSID %s ...", WIFI_SSID);
     connectEspToWifi();
     
 
     /* Obtener fecha y hora de servidor externo */
-    ESP_LOGI("TIME-SYNC", "Ejecutando chequeo fecha y hora del sistema...");
     SetSystemTimeSNTP();
 
     /* Configurar y habilitar UART */
-    ESP_LOGI(TAG, "Ejecutando configuracion UART...");
     configUart();
 
-    /* Iniciar servidor y escuchar cliente TCP. Dentro de esta función se resuleve el envio de datos desde la UART hacia el cliente y viceversa */
+    // configUartESPtoQT();
+
+    /*  Iniciar servidor y escuchar cliente TCP.
+        Dentro de esta función se resuleve el envio de datos, enviando lo que le llega a la UART del ESP hacia el QT via TCP y viceversa */
     initServer();
 
     while (1) {
         //Test de horario sincronizado.
         vTaskDelay(pdMS_TO_TICKS(5000));
-        ESP_LOGI("ESP", "wait...");
-        // time_t now;
-        // struct tm timeinfo;
-        // char time_buffer[80];
-
-        // time(&now);
-        // localtime_r(&now, &timeinfo);
-        // strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
-
-        // ESP_LOGI("TIME", "Hora actual: %s", asctime(&timeinfo));
-        // ESP_LOGI("TIME", "Hora actual: %s", time_buffer);
-    
-
-
-        /* 1.Reviso si hay datos para levantar por la UART */
-        // int len = uart_read_bytes(UART_PORT_NUM, data, BUF_SIZE - 1, pdMS_TO_TICKS(5000));
-        
-        // if (len > 0) {
-        //     data[len] = '\0'; // agrega terminador de string
-        //     ESP_LOGI(TAG, "Recibieno de LPC: %s", (char *)data);
-        // }
-
-        /* 2. Envío los datos de la UART al cliente*/
-        
+        // ESP_LOGI("ESP", "wait...");        
     }
 }

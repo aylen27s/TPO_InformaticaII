@@ -4,6 +4,9 @@
 #define ON 			1
 #define OFF			0
 
+#define PULSED 		0
+#define NOT_PULSED	1
+
 #define OFF_LED		1
 #define ON_LED		0
 

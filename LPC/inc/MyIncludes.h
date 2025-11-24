@@ -22,3 +22,8 @@
 #include "GPIOFI.h"
 #include "GPIOFO.h"
 #include "UART0.h"
+
+#include "I2C.h"
+#include "heartRate.h"
+#include "MMA845X.h"
+

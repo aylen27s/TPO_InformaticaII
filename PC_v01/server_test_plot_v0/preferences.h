@@ -34,6 +34,8 @@ private slots:
 
     void on_pushButton_aplicar_clicked();
 
+    void on_te_ps_max_textChanged();
+
 private:
     Ui::Preferences *ui;
     bool m_status;

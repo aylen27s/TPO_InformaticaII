@@ -13,7 +13,8 @@ Preferences::Preferences(MConfigData data, QWidget *parent)
     ui->te_ps_max->setPlainText(QString::number(data.psMax));
     ui->te_ps_min->setPlainText(QString::number(data.psMin));
     ui->te_t_sample->setPlainText(QString::number(data.tSample));
-    m_status = false;
+    m_status=false;
+
 }
 
 Preferences::~Preferences()
@@ -51,5 +52,16 @@ void Preferences::on_pushButton_aplicar_clicked()
 
 void Preferences::readSatus(bool status){
     qDebug()<< "recibiendo cambio de status" << status;
-    if(status) ui->label_changesUpdate->setText("Cambios sincronizados");
+    m_status = status;
+    if(m_status) ui->label_changesUpdate->setText("Cambios sincronizados.");
 }
+
+
+void Preferences::on_te_ps_max_textChanged()
+{
+    ui->label_changesUpdate->setText("");
+    m_status = false;
+}
+
+
+

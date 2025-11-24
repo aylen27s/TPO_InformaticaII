@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QTextStream>
 
+
 //Archivos propios de la app
 #include "datadb.h"
 
@@ -94,5 +95,6 @@ private:
     Conexion *m_uiConexion;
     Preferences *m_uiPreferences;
     bool m_awaitESPConfirmation;
+
 };
 #endif // MAINWINDOW_H
