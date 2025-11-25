@@ -223,7 +223,7 @@ static void sendUartToClientData(void *arg) {       //funcion que manda desde la
 
         int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(1000)); // Retorna la cantidad de bytes que leidos del buffer RX
         // necesito que tenga minimanente 6?
-        ESP_LOGI("[TCP Server]", "LPC dice -> %s", buf);
+        ESP_LOGI("[TCP Server]", "LPC dice -> %s", buf);        //buffer no se limpia, si no llegó info nueva por uart_read_bytes va a loggear lo ultimo que haya almacenado
 
         if( len >= 6 && (buf[0] == '+' || buf[0] == '_' )) {
             // ESP_LOGI("[TCP Server]", "[Adentro del if] -> %s", buf);

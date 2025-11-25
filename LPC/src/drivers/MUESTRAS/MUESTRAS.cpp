@@ -30,11 +30,11 @@ int32_t        MUESTRAS::PushBack(int32_t sample){
 
         mSamplingBuff[mIndexBuf] = sample;
         mIndexBuf++;
-        IsBufferFull=false;
+//        IsBufferFull=false;
 
         if(mIndexBuf == SIZE_BUFF){
             IsBufferFull = true;
-            mIndexBuf = 0;
+//            mIndexBuf = 0;
         }
         return 1;
     } else {
@@ -50,7 +50,7 @@ void MUESTRAS::CleanBuff(){
     mSampleProcessed    = 0;
 
     for (i = 0; i < SIZE_BUFF; i++)
-        mSamplingBuff[i] = 0;
+        mSamplingBuff[i] = '0';
 
 }
 

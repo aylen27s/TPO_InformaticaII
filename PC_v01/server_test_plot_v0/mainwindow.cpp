@@ -232,7 +232,7 @@ void MainWindow::onReadyRead(){
 
     if( dataResponse.at(0) == "$"){ typeReception = READ_STAT; }
 
-    if( dataResponse.at(0) == "?"){ typeReception = READ_SENSOR; }
+    if( dataResponse.at(0) == "+"){ typeReception = READ_SENSOR; }
 
     switch (typeReception) {
     case READ_SENSOR:

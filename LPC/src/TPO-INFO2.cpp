@@ -63,12 +63,12 @@ int main(void) {
 	IIC_Inicializacion();
 	LedOn.Set(ON_LED);
 	LedAlarma.Set(OFF_LED);
-	T_Test.Start(TIME_TO_SEND, TIME_TO_SEND, handleTest);
+//	T_Test.Start(TIME_TO_SEND, TIME_TO_SEND, handleTest);
 
     while(1) {
     	MAX30102();
-//    	MdE();
-//    	MdEAlarma();
+    	MdE();
+    	MdEAlarma();
     }
     return 0 ;
 }
@@ -137,15 +137,18 @@ void MdE(){
 
 				if(sample_rcv > 0){							//	Valido que la lectura no sea -1
 					Muestras.PushBack(sample_rcv);			//	Pusheo la muestra  al buffer interno del objeto Muestras
-					MAX30102_CleanBuffer();
-					Uart0.Send((uint8_t*)"s>0", 4);
+					MAX30102_CleanBuffer();					//	Guardé dato entonces limpio buffer
+//					Uart0.Send((uint8_t*)"s>0", 4);
 				}
-
-				if( Muestras.Size() == SIZE_BUFF){
+//				else{
+//					Uart0.Send((uint8_t*)"s<0", 4);
+//				}
+				uint32_t tam = Muestras.Size();
+				if( tam == SIZE_BUFF ){
 					Muestras.Process();						//	Metodo de la clase para sacar el promedio y limpiar el buffer para las nuevas muestras.
 															//	Tambien monitorea que las muestras estén en el rango normal.
 					EstadoMdE = SEND_SAMPLE_PROCESSED;		//	Cambio de estado para mandar el dato
-					Uart0.Send((uint8_t*)"swtSSP", 7);
+//					Uart0.Send((uint8_t*)"ssss", 4);
 				}
 
 				//Siempre hay que mandar muestras pero tambien hay que mirar si se habilitó la alarma para apagarla cuando es debido.
