@@ -22,6 +22,7 @@
 #include "GPIOFI.h"
 #include "GPIOFO.h"
 #include "UART0.h"
+#include "MUESTRAS.h"
 
 #include "I2C.h"
 #include "heartRate.h"

@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_dateMin = ui->dateEdit_minDay->date().toString("yyyy-MM-dd");
     m_dateMax = ui->dateEdit_maxDay->date().toString("yyyy-MM-dd");
     m_selectedDate = QDate().currentDate();     // inicializa m_selectedDate con un QDate vacío
-    m_viewingWindowSeconds = 300;               // ajusta la ventana de visualización en 300 [s] (últimas muestras almacenadas en los útlimos 5 minutos)
+    m_viewingWindowSeconds = 50;               // ajusta la ventana de visualización en 300 [s] (últimas muestras almacenadas en los útlimos 5 minutos)
     m_modePlot = LAST_SAMPLE;                   //Por defecto, plotea en tiempo real las últimas 1000 muestras [los datos de la última hora, aproximadamente]
     // m_configPreferences = {PS_MAX_DEF,PS_MIN_DEF,PD_MAX_DEF,PD_MIN_DEF,TIME_TO_REFRESH};                   //Setea los valores limite de presion por defecto
     m_awaitESPConfirmation = false;             //Flag para controlar recepcion de trama del lado del ESP
@@ -189,7 +189,13 @@ void MainWindow::plotData()                                     // consulta la b
             }
 
             ui->customPlot->graph(0)->setData(timestamps, values);                                          // asigna los vectores timestamps y values al primer gráfico
-            ui->customPlot->xAxis->setRange(timestamps.first() - m_viewingWindowSeconds, timestamps.last());
+
+            // ui->customPlot->xAxis->setRange(timestamps.first() - m_viewingWindowSeconds, timestamps.last());
+
+            double lastTimestamp = timestamps.last();                                                       // guarda el ultimo valor del vector timestamps
+            ui->customPlot->xAxis->setRange(lastTimestamp - m_viewingWindowSeconds, lastTimestamp);         // ajusta el rango del eje x para ver desde el intervalo que configuramos al inicio hasta el último valor
+
+
             ui->customPlot->yAxis->rescale();                                                               // reescala el eje y en base a los valores sensados
             QCPRange range = ui->customPlot->yAxis->range();                                                // obtiene el rango resultante del eje y en base a los valores sensados (mínimo y máximo)
             ui->customPlot->yAxis->setRange(range.lower - 5, range.upper + 5);                              // margen visual. 5 para arriba, 5 para abajo
@@ -226,7 +232,7 @@ void MainWindow::onReadyRead(){
 
     if( dataResponse.at(0) == "$"){ typeReception = READ_STAT; }
 
-    if( dataResponse.at(0) == "+"){ typeReception = READ_SENSOR; }
+    if( dataResponse.at(0) == "?"){ typeReception = READ_SENSOR; }
 
     switch (typeReception) {
     case READ_SENSOR:

@@ -127,9 +127,12 @@ void MAX30102( void )
 						bpm_sum += bpm_buffer[i];
 					}
 					uint32_t bpm_avg = bpm_sum / BPM_BUFFER_SIZE;
-//					sprintf((char *)buffer, "%u\n",bpm_avg);		//Parsea a char
-//					Uart0.Send(buffer,strlen((char *)buffer));
 					MAX30102ProcessSample = bpm_avg;	//Si la muestra se procesó correctamente esto será > 0
+//					sprintf((char *)buffer, "abpm: %u\n", MAX30102ProcessSample);		//Parsea a char
+//					Uart0.Send(buffer,strlen((char *)buffer));
+//					sprintf((char *)buffer, "BPM: %u\n", bpm_avg);		//Parsea a char
+//					Uart0.Send(buffer,strlen((char *)buffer));
+
 				}
 
 			}

@@ -19,7 +19,7 @@
 #define HR			60*MIN
 
 #define IS_STRING	0
-
+#define SIZE_TRAMA_SAMPLE	6
 
 //DECLARACION DE HARDWARE
 #define PIN_LED_ROJO	1,2

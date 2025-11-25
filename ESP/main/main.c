@@ -32,6 +32,7 @@
 #define UART_PORT_NUM      UART_NUM_2    // Usamos la UART2 para enviar/recibir hacia/desde el LPC
 #define BUF_SIZE           1024
 // #define BUF_SIZE           32
+// #define BUF_SIZE           128
 #define RXD_PIN            16            // GPIO para RX
 #define TXD_PIN            17            // GPIO para TX 
 
@@ -41,13 +42,12 @@
 
 //Defino port y tamaño de buf de las tramas TCP
 #define TCP_PORT 10234
-// #define BUF_SIZE 256 //1 byte = 8 bits, 
 
 
 /* --- Variables de la aplicacion ---*/ 
 static esp_netif_t *sta_netif = NULL;
 static const char *TAG = "UART_2";
-uint8_t data[BUF_SIZE];
+// uint8_t data[BUF_SIZE];
 
 typedef struct {
     // uint8_t m_ssid[50];
@@ -152,7 +152,7 @@ static void timeSyncCallback(struct timeval *tv) {
     struct tm timeinfo;
     time(&now);
     localtime_r(&now, &timeinfo);
-    // ESP_LOGI("NTP", "TODAY-IS: %s", asctime(&timeinfo));
+    ESP_LOGI("NTP", "TODAY-IS: %s", asctime(&timeinfo));
 }
 
 /* ----- Conexion con servidor NTP para sincronizar fecha y hora actual ----- */
@@ -182,7 +182,7 @@ static void obtainTime(void){
     int retry = 0;
     const int retry_count = 10;
     while (esp_sntp_get_sync_status() == SNTP_SYNC_STATUS_RESET && ++retry < retry_count) {
-        // ESP_LOGI("TIME-SYNC", "Aguardando res NTP... (%d/%d)", retry, retry_count);
+        ESP_LOGI("TIME-SYNC", "Aguardando res NTP... (%d/%d)", retry, retry_count);
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
     time(&now);
@@ -210,20 +210,23 @@ static void sendUartToClientData(void *arg) {       //funcion que manda desde la
     char buf[BUF_SIZE];                          //define buffer...
     // char buf_sample[3];
     int i;
-    char checksum_rcv = 0;
+    uint8_t checksum_rcv = 0;
     while (1) {                                     //entre en el loop...
         if (client_sock < 0) {                      //si el cliente no está en estado readonly espera y vuelve a comenzar la secuencia...
             vTaskDelay(pdMS_TO_TICKS(1000));
             continue;
         }
 
-        vTaskDelay(pdMS_TO_TICKS(3000)); // espero 5 segs antes de mandar datos
+        vTaskDelay(pdMS_TO_TICKS(1000)); // espero N segs antes de mandar datos
 
-        int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(3000)); // la función retorna el numero de bytes leídos
-        // ESP_LOGI(TAG, "[Estoy fuera del if] LPC dice -> %s", buf);
+        // int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(3500)); // la funcBUF_SIZEión retorna el numero de bytes leídos
 
-        if( len > 0 && (buf[0] == '+' || buf[0] == '_' )) {
-            // ESP_LOGI(TAG, "[Adentro del if] -> %s", buf);
+        int len = uart_read_bytes(UART_NUM_2, buf, BUF_SIZE, pdMS_TO_TICKS(1000)); // Retorna la cantidad de bytes que leidos del buffer RX
+        // necesito que tenga minimanente 6?
+        ESP_LOGI("[TCP Server]", "LPC dice -> %s", buf);
+
+        if( len >= 6 && (buf[0] == '+' || buf[0] == '_' )) {
+            // ESP_LOGI("[TCP Server]", "[Adentro del if] -> %s", buf);
             
             for(i=0; i <= 4; i++ ){
                 checksum_rcv += buf[i];
@@ -244,80 +247,18 @@ static void sendUartToClientData(void *arg) {       //funcion que manda desde la
 
                 // int sent = send(client_sock, buf, len, 0);
                 int sent = send(client_sock, buf, 29, 0); // 29 es cantidad de bytes que se mandan+1
-                ESP_LOGI("TCP", "SALIENDO POR TCP CON -> %s", buf);
+                ESP_LOGI("[TCP Server]", "MANDANDO A QT POR WIFI-> %s", buf);
                 checksum_rcv = 0;
                 
                 if (sent < 0) {
-                    ESP_LOGE("TCP", "Error enviando datos al cliente TCP, cerrando socket");
+                    ESP_LOGE("[TCP Server]", "Error enviando datos al cliente TCP, cerrando socket");
                     shutdown(client_sock, 0);
                     close(client_sock);
                     client_sock = -1;
                 }
             }                
         }
-
-
-            // if(checksum_rcv == buf[len - 1]){   //Trama correcta, mando datos a Qt. Si no, no hago nada >,XXX,XX,
-            //     strcpy((char*)buf+6, ",85,");     //Harcodeo la distolica, habria que tener otro sensor para esto
-            //     time_t now;
-            //     struct tm timeinfo;
-            //     char time_buffer[80];
-
-            //     time(&now);
-            //     localtime_r(&now, &timeinfo);
-            //     strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
-
-            //     strcpy((char*)buf+9,time_buffer);   //Inyecto fecha y hora a la medición
-            //     strcpy((char*)buf+28,",");          //Fin de trama
-
-            //     int sent = send(client_sock, buf, len, 0);
-            //     if (sent < 0) {
-            //         ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
-            //         shutdown(client_sock, 0);
-            //         close(client_sock);
-            //         client_sock = -1;
-            //     }
-            // }
-        // }
-        
-        /* Logica lectura de datos de UART [medidas del sensor] */
-        // int rcvUart = uart_read_bytes(UART_NUM_2, buf_sample, 3, pdMS_TO_TICKS(1000));
-
-        // if( rcvUart > 0 ){
-        //     /* [ BLOQUE TEST ] Envio de muestras sensor v1.1*/
-
-        //     // strcpy((char*)buf,"?,128,85,"); // medicion de pruebita
-        //     strcpy((char*)buf,">,"); // medicion de pruebita
-        //     strcpy((char*)buf+3,(char*)buf_sample);
-        //     strcpy((char*)buf+6, "85,");     //Harcodeo la distolica, habria que tener otro sensor para esto
-        //     time_t now;
-        //     struct tm timeinfo;
-        //     char time_buffer[80];
-
-        //     time(&now);
-        //     localtime_r(&now, &timeinfo);
-        //     strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", &timeinfo);
-
-        //     strcpy((char*)buf+9,time_buffer);
-        //     strcpy((char*)buf+28,",");
-            // ESP_LOGI(TAG, "SALIENDO POR TCP CON -> %s", buf);
-        //     int len = strlen((char*)buf);
-        /* fin bloque de test*/
-        // }
-
-        
-
-        
-        /* Logica para mandar trama al QT por TCP */
-        // if (len > 0) {
-        //     int sent = send(client_sock, buf, len, 0);
-        //     if (sent < 0) {
-        //         ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
-        //         shutdown(client_sock, 0);
-        //         close(client_sock);
-        //         client_sock = -1;
-        //     }
-        // }
+        uart_flush(UART_PORT_NUM);
     }
 
 }
@@ -326,7 +267,7 @@ static void sendConfirmClient (void *arg){
     /*  Logica para trama  byte de confirmacion de recepcion de configuracion  */
     int sent = send(client_sock, "$", 1, 0);
     if (sent < 0) {
-        ESP_LOGE(TAG, "Error enviando datos al cliente TCP, cerrando socket");
+        ESP_LOGE("[TCP Server]", "Error enviando datos al cliente TCP, cerrando socket");
         shutdown(client_sock, 0);
         close(client_sock);
         client_sock = -1;
@@ -426,7 +367,7 @@ void initServer(void) {
             continue;
         }
 
-        // ESP_LOGI(TAG, "Cliente TCP conectado");
+        ESP_LOGI(TAG, "Cliente TCP conectado");
 
         //Cuando el cliente se conecta, le doy lo que tenga en el buffer de la UART
         xTaskCreate(sendUartToClientData, "sendUartToClientData", 4096, NULL, 10, NULL); 
