@@ -190,10 +190,15 @@ void MainWindow::plotData()                                     // consulta la b
 
             ui->customPlot->graph(0)->setData(timestamps, values);                                          // asigna los vectores timestamps y values al primer gráfico
 
-            // ui->customPlot->xAxis->setRange(timestamps.first() - m_viewingWindowSeconds, timestamps.last());
 
-            double lastTimestamp = timestamps.last();                                                       // guarda el ultimo valor del vector timestamps
-            ui->customPlot->xAxis->setRange(lastTimestamp - m_viewingWindowSeconds, lastTimestamp);         // ajusta el rango del eje x para ver desde el intervalo que configuramos al inicio hasta el último valor
+            if(m_modePlot == LAST_SAMPLE){
+                m_viewingWindowSeconds = 50;
+                double lastTimestamp = timestamps.last();                                                       // guarda el ultimo valor del vector timestamps
+                ui->customPlot->xAxis->setRange(lastTimestamp - m_viewingWindowSeconds, lastTimestamp);         // ajusta el rango del eje x para ver desde el intervalo que configuramos al inicio hasta el último valor
+            } else{
+                // m_viewingWindowSeconds = 300;
+                ui->customPlot->xAxis->setRange(timestamps.first(), timestamps.last());
+            }
 
 
             ui->customPlot->yAxis->rescale();                                                               // reescala el eje y en base a los valores sensados
@@ -300,26 +305,75 @@ void MainWindow::insertDataBaseInfo(int _ps, int _pd, QString _fecha){
 
 
 /* --- Metodo para exportar los datos de la seleccion actual --- */
+// void MainWindow::on_pushButton_export_clicked()
+// {
+//     //Defino la ruta y el nombre del archivo. Por defecto fecha y hora para que no haya duplicidad
+//     QString myNameFile = QString("/home/aylen/Escritorio/test-export/%1.csv").arg(QDateTime::currentDateTime().toString(Qt::ISODateWithMs));
+
+//     //Intento abrir el archivo, o en su defecto se crea.
+//     QFile archivo(myNameFile);
+
+//     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
+//         //Declara donde se van a escribir los datos
+//         QTextStream newLineFile(&archivo);
+
+//         //Recorre las muestras filtradas actualmente y las concatena en un string para escribirlo en el archivo
+//         for (int i = 0; i < timestamps.size(); i++) {
+//             QString lineData = QString("%1,%2\n").arg(QDateTime::fromSecsSinceEpoch(timestamps[i]).toString("yyyy-MM-dd HH:mm:ss")).arg(QString::number((int)values[i]));
+//             newLineFile <<lineData;
+//         }
+//         qDebug() << "Archivo creado v2";
+//     } else {
+//         qDebug() << "Error al crear o abrir el archivo:" << archivo.errorString();
+//     }
+
+//     archivo.close();
+// }
+
 void MainWindow::on_pushButton_export_clicked()
 {
-    //Defino la ruta y el nombre del archivo. Por defecto fecha y hora para que no haya duplicidad
-    QString myNameFile = QString("/home/aylen/Escritorio/test-export/%1.csv").arg(QDateTime::currentDateTime().toString(Qt::ISODateWithMs));
+    // Abre un diálogo para elegir dónde guardar
+    // QString filename = QFileDialog::getSaveFileName(
+    //     this,
+    //     "Guardar archivo CSV",
+    //     QDir::homePath() + "/home/aylen/Escritorio/",
+    //     "Archivos CSV (*.csv)"
+    //     );
 
-    //Intento abrir el archivo, o en su defecto se crea.
-    QFile archivo(myNameFile);
+    // // Si el usuario cancela, filename viene vacío
+    // if (filename.isEmpty()) {
+    //     qDebug() << "Exportación cancelada";
+    //     return;
+    // }
+    QString directory = QFileDialog::getExistingDirectory(
+        this,
+        "Elegir carpeta",
+        QDir::homePath()
+        );
+
+    if (directory.isEmpty()) {
+        qDebug() << "Exportación cancelada";
+        return;
+    }
+
+    QString filename = directory + "/" +
+                       QDateTime::currentDateTime().toString("yyyy-MM-dd_HH-mm-ss") + ".csv";
+
+    QFile archivo(filename);
 
     if (archivo.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        //Declara donde se van a escribir los datos
         QTextStream newLineFile(&archivo);
 
-        //Recorre las muestras filtradas actualmente y las concatena en un string para escribirlo en el archivo
         for (int i = 0; i < timestamps.size(); i++) {
-            QString lineData = QString("%1,%2\n").arg(QDateTime::fromSecsSinceEpoch(timestamps[i]).toString("yyyy-MM-dd HH:mm:ss")).arg(QString::number((int)values[i]));
-            newLineFile <<lineData;
+            QString lineData = QString("%1,%2\n")
+                                   .arg(QDateTime::fromSecsSinceEpoch(timestamps[i]).toString("yyyy-MM-dd HH:mm:ss"))
+                                   .arg(QString::number((int)values[i]));
+            newLineFile << lineData;
         }
-        qDebug() << "Archivo creado v2";
+
+        qDebug() << "Archivo exportado en:" << filename;
     } else {
-        qDebug() << "Error al crear o abrir el archivo:" << archivo.errorString();
+        qDebug() << "No se pudo crear/abrir:" << archivo.errorString();
     }
 
     archivo.close();

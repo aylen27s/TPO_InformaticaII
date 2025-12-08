@@ -8,8 +8,8 @@
 #ifndef DRIVERS_MUESTRAS_MUESTRAS_H_
 #define DRIVERS_MUESTRAS_MUESTRAS_H_
 
-#define SIZE_BUFF           6
-#define LIMITE_SUPERIOR     80
+#define SIZE_BUFF           3
+#define LIMITE_SUPERIOR     60		//Lo bajé para hacer la demostracion
 #define LIMITE_INFERIOR     50
 #define TOPE_ALERTA         3
 

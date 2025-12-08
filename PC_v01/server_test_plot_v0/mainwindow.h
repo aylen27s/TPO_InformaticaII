@@ -33,7 +33,8 @@
 
 //Definiciones propias de la app
 #define LIMIT_RECORDS       50
-#define MY_IP_SERVER        "192.168.0.72"  //Del server ESP
+// #define MY_IP_SERVER        "192.168.0.72"  //Del server ESP, con la red de casa
+#define MY_IP_SERVER        "10.109.80.147"     //con mi celu
 #define MY_PORT_SERVER      10234           //Puerto en en el que escucha el server ESP
 
 

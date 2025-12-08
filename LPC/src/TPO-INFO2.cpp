@@ -10,21 +10,24 @@
 #define TIME_TOGGLE_ALERT	1*SEG
 #define TIME_TO_SEND		2*SEG
 #define PIN_MY_PULSADOR		0,26
+//#define PIN_MY_PULSADOR		PIN_PULSADOR
 //#define PIN_LED_ON 			0,27
 #define PIN_LED_ON			PIN_LED_VERDE
 #define PIN_LED_ALARMA		0,29
-#define PIN_BUZZER			0,28	//0,30 no conmutaba? ni idea por qué, asi que moví todo un pin para arriba.
+#define PIN_BUZZER			0,27	//0,30 no conmutaba? ni idea por qué, asi que moví todo un pin para arriba.
 #define SIZE_TRAMA_HANDLER	6		// >,AAAC C es checksum
+#define PIN_LED_MODE 		0,28
 
 typedef enum {PROCESSING_SAMPLES,SEND_SAMPLE_PROCESSED,CONFIGURATION,ALERT} mEstados;
 typedef enum {Active=ON, Inactive=OFF} mEstadosAlarma;
-
+typedef enum {Descanso, Ejercitacion} mModos
+;
 /* Variables Globales */
 volatile uint32_t g_milisegundos = 0;
 
 mEstadosAlarma EstadoAlarma = Inactive;
 mEstados EstadoMdE = PROCESSING_SAMPLES;
-
+mModos CurrentMode = Descanso;
 
 /* Prototipos de funciones */
 void App_SysTick_Callback(void);
@@ -43,10 +46,10 @@ void handleTest(void);
 Gpio LedOn(PIN_LED_ON, OUTPUT, OFF_LED);
 Gpio LedAlarma(PIN_LED_ALARMA, OUTPUT, OFF_LED);
 Gpio Buzzer(PIN_BUZZER, OUTPUT, OFF);
-GpioFI PulsadorAlarma(PIN_PULSADOR);
-Gpio LED_ROJO(PIN_LED_ROJO,1, OFF_LED); //1= output, off_led = 1, on_led = 0;
-
-
+Gpio PulsadorAlarma(PIN_PULSADOR,INPUT);
+//Gpio LED_ROJO(PIN_LED_ROJO,1, OFF_LED); //1= output, off_led = 1, on_led = 0;
+Gpio PulsadorModo(PIN_MY_PULSADOR,INPUT);
+Gpio LedModo(PIN_LED_MODE,OUTPUT,OFF_LED);
 /*Hay que instanciar un objeto UART para que no rompa la implementación. Mover esto a la incialización de hardware*/
 UART0	Uart0(9600);
 
@@ -62,7 +65,9 @@ MUESTRAS Muestras;
 int main(void) {
 	IIC_Inicializacion();
 	LedOn.Set(ON_LED);
-	LedAlarma.Set(OFF_LED);
+	LedModo.Set(0);	// led rojo
+	LedAlarma.Set(0);	//led azul
+	Buzzer.Set(0);
 //	T_Test.Start(TIME_TO_SEND, TIME_TO_SEND, handleTest);
 
     while(1) {
@@ -156,6 +161,18 @@ void MdE(){
 					T_Alarma.Stop();
 					EstadoAlarma = Inactive;
 				}
+
+				if( PulsadorModo.Get() == PULSED && CurrentMode == Ejercitacion ){
+					LedModo.Set(0);
+					CurrentMode = Descanso;
+				}
+
+				if( PulsadorModo.Get() == PULSED && CurrentMode == Descanso ){
+					LedModo.Set(1);
+					CurrentMode = Ejercitacion;
+				}
+
+
 			}
 
 			break;
@@ -182,7 +199,18 @@ void MdE(){
 					buffHandler[5] =checksum;
 					Uart0.Send((uint8_t*)buffHandler, SIZE_TRAMA_SAMPLE);
 				}
-				if(	Muestras.StatusLimit()){		// Se ha sobrepasado el corte inferior o superior de presion normal, prender alarma.
+
+				if( PulsadorModo.Get() == PULSED && CurrentMode == Ejercitacion ){
+					LedModo.Set(0);
+					CurrentMode = Descanso;
+				}
+
+				if( PulsadorModo.Get() == PULSED && CurrentMode == Descanso ){
+					LedModo.Set(1);
+					CurrentMode = Ejercitacion;
+				}
+
+				if(	Muestras.StatusLimit() && CurrentMode == Ejercitacion){		// Se ha sobrepasado el corte inferior o superior de presion normal, prender alarma.
 					EstadoMdE = ALERT;
 				} else {
 					EstadoMdE = PROCESSING_SAMPLES; // Si las muestras son normales, vuelvo al procesamieto
